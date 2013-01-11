@@ -9,28 +9,33 @@ import java.util.Collection;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Instance třídy {@code Bag} představují úložiště, do nichž si hráči
  * odkládají objekty sebrané v jednotlivých prostorech.
  *
- * @author  Jiří HUDEC
+ * @author Jiří HUDEC
  * @version 0.1
  */
 public class Bag implements IBag
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
-    /** Kapacita tašky. */
+    /**
+     * Kapacita tašky.
+     */
     private static final int CAPACITY = 7;
 
-    /** Odkaz na jedináčka. */
+    /**
+     * Odkaz na jedináčka.
+     */
     private static final Bag BAG = new Bag();
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-
-    /** Kolekce objektů nacházejících se právě v "batohu". */
+    /**
+     * Kolekce objektů nacházejících se právě v "batohu".
+     */
     private final Collection<Thing> objects = new ArrayList<>();
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
@@ -39,15 +44,17 @@ public class Bag implements IBag
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     private Bag()
     {
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Tovární metoda vracející odkaz na jedináčka.
      *
      * @return Odkaz na jedinou existující instanci tašky.
@@ -58,11 +65,10 @@ public class Bag implements IBag
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kapacitu batohu, tj. maximální povolený součet vah objektů,
      * které se do něj umístí.
      *
@@ -75,7 +81,8 @@ public class Bag implements IBag
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci objektů uložených v batohu.
      *
      * @return Kolekce objektů v batohu
@@ -87,10 +94,31 @@ public class Bag implements IBag
     }
 
 
-
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * *************************************************************************
+     * Vrací požadovanou věc z tašky. Pokud se věc v tašce nenachází vrací
+     * {@code null}
+     *
+     * @param requestedObject Název požadovaného předmětu
+     * @return Instance požadovaného předmětu nebo {@code null}
+     */
+    public Thing getObject(String requestedObject)
+    {
+        Thing result = null;
+        for (Thing thingFromBag : objects) {
+            if (thingFromBag.getName().toLowerCase().equals(
+                    requestedObject.toLowerCase())) {
+                result = thingFromBag;
+            }
 
-    /***************************************************************************
+        }
+        return result;
+    }
+
+
+    /**
+     * *************************************************************************
      * Pokusí se přidat zadaný objekt do batohu.
      * Vrátí informaci o tom, zda se operace zdařila.
      *
@@ -108,6 +136,17 @@ public class Bag implements IBag
     }
 
     /***************************************************************************
+     * Odebere zadaný objekt z tašky.
+     *
+     * @param thing Odebíraný objekt
+     */
+    void remove(Thing thing)
+    {
+        objects.remove(thing);
+    }
+
+    /**
+     * *************************************************************************
      * Uvede batoh do počátečního stavu pro start hry..
      */
     public void initialize()
@@ -137,3 +176,5 @@ public class Bag implements IBag
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main( String[] args )  {  test();  }
 }
+
+
