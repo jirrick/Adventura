@@ -3,7 +3,6 @@
  */
 package cz.vse._101.po0000.xpecr999_literals_io;
 
-import cz.vse._101.ut1245.xpecr999_pecinovsky.*;
 import cz.vse.adv_framework.game_txt.IGame;
 
 import cz.vse.adv_framework.scenario.TypeOfScenario;

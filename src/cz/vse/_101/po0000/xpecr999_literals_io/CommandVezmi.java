@@ -3,8 +3,6 @@
  */
 package cz.vse._101.po0000.xpecr999_literals_io;
 
-import cz.vse._101.ut1245.xpecr999_pecinovsky.*;
-
 
 
 
