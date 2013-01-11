@@ -1,7 +1,7 @@
 /* The file is saved in UTF-8 codepage.
  * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
  */
-package cz.vse._101.ut0915.stara_verze;
+package cz.vse._101.ut0915.xhudj19_hudec;
 
 import cz.vse.adv_framework.game_txt.ICommand;
 import java.util.Collection;
