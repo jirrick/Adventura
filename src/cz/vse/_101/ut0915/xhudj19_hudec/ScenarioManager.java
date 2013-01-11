@@ -2,7 +2,7 @@
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.stara_verze.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.IGame;
 import cz.vse.adv_framework.scenario.AScenarioManager;
 import cz.vse.adv_framework.scenario.ScenarioStep;
@@ -709,8 +709,8 @@ public class ScenarioManager extends AScenarioManager
      */
     public static void testMyGame()
     {
-//          IGame     hra  = Game.getInstance();
-        IGame     hra  = MANAGER.getGame();
+          IGame     hra  = Game.getInstance();
+//        IGame     hra  = MANAGER.getGame();
         _Test_101 test = _Test_101.getInstance(hra);
         test.testGame();
     }

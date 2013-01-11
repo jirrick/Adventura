@@ -3,7 +3,6 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import cz.vse._101.po0000.xpecr999_literals_io.*;
 import cz.vse.adv_framework.game_txt.Commands;
 import cz.vse.adv_framework.game_txt.IBag;
 import cz.vse.adv_framework.game_txt.IGame;
@@ -111,7 +110,7 @@ public class Game implements IGame
     @Override
     public String getAuthorName()
     {
-        return ManagerWithLiterals.getInstance().getAuthorName();
+        return ScenarioManager.getInstance().getAuthorName();
     }
 
 
@@ -124,7 +123,7 @@ public class Game implements IGame
     @Override
     public String getAuthorID()
     {
-        return ManagerWithLiterals.getInstance().getAuthorID();
+        return ScenarioManager.getInstance().getAuthorID();
     }
 
 
@@ -215,7 +214,7 @@ public class Game implements IGame
     @Override
     public AScenarioManager getScenarioManager()
     {
-        return ManagerWithLiterals.getInstance();
+        return ScenarioManager.getInstance();
     }
 
 
