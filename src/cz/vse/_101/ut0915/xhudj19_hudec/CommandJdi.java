@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /*******************************************************************************
  * Instance třídy {@code CommandJdi} představují příkazy
@@ -56,18 +56,18 @@ public class CommandJdi extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Nebylo zadáno, kam se přesunout";
+            return zCÍL_NEZADÁN;
         }
         String destName = arguments[1];
         Place currentRoom = Place.getCurrentPlace();
         for (Place neighbor : currentRoom.getNeighbors()) {
             if (destName.equalsIgnoreCase(neighbor.getName())) {
                 Place.setCurrentPlace(neighbor);
-                return "Přesunul(a) jste se do místnosti: " +
+                return zPŘESUN +
                        neighbor.getName();
             }
         }
-        return "Do zadané místnosti se odsud nedá přejít: " + destName;
+        return zNENÍ_CIL + destName;
     }
 
 

@@ -118,7 +118,7 @@ public class Texts
     zNEZNÁMÝ_PŘÍKAZ = "\nTento příkaz neznám" + zPORADÍM,
 
     zPŘESUN         = "\nPřesunul(a) jste se do prostoru: ",
-    zCÍL_NEZADAN    = zANP + "\nNebyla zadán prostor, do kterého se má přejít",
+    zCÍL_NEZADÁN    = zANP + "\nNebyla zadán prostor, do kterého se má přejít",
     zNENÍ_CIL       = zANP + "\nDo zadaného prostoru se odsud nedá přejít",
 
     zZVEDNUTO       = "\nVzal(a) jste předmět: ",

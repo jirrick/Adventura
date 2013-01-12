@@ -6,6 +6,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.ICommand;
 import cz.vse.adv_framework.game_txt.INamed;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -134,14 +135,12 @@ public abstract class ACommand implements ICommand
         return String.
                 format(dFORMÁT_INFORMACE,
                        currentPlace.getName(),
-                       toCommaSeparatedString(currentPlace.
-                getNeighbors()),
-                       toCommaSeparatedString(currentPlace.
-                getPersons()),
-                       toCommaSeparatedString(currentPlace.
-                getObjects()),
-                       toCommaSeparatedString(Bag.getInstance().
-                getObjects()));
+                       toCommaSeparatedString(currentPlace.getNeighbors()),
+                       toCommaSeparatedString(
+                selectPersonObject(currentPlace.getObjects(), true, false)),
+                       toCommaSeparatedString(
+                selectPersonObject(currentPlace.getObjects(), false, true)),
+                       toCommaSeparatedString(Bag.getInstance().getObjects()));
     }
 
 
@@ -260,6 +259,32 @@ public abstract class ACommand implements ICommand
             resultString += item.getName();
         }
         return resultString;
+    }
+
+
+    /**
+     * *************************************************************************
+     * Vrátí novou kolekci obsahující pouze vybrané typy objektů
+     *
+     * @param collection Kolekce objektů
+     * @param persons    Zachovávat osoby
+     * @param objects    Zachovávat objekty
+     * @return Kolekce obsahující pouze vybrané prvky
+     */
+    private static Collection<Thing> selectPersonObject(
+            Collection<Thing> collection,
+            boolean persons, boolean objects)
+    {
+        ArrayList<Thing> result = new ArrayList<>();
+        for (Thing item : collection) {
+            if (item.isPerson() && persons) {
+                result.add(item);
+            }
+            if (!item.isPerson() && objects) {
+                result.add(item);
+            }
+        }
+        return result;
     }
 
     //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

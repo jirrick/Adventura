@@ -13,7 +13,8 @@ import java.util.List;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Instance třídy {@code Place} představují prostory ve hře.
  * Dosažení prostoru si můžeme představovat jako částečný cíl,
  * kterého se hráč ve hře snaží dosáhnout.
@@ -21,61 +22,53 @@ import java.util.List;
  * Prostory mohou obsahovat různé objekty,
  * které mohou hráči pomoci v dosažení cíle hry.
  *
- * @author    Jiří HUDEC
- * @version   0.1
+ * @author Jiří HUDEC
+ * @version 0.1
  */
 public enum Place implements IPlace
 {
-    Louka   ("Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou stavební technikou.",
-            new String[] { mULICE },
-            HEAVY+oSTROM, HEAVY+oNÁKLAĎÁK, HEAVY+oBULDOZER,  oKVĚTINA, oKÁMEN
-            )
-    ,
-    Vogonská_loď  ("Vogonská těžební loď - vaše zkáza a zároveň záchrana.",
-                  new String[] { mLOUKA }
-                  )
-    ,
-    Ulice   ("Zcela zapomenutá ulice zajímavá snad jen tím, zde bydlí Arthur.",
-            new String[] { mHOSPODA, mZAHRADA, mLOUKA },
-            HEAVY+oZNAČKA, oPATNÍK, HEAVY+oAUTO
-            )
-    ,
-    Hospoda ("Hospoda U Koně a podkoního. Točí zde pivo a prodávají buráky.",
-            new String[] { mULICE },
-            oŽIDLE, oSKLENICE, PERSON+jBARMAN
-            )
-    ,
-    Zahrada ("Zahrada u Arhturova domu, toho času okupovaná stavební technikou\nsnažící se mu ten dům zbourat.",
-            new String[] { mULICE, mDŮM },
-            HEAVY+oBULDOZER, HEAVY+oBLÁTO, oKVĚTINA, oKÁMEN, PERSON+jARTHUR, PERSON+jPROSSER
-            )
-    ,
-    Dům     ("Arthurův dům, už tři čtvrtě roku naplánován k demolici.",
-            new String[] { mZAHRADA},
-            oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oPĚTILIBROVKA, oHRNEK, oTALÍŘ, oSKLENICE, HEAVY+oLEDNICE
-            )
-    ;
-
+    Louka(
+    "Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou stavební technikou.",
+          new String[] {mULICE},
+          HEAVY + oSTROM, HEAVY + oNÁKLAĎÁK, HEAVY + oBULDOZER, oKVĚTINA, oKÁMEN),
+    Vogonská_loď("Vogonská těžební loď - vaše zkáza a zároveň záchrana.",
+                 new String[] {mLOUKA}),
+    Ulice("Zcela zapomenutá ulice zajímavá snad jen tím, zde bydlí Arthur.",
+          new String[] {mHOSPODA, mZAHRADA, mLOUKA},
+          HEAVY + oZNAČKA, oPATNÍK, HEAVY + oAUTO),
+    Hospoda("Hospoda U Koně a podkoního. Točí zde pivo a prodávají buráky.",
+            new String[] {mULICE},
+            oŽIDLE, oSKLENICE, PERSON + jBARMAN),
+    Zahrada(
+    "Zahrada u Arhturova domu, toho času okupovaná stavební technikou\nsnažící se mu ten dům zbourat.",
+            new String[] {mULICE, mDŮM},
+            HEAVY + oBULDOZER, HEAVY + oBLÁTO, oKVĚTINA, PERSON + jARTHUR,
+            PERSON + jPROSSER),
+    Dům("Arthurův dům, už tři čtvrtě roku naplánován k demolici.",
+        new String[] {mZAHRADA},
+        oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oPĚTILIBROVKA, oHRNEK, oTALÍŘ,
+        oSKLENICE, HEAVY + oLEDNICE);
 
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
-    /** Aktuální místnost, tj. místnost, v níž se hráč právě nachází. */
+    /**
+     * Aktuální místnost, tj. místnost, v níž se hráč právě nachází.
+     */
     private static Place currentPlace;
 
     //Maps
-    /** Počáteční sousedé jednotlivých místností. */
+    /**
+     * Počáteční sousedé jednotlivých místností.
+     */
     private static final EnumMap<Place, List<Place>> initialNeighbors =
-                                                  new EnumMap<>(Place.class);
+                                                     new EnumMap<>(Place.class);
 
-    /** Počáteční objekty umístěné v místnostech. */
+    /**
+     * Počáteční objekty umístěné v místnostech.
+     */
     private static final EnumMap<Place, List<Thing>> initialObjects =
-                                                    new EnumMap<>(Place.class);
+                                                     new EnumMap<>(Place.class);
 
-    /** Počáteční obsoby umístěné v místnostech. */
-    private static final EnumMap<Place, List<Thing>> initialPersons =
-                                                    new EnumMap<>(Place.class);
-
-//    //2D arrays
+  //    //2D arrays
 //    /** Počáteční sousedé jednotlivých místností. */
 //    private static final Room[][] initialNeighbors =
 //                                  new Room[values().length][];
@@ -84,45 +77,49 @@ public enum Place implements IPlace
 //    private static final Thing[][] initialObjects =
 //                                   new Thing[values().length][];
 
-
-
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
-
-    /** Statický konstruktor připraví statické atributy,
-     *  které nemohly být naplněny při konstrukci instancí,
-     *  protože v době vytváření instancí tyto atributy ještě neexistovaly. */
+    /**
+     * Statický konstruktor připraví statické atributy,
+     * které nemohly být naplněny při konstrukci instancí,
+     * protože v době vytváření instancí tyto atributy ještě neexistovaly.
+     */
     static {
         initializeIntoMaps();
     }
 
 
-
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-
-     /** Popis prostoru. */
+    /**
+     * Popis prostoru.
+     */
     private final String description;
 
-    /** Aktuální objekty v prostoru. */
+    /**
+     * Aktuální objekty v prostoru.
+     */
     private final Collection<Thing> objects = new ArrayList<>();
 
-    /** Aktuální osoby v prostoru. */
-    private final Collection<Thing> persons = new ArrayList<>();
-
-    /** Aktuální sousedé prostoru. */
+    /**
+     * Aktuální sousedé prostoru.
+     */
     private final Collection<Place> neighbors = new ArrayList<>();
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
-
-        /** Názvy objektů v prostoru na počátku hry. */
+    /**
+     * Názvy objektů v prostoru na počátku hry.
+     */
     private String[] objectNames;
 
-    /** Názvy sousedů prostoru na počátku hry. */
+    /**
+     * Názvy sousedů prostoru na počátku hry.
+     */
     private String[] neighborNames;
 
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Inicializuje stav všech prostorů,
      * tj. uvede všechny prostoru do stavu požadovaného na počátku hry.
      */
@@ -147,7 +144,8 @@ public enum Place implements IPlace
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci odkazů na všechny prostory vystupující ve hře.
      *
      * @return Kolekce odkazů na všechny prostory vystupující ve hře
@@ -158,12 +156,10 @@ public enum Place implements IPlace
     }
 
 
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří prostor se zadaným názvem, popisem a počátečními
      * sousedy a objekty.
      *
@@ -172,19 +168,18 @@ public enum Place implements IPlace
      * @param objectNames   Názvy objektů ve vytvářeném prostoru při startu hry
      */
     private Place(String description, String[] neighborNames,
-                                     String... objectNames)
+                  String... objectNames)
     {
-        this.description   = description;
+        this.description = description;
         this.neighborNames = neighborNames;
-        this.objectNames   = objectNames;
+        this.objectNames = objectNames;
     }
-
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí popis prostoru, který daný prostor stručné charakterizuje.
      *
      * @return Popis daného prostoru
@@ -196,7 +191,8 @@ public enum Place implements IPlace
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí název prostoru.
      *
      * @return Název prostoru
@@ -208,7 +204,8 @@ public enum Place implements IPlace
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci sousedů daného prostoru, tj. kolekci prostorů,
      * do nichž je možno se z tohoto prostoru přesunout příkazem typu
      * {@link Commands.Type#MOVE Commands.Type.MOVE}.
@@ -222,7 +219,8 @@ public enum Place implements IPlace
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci objektů nacházejících se v daném prostoru.
      *
      * @return Kolekce objektů nacházejících se v daném prostoru
@@ -233,20 +231,10 @@ public enum Place implements IPlace
         return objects;
     }
 
-    /***************************************************************************
-     * Vrátí kolekci osob nacházejících se v daném prostoru.
-     *
-     * @return Kolekce osob nacházejících se v daném prostoru
-     */
-    public Collection<Thing> getPersons()
-    {
-        return persons;
-    }
-
-
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
- /***************************************************************************
+    /**
+     * *************************************************************************
      * Odebere zadaný objekt z daného prostoru.
      *
      * @param thing Odebíraný objekt
@@ -257,11 +245,10 @@ public enum Place implements IPlace
     }
 
 
-
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
-
     //Maps
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Inicializuje mapy,
      * v nichž jsou uloženy počáteční sousedé jednotlivých místností
      * a objekty, které se v místnostech nacházejí na počátku hry.
@@ -277,24 +264,18 @@ public enum Place implements IPlace
             place.neighborNames = null;
 
             List<Thing> things = new ArrayList<>(place.objectNames.length);
-            List<Thing> persons = new ArrayList<>(place.objectNames.length);
             for (String name : place.objectNames) {
-                if (name.charAt(0) == PERSON) {
-                    persons.add(new Thing(name));
-                }
-                things.add(new Thing(name));
+                    things.add(new Thing(name));
             }
             initialObjects.put(place, things);
-            initialPersons.put(place, persons);
             place.objectNames = null;
         }
     }
 
 
-
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Inicializuje místnost do počátečního stavu,
      * tj. přiřadí jí počáteční sousedy a vloží do ní počáteční objekty.
      */
@@ -302,14 +283,11 @@ public enum Place implements IPlace
     {
         neighbors.clear();
         objects.clear();
-        persons.clear();
 
         //Maps
         neighbors.addAll(initialNeighbors.get(this));
-        objects  .addAll(initialObjects  .get(this));
-        persons  .addAll(initialPersons  .get(this));
+        objects.addAll(initialObjects.get(this));
     }
-
 
 
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
@@ -324,3 +302,5 @@ public enum Place implements IPlace
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main( String[] args )  {  test();  }
 }
+
+

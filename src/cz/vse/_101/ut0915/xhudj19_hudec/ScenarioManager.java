@@ -536,7 +536,7 @@ public class ScenarioManager extends AScenarioManager
             tsBAD_OBJECT ),
 
         new ScenarioStep( pJDI,
-            zCÍL_NEZADAN,
+            zCÍL_NEZADÁN,
             mLOUKA,
             new String[] { mULICE },
             new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN },
