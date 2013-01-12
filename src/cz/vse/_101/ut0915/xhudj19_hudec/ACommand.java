@@ -96,6 +96,11 @@ public abstract class ACommand implements ICommand
         line = line.trim().toLowerCase();
         String[] words = null;
 
+        if (!CM.getCanDoNextMove()) {
+            Game.getInstance().stop();
+            return nPROHRA;
+        }
+
         ACommand command;
         // režim průvodce
         if (CM.getGuideActive()) {
@@ -114,6 +119,7 @@ public abstract class ACommand implements ICommand
             if (command == null) {
                 return zNEZNÁMÝ_PŘÍKAZ;
             }
+            CM.evaluateNextRound();
         }
 
         String answer = command.execute(words);

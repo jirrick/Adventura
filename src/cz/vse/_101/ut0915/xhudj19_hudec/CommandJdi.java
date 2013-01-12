@@ -5,13 +5,16 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
-/*******************************************************************************
+
+
+/**
+ * *****************************************************************************
  * Instance třídy {@code CommandJdi} představují příkazy
  * realizující standardní přesun.
  * Instance by mohla být definována jako jedináček,
  * ale v dané aplikaci svěřuje tuto starost do ruhou správce příkazů.
  *
- * @author  Rudolf PECINOVSKÝ
+ * @author Rudolf PECINOVSKÝ
  * @version 0.00.0000 — 20yy-mm-dd
  */
 public class CommandJdi extends ACommand
@@ -23,11 +26,10 @@ public class CommandJdi extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří příkaz přesouvající hráče z aktuálního prostoru
      * do prostoru zadaného, přičemž zadaný prostor musí být
      * v danou chvíli sousedem prostoru aktuálního.
@@ -39,12 +41,11 @@ public class CommandJdi extends ACommand
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda realizující standardní přesun do sousedního prostoru.
      * V parametru by měly být dvě položky: název příkazu
      * a název cílového prostoru.
@@ -60,24 +61,24 @@ public class CommandJdi extends ACommand
             return zCÍL_NEZADÁN + status();
         }
         String destName = arguments[1];
-        Place currentRoom = Place.getCurrentPlace();
-        for (Place neighbor : currentRoom.getNeighbors()) {
-            if (destName.equalsIgnoreCase(neighbor.getName())) {
-                if (CM.getArthurFollows()){
-                    Thing arthur = currentRoom.get("arthur");
-                    if (arthur != null){
-                        currentRoom.remove(arthur);
-                        neighbor.add(arthur);
-                    }
+        Place currentPlace = Place.getCurrentPlace();
+
+        Place neighbor = currentPlace.getNeighbor(destName);
+        if (neighbor != null) {
+            if (CM.getArthurFollows()) {
+                Person arthur = currentPlace.getPerson("arthur");
+                if (arthur != null) {
+                    currentPlace.remove(arthur);
+                    neighbor.add(arthur);
                 }
-                Place.setCurrentPlace(neighbor);
-                return zPŘESUN +
-                       neighbor.getName() + status();
             }
+            Place.setCurrentPlace(neighbor);
+            return zPŘESUN +
+                   neighbor.getName() + status();
+
         }
         return zNENÍ_CIL + destName + status();
     }
-
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
@@ -95,3 +96,5 @@ public class CommandJdi extends ACommand
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

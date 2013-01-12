@@ -523,7 +523,7 @@ public class ScenarioManager extends AScenarioManager
             tsEMPTY ),
 
         new ScenarioStep( pJDI + " " + mVOGONI,
-            zNENÍ_CIL,
+            zNENÍ_CIL + mVOGONI,
             mLOUKA,
             new String[] { mULICE },
             new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN },

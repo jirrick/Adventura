@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /*******************************************************************************
  * Instance třídy {@code CommandSeber} představují příkazy
@@ -32,7 +32,7 @@ public class CommandSeber extends ACommand
      */
     public CommandSeber()
     {
-        super("Vezmi", "");
+        super("Seber", "");
     }
 
 
@@ -54,23 +54,24 @@ public class CommandSeber extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Nebylo zadáno co mám vzít";
+            return zPŘEDMĚT_NEZADAN + status();
         }
         String thingName = arguments[1];
-        Place currentRoom = Place.getCurrentPlace();
-        for (Thing thing : currentRoom.getObjects()) {
-            if (thingName.equalsIgnoreCase(thing.getName())) {
-                if (thing.getWeight() > 1) {
-                    return "Zadaný předmět nejde zvednout: " + thing.getName();
+        Place currentPlace = Place.getCurrentPlace();
+
+        Thing thing = currentPlace.getObject(thingName);
+        if (thing != null)
+        {
+            if (thing.getWeight() > 1) {
+                    return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
                 }
                 if (Bag.getInstance().add(thing)) {
-                    currentRoom.remove(thing);
-                    return "Vzal(a) jste předmět: " + thing.getName();
+                    currentPlace.remove(thing);
+                    return zZVEDNUTO + thing.getName() + status();
                 }
-                return "Předmět se již do batohu nevejde: " + thing.getName();
-            }
+                return zBATOH_PLNÝ + thing.getName() + status();
         }
-        return "Zadaný předmět v místnosti není: " + thingName;
+        return zNENÍ_PŘEDMĚT + thingName + status();
     }
 
 

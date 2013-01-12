@@ -279,7 +279,6 @@ public class ConditionManager
         if (rA) {
             rA = false;
             rB = true;
-            setArthurFollow();
         }
     }
 
@@ -304,6 +303,7 @@ public class ConditionManager
         if (rC) {
             rC = false;
             rD = true;
+            setArthurFollow();
         }
     }
 
@@ -315,7 +315,6 @@ public class ConditionManager
     {
         if (rD) {
             rD = false;
-            rE = true;
         }
     }
 

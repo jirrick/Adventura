@@ -262,7 +262,7 @@ public enum Place implements IPlace
      * @param requestedObject Název požadovaného předmětu
      * @return Instance požadovaného předmětu nebo {@code null}
      */
-    public Thing get(String requestedObject)
+    public Thing getObject(String requestedObject)
     {
         Thing result = null;
         for (Thing thingFromPlace : objects) {
@@ -290,6 +290,26 @@ public enum Place implements IPlace
             if (personFromPlace.getName().toLowerCase().equals(
                     requestedObject.toLowerCase())) {
                 result = personFromPlace;
+            }
+        }
+        return result;
+    }
+
+     /**
+     * *************************************************************************
+     * Vrací požadovanou osobu z prostoru. Pokud osoba v prostoru není vrací
+     * {@code null}
+     *
+     * @param requestedObject Název požadovaného předmětu
+     * @return Instance požadovaného předmětu nebo {@code null}
+     */
+    public Place getNeighbor(String requestedObject)
+    {
+        Place result = null;
+        for (Place neighborOfPlace : neighbors) {
+            if (neighborOfPlace.getName().toLowerCase().equals(
+                    requestedObject.toLowerCase())) {
+                result = neighborOfPlace;
             }
         }
         return result;

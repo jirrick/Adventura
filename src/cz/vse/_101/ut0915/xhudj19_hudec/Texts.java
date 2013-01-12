@@ -119,22 +119,22 @@ public class Texts
      *  Prefix "z" - zpráva
      */
     public  static final String
-    zANP            = "\nZadaná akce nebyla provedena",
+    zZANP           = "\nZadaná akce nebyla provedena",
     zPORADÍM        = "\nChcete-li poradit, zadejte příkaz ?",
     zPRÁZDNÝ_PŘÍKAZ = "\nZadal(a) jste prázdný příkaz" + zPORADÍM,
     zNEZNÁMÝ_PŘÍKAZ = "\nTento příkaz neznám" + zPORADÍM,
 
     zPŘESUN         = "\nPřesunul(a) jste se do prostoru: ",
-    zCÍL_NEZADÁN    = zANP + "\nNebyla zadán prostor, do kterého se má přejít",
-    zNENÍ_CIL       = zANP + "\nDo zadaného prostoru se odsud nedá přejít",
+    zCÍL_NEZADÁN    = zZANP + "\nNebyla zadán prostor, do kterého se má přejít",
+    zNENÍ_CIL       = zZANP + "\nDo zadaného prostoru se odsud nedá přejít: ",
 
-    zZVEDNUTO       = "\nVzal(a) jste předmět: ",
+    zZVEDNUTO       = "\nSebral(a) jste předmět: ",
     zPOLOŽENO       = "\nPoložil(a) jste předmět: ",
-    zPŘEDMĚT_NEZADAN= zANP + "\nNebyl zadán předmět, s nímž mám manipulovat",
-    zTĚŽKÝ_PŘEDMĚT  = zANP + "\nZadaný předmět nejde zvednout: ",
-    zNENÍ_PŘEDMĚT   = zANP + "\nZadaný předmět v místnosti není: ",
-    zNENÍ_V_BATOHU  = zANP + "\nPředmět není v batohu: ",
-    zBATOH_PLNÝ     = zANP + "\nZadaný předmět nemůžete vzít," +
+    zPŘEDMĚT_NEZADAN= zZANP + "\nNebyl zadán předmět, s nímž mám manipulovat",
+    zTĚŽKÝ_PŘEDMĚT  = zZANP + "\nZadaný předmět nejde zvednout: ",
+    zNENÍ_PŘEDMĚT   = zZANP + "\nZadaný předmět v tašce není: ",
+    zNENÍ_V_BATOHU  = zZANP + "\nPředmět není v tašce: ",
+    zBATOH_PLNÝ     = zZANP + "\nZadaný předmět nemůžete vzít," +
                              "\ndo tašky se toho už víc nevejde.",
 
     zNÁPOVĚDA       = "\nPříkazy, které je možno v průběhu hry zadat:" +
@@ -241,7 +241,7 @@ public class Texts
 
     nVÝHRA =   "\nGratuluji! Úspěšně jsi zachránil Arthura Denta!",
     nPROHRA =   "\nTo ses moc nepředvedl, Forde." +
-            " Obzvlášť tohle jsi pěkně zvoral: ";
+            "\nNepodařilo se ti zachránit Arthura Denta";
 
 
 
