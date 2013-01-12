@@ -48,7 +48,7 @@ public abstract class ACommand implements ICommand
         guideCommand = new CommandPrůvodce();
         new CommandStart();
         new CommandJdi();
-        new CommandVezmi();
+        new CommandSeber();
         new CommandKonec();
         new CommandPoužij();
         new CommandPromluv();
