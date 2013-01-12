@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.dFORMÁT_INFORMACE;
 import cz.vse.adv_framework.game_txt.ICommand;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.Collection;
@@ -12,7 +12,8 @@ import java.util.Map;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Třída {@code ACommand} je společným rodičem všech tříd, jejichž instance
  * mají na starosti interpretaci příkazů zadávaných uživatelem hrajícím hru.
  * Název spouštěného příkazu bývá většinou první slovo řádku zadávaného
@@ -25,22 +26,21 @@ import java.util.Map;
  * kdy uživatel rozhovor ukončí a objekt rozhovoru přepne hru zpět
  * do režimu klasických příkazů.
  *
- * @author  Rudolf PECINOVSKÝ
+ * @author Rudolf PECINOVSKÝ
  * @version 12.01
  */
 public abstract class ACommand implements ICommand
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
     private static final Map<String, ACommand> NAME_2_COMMAND = new HashMap<>();
-
 
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
-
-    /** Statický konstruktor (konstruktor třídy) -
-     *  vytvoří po jedné instanci od každé ze svých dceřiných tříd. */
+    /**
+     * Statický konstruktor (konstruktor třídy) -
+     * vytvoří po jedné instanci od každé ze svých dceřiných tříd.
+     */
     static {
         new CommandStart();
         new CommandJdi();
@@ -49,21 +49,22 @@ public abstract class ACommand implements ICommand
     }
 
 
-
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-
-    /** Název daného příkazu. */
+    /**
+     * Název daného příkazu.
+     */
     private final String name;
 
-    /** Stručný popis daného příkazu. */
+    /**
+     * Stručný popis daného příkazu.
+     */
     private final String description;
-
 
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci všech příkazů použitelných ve hře.
      *
      * @return Kolekce všech příkazů použitelných ve hře
@@ -74,10 +75,9 @@ public abstract class ACommand implements ICommand
     }
 
 
-
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Zpracuje zadaný příkaz a vrátí text zprávy pro uživatele.
      *
      * @param line Zadávaný příkaz
@@ -93,32 +93,40 @@ public abstract class ACommand implements ICommand
         ACommand command = NAME_2_COMMAND.get(words[0]);
         if (command == null) {
             return "Tento příkaz neznám." +
-                 "\nChcete-li poradit, zadejte příkaz ?";
+                   "\nChcete-li poradit, zadejte příkaz ?";
         }
         String answer = command.execute(words);
-        answer += status();
         return answer;
     }
 
-/*******************************************************************************
- * Vrací výpis o stavu hry (aktuální prostor, sousedi, věci v prostoru, tašce)
- *
- * @return String popisující stav hry
- */
 
+    /**
+     * *****************************************************************************
+     * Vrací výpis o stavu hry (aktuální prostor, sousedi, věci v prostoru,
+     * osoby v prostoru, předměty v tašce)
+     *
+     * @return String popisující stav hry
+     */
     static String status()
     {
-      return String.format(dFORMÁT_INFORMACE,
-              Place.getCurrentPlace().getName(),
-              toCommaSeparatedString(Place.getCurrentPlace().getNeighbors()),
-              toCommaSeparatedString(Place.getCurrentPlace().getPersons()),
-              toCommaSeparatedString(Place.getCurrentPlace().getObjects()),
-              toCommaSeparatedString(Bag.getInstance().getObjects())
-              );
+        Place currentPlace = Place.getCurrentPlace();
+
+        return String.
+                             format(dFORMÁT_INFORMACE,
+                                    currentPlace.getName(),
+                                    toCommaSeparatedString(currentPlace.
+                             getNeighbors()),
+                                    toCommaSeparatedString(currentPlace.
+                             getPersons()),
+                                    toCommaSeparatedString(currentPlace.
+                             getObjects()),
+                                    toCommaSeparatedString(Bag.getInstance().
+                             getObjects()));
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Inicializuje všechny příkazy,
      * tj. požádá všechny příkazy, aby se inicializovaly a nastavily si tak
      * případné potřebné příznaky do správného výchozího stavu.
@@ -131,11 +139,10 @@ public abstract class ACommand implements ICommand
     }
 
 
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří rodičovský podobjekt vytvářeného příkazu hry.
      *
      * @param name        Název vytvářeného příkazu
@@ -143,16 +150,15 @@ public abstract class ACommand implements ICommand
      */
     ACommand(String name, String description)
     {
-        this.name        = name;
+        this.name = name;
         this.description = description;
         NAME_2_COMMAND.put(name.toLowerCase(), this);
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda realizující reakci hry na zadání daného příkazu.
      * Počet parametrů je závislý na konkrétním příkazu,
      * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
@@ -164,15 +170,12 @@ public abstract class ACommand implements ICommand
      * @return Text zprávy vypsané po provedeni příkazu
      */
     @Override
-    abstract
-    public String execute(String... arguments)
-    ;
-
+    abstract public String execute(String... arguments);
 
 
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí název příkazu, tj. text, který musí hráč zadat
      * pro vyvolaní daného příkazu.
      *
@@ -185,7 +188,8 @@ public abstract class ACommand implements ICommand
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí popis příkazu s vysvětlením jeho funkce
      * a významu jednotlivých parametru.
      *
@@ -198,10 +202,9 @@ public abstract class ACommand implements ICommand
     }
 
 
-
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Inicializuje daný příkaz.
      * Implicitní, zděděná verze této metody je prázdná.
      * Většině příkazů stačí a ty, které opravdu potřebují něco inicializovat,
@@ -213,28 +216,30 @@ public abstract class ACommand implements ICommand
     }
 
 
-
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí kolekci jako seznam oddělený čárkami.
      *
-     * @param collection Kolekce objektů, schopných vypsat svůj název (implementující rozhraní INamed)
+     * @param collection Kolekce objektů, schopných vypsat svůj název
+     *                   (implementující rozhraní INamed)
      * @return String s obsahem kolekce
      */
-     private static String toCommaSeparatedString
-             (Collection<? extends INamed> collection){
+    private static String toCommaSeparatedString(
+            Collection<? extends INamed> collection)
+    {
         boolean writeComma = false;
         String resultString = "";
-        for (INamed item: collection){
-           if (writeComma) {
-               resultString += ", ";
-           } else {
-               writeComma = true;
-           }
-           resultString += item.getName();
-       }
-       return resultString;
+        for (INamed item : collection) {
+            if (writeComma) {
+                resultString += ", ";
+            }
+            else {
+                writeComma = true;
+            }
+            resultString += item.getName();
+        }
+        return resultString;
     }
 
     //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
@@ -251,3 +256,5 @@ public abstract class ACommand implements ICommand
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+
