@@ -41,9 +41,11 @@ public class ConditionManager
     private boolean endOfEarthRoundCountdown = false;
     /** Počet tahů do konce světa */
     private int roundsLeft = 15;
+
     /** Indikátor odpočítávání zbývajícího reálného času do konce světa */
     private boolean endOfEarthTimeCountdown = false;
-    /** Počet tahů do konce světa */
+
+    /** Reálný čas, kdy byl spuštěn odpočet konce světa */
     private Date timeOfActivation;
 
     /** Indikátor, zda Artur následuje Forda */
@@ -52,8 +54,25 @@ public class ConditionManager
     /** Indikátor, zda je aktivní režim průvodce */
     private boolean guideActive = false;
 
+    /** Indikátor, zda se může spustit rozhovor A */
+    private boolean rA = true;
 
-//== CLASS GETTERS AND SETTERS =================================================
+    /** Indikátor, zda se může spustit rozhovor B */
+    private boolean rB = false;
+
+    /** Indikátor, zda se může spustit rozhovor C */
+    private boolean rC = false;
+
+    /** Indikátor, zda se může spustit rozhovor D */
+    private boolean rD = false;
+
+    /** Indikátor, zda se může spustit rozhovor E */
+    private boolean rE = false;
+
+    /** Indikátor, zda se může spustit rozhovor E */
+    private boolean rF = false;
+
+   //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
 //##############################################################################
@@ -111,6 +130,66 @@ public class ConditionManager
     public boolean getGuideActive()
     {
         return guideActive;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor A?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rA()
+    {
+        return rA;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor B?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rB()
+    {
+        return rB;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor C?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rC()
+    {
+        return rC;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor D?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rD()
+    {
+        return rD;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor E?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rE()
+    {
+        return rE;
+    }
+
+    /***************************************************************************
+     * Může se spustit rozhovor F?
+     *
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     */
+    public boolean get_rF()
+    {
+        return rF;
     }
 
     /***************************************************************************
@@ -189,6 +268,77 @@ public class ConditionManager
     public void setGuideOff()
     {
         guideActive = false;
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru A.
+     *
+     */
+    public void evaluate_rA()
+    {
+        if (rA) {
+            rA = false;
+            rB = true;
+        }
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru B.
+     *
+     */
+    public void evaluate_rB()
+    {
+        if (rB) {
+            rB = false;
+            rC = true;
+        }
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru C.
+     *
+     */
+    public void evaluate_rC()
+    {
+        if (rC) {
+            rC = false;
+            rD = true;
+        }
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru D.
+     *
+     */
+    public void evaluate_rD()
+    {
+        if (rD) {
+            rD = false;
+            rE = true;
+        }
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru E.
+     *
+     */
+    public void evaluate_rE()
+    {
+        if (rE) {
+            rE = false;
+            rF = true;
+        }
+    }
+
+    /***************************************************************************
+     * Vyhodnocení podmínek po rozhovoru F.
+     *
+     */
+    public void evaluate_rF()
+    {
+        if (rF) {
+            rF = false;
+        }
     }
 
 

@@ -221,8 +221,9 @@ public class Texts
     nNELZE_POUŽÍT = "\nTento předmět nelze použít",
 
     nROZHOVOR_START =   "\nZačal(a) jsi se bavit s postavou: ",
-    nROZHOVOR_NEJDE =   "\nNení možné zahájit rozhovor",
-    nROZHOVOR_NIKDO =   "\nMusíš zadat jméno postavy, se kterou se chceš bavit",
+    nROZHOVOR_NEJDE =   "\nTato postava se s tebou teď odmítá bavit.",
+    nROZHOVOR_NENÍ =   "\nPostava tohoto jména v tomto prostoru není.",
+    nROZHOVOR_NIKDO =   "\nMusíš zadat jméno postavy, se kterou se chceš bavit.",
 
     nPOZŘÍT =   "\nPozřel(a) jsi: ",
 

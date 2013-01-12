@@ -3,8 +3,9 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 /* Soubor je ulozen v kodovani UTF-8.
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy.
  */
-
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+
+
 
 /**
  * *****************************************************************************
@@ -24,9 +25,9 @@ public class CommandPromluv extends ACommand
     //== OSTATNÍ NESOUKROMÉ METODY TŘÍDY =======================================
     //##########################################################################
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
-
-     /*************************************************************************
-     *Vytvoří příkaz nastražující pastičku.
+    /**
+     * ***********************************************************************
+     * Vytvoří příkaz nastražující pastičku.
      */
     public CommandPromluv()
     {
@@ -38,13 +39,12 @@ public class CommandPromluv extends ACommand
     //== ABSTRAKTNÍ METODY =====================================================
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
-
-    /*************************************************************************
+    /**
+     * ***********************************************************************
      * Instance třídy CommandNastraz představují příkazy realizující
      * nastražení pastičky. Pokud je v místnosti myš a v rukou pastička,
      * vyndá z rukou pastičku a vloží do nich myš a to samé i v místnosti.
      */
-
     @Override
     public String execute(String... arguments)
     {
@@ -52,10 +52,44 @@ public class CommandPromluv extends ACommand
             return nROZHOVOR_NIKDO + status();
         }
 
+        String result = "";
+        ConditionManager CM = ConditionManager.getInstance();
+        Place currentPlace = Place.getCurrentPlace();
+        String osoba = arguments[1];
 
-        return nROZHOVOR_START;
+        if (currentPlace.getObject(osoba) != null) {
+            result = nROZHOVOR_NEJDE;
+
+            if (CM.get_rA() && (osoba.equals("arthur"))) {
+                result = rA;
+                CM.evaluate_rA();
+            }
+            if (CM.get_rB() && (osoba.equals("prosser"))) {
+                result = rB;
+                CM.evaluate_rB();
+            }
+            if (CM.get_rC() && (osoba.equals("arthur"))) {
+                result = rC;
+                CM.evaluate_rC();
+            }
+            if (CM.get_rD() && (osoba.equals("barman"))) {
+                result = rD;
+                CM.evaluate_rD();
+            }
+            if (CM.get_rE() && (osoba.equals("arthur"))) {
+                result = rE;
+                CM.evaluate_rE();
+            }
+            if (CM.get_rF() && (osoba.equals("barman"))) {
+                result = rF;
+                CM.evaluate_rF();
+            }
+        }
+        else {
+            result = nROZHOVOR_NENÍ;
+        }
+        return result + status();
     }
-
 
 
 //    == SOUKROMÉ A POMOCNÉ METODY TŘÍDY =======================================

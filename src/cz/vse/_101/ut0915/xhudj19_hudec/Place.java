@@ -232,6 +232,27 @@ public enum Place implements IPlace
     }
 
 
+    /**
+     * *************************************************************************
+     * Vrací požadovanou věc z prostoru. Pokud věc v prostoru není vrací
+     * {@code null}
+     *
+     * @param requestedObject Název požadovaného předmětu
+     * @return Instance požadovaného předmětu nebo {@code null}
+     */
+    public Thing getObject(String requestedObject)
+    {
+        Thing result = null;
+        for (Thing thingFromPlace : objects) {
+            if (thingFromPlace.getName().toLowerCase().equals(
+                    requestedObject.toLowerCase())) {
+                result = thingFromPlace;
+            }
+
+        }
+        return result;
+    }
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
      * *************************************************************************
