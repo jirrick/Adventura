@@ -3,7 +3,9 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.ICommand;
+import cz.vse.adv_framework.game_txt.INamed;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -94,7 +96,25 @@ public abstract class ACommand implements ICommand
                  "\nChcete-li poradit, zadejte příkaz ?";
         }
         String answer = command.execute(words);
+        answer += status();
         return answer;
+    }
+
+/*******************************************************************************
+ * Vrací výpis o stavu hry (aktuální prostor, sousedi, věci v prostoru, tašce)
+ *
+ * @return String popisující stav hry
+ */
+
+    static String status()
+    {
+      return String.format(dFORMÁT_INFORMACE,
+              Place.getCurrentPlace().getName(),
+              toCommaSeparatedString(Place.getCurrentPlace().getNeighbors()),
+              toCommaSeparatedString(Place.getCurrentPlace().getPersons()),
+              toCommaSeparatedString(Place.getCurrentPlace().getObjects()),
+              toCommaSeparatedString(Bag.getInstance().getObjects())
+              );
     }
 
 
@@ -195,7 +215,29 @@ public abstract class ACommand implements ICommand
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
-//== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
+
+    /***************************************************************************
+     * Vrátí kolekci jako seznam oddělený čárkami.
+     *
+     * @param collection Kolekce objektů, schopných vypsat svůj název (implementující rozhraní INamed)
+     * @return String s obsahem kolekce
+     */
+     private static String toCommaSeparatedString
+             (Collection<? extends INamed> collection){
+        boolean writeComma = false;
+        String resultString = "";
+        for (INamed item: collection){
+           if (writeComma) {
+               resultString += ", ";
+           } else {
+               writeComma = true;
+           }
+           resultString += item.getName();
+       }
+       return resultString;
+    }
+
+    //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
 //== TESTING CLASSES AND METHODS ===============================================
 //

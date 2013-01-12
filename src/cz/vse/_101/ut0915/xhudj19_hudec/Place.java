@@ -1,9 +1,9 @@
 package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
-import static cz.vse._101.ut0915.stara_verze.Texts.*;
-import static cz.vse._101.ut0915.stara_verze.Thing.HEAVY;
-import static cz.vse._101.ut0915.stara_verze.Thing.PERSON;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Thing.HEAVY;
+import static cz.vse._101.ut0915.xhudj19_hudec.Thing.PERSON;
 import cz.vse.adv_framework.game_txt.IPlace;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -71,6 +71,10 @@ public enum Place implements IPlace
     private static final EnumMap<Place, List<Thing>> initialObjects =
                                                     new EnumMap<>(Place.class);
 
+    /** Počáteční obsoby umístěné v místnostech. */
+    private static final EnumMap<Place, List<Thing>> initialPersons =
+                                                    new EnumMap<>(Place.class);
+
 //    //2D arrays
 //    /** Počáteční sousedé jednotlivých místností. */
 //    private static final Room[][] initialNeighbors =
@@ -100,6 +104,9 @@ public enum Place implements IPlace
 
     /** Aktuální objekty v prostoru. */
     private final Collection<Thing> objects = new ArrayList<>();
+
+    /** Aktuální osoby v prostoru. */
+    private final Collection<Thing> persons = new ArrayList<>();
 
     /** Aktuální sousedé prostoru. */
     private final Collection<Place> neighbors = new ArrayList<>();
@@ -226,6 +233,16 @@ public enum Place implements IPlace
         return objects;
     }
 
+    /***************************************************************************
+     * Vrátí kolekci osob nacházejících se v daném prostoru.
+     *
+     * @return Kolekce osob nacházejících se v daném prostoru
+     */
+    public Collection<Thing> getPersons()
+    {
+        return persons;
+    }
+
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
@@ -260,10 +277,15 @@ public enum Place implements IPlace
             place.neighborNames = null;
 
             List<Thing> things = new ArrayList<>(place.objectNames.length);
+            List<Thing> persons = new ArrayList<>(place.objectNames.length);
             for (String name : place.objectNames) {
+                if (name.charAt(0) == PERSON) {
+                    persons.add(new Thing(name));
+                }
                 things.add(new Thing(name));
             }
             initialObjects.put(place, things);
+            initialPersons.put(place, persons);
             place.objectNames = null;
         }
     }
@@ -280,10 +302,12 @@ public enum Place implements IPlace
     {
         neighbors.clear();
         objects.clear();
+        persons.clear();
 
         //Maps
         neighbors.addAll(initialNeighbors.get(this));
         objects  .addAll(initialObjects  .get(this));
+        persons  .addAll(initialPersons  .get(this));
     }
 
 

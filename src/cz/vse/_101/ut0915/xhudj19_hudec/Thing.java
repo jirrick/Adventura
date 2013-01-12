@@ -1,6 +1,7 @@
 package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
+import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IObject;
 
 
@@ -23,7 +24,7 @@ import cz.vse.adv_framework.game_txt.IObject;
  * @author    Rudolf PECINOVSKÝ
  * @version   0.00.000
  */
-public class Thing implements IObject
+public class Thing implements IObject, INamed
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 

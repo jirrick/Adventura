@@ -1,7 +1,7 @@
 package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
-import static cz.vse._101.ut0915.stara_verze.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.IBag;
 import cz.vse.adv_framework.game_txt.IObject;
 import java.util.ArrayList;
@@ -88,7 +88,7 @@ public class Bag implements IBag
      * @return Kolekce objektů v batohu
      */
     @Override
-    public Collection<? extends IObject> getObjects()
+    public Collection<Thing> getObjects()
     {
         return objects;
     }
