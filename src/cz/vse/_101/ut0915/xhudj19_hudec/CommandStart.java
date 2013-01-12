@@ -3,6 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /*******************************************************************************
@@ -57,15 +58,14 @@ public class CommandStart extends ACommand
     {
         Game game = Game.getInstance();
         if (game.isAlive()) {
-            return "Zadal(a) jste prázdný příkaz.";
+            return zPRÁZDNÝ_PŘÍKAZ;
         }
         //Inicializuje příkazy, prostory i batoh
         ACommand.initializeCommands();
         Place    .initializePlaces();
         Bag.getInstance().initialize();
         Game.getInstance().setAlive(true);
-        return "Vítáme vás ve služebním bytě. Jistě máte hlad." +
-             "\nNajděte v bytě ledničku - tam vás čeká svačina.";
+        return zUVÍTÁNÍ + status();
     }
 
 

@@ -27,7 +27,7 @@ import java.util.List;
 public enum Place implements IPlace
 {
     Louka   ("Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou stavební technikou.",
-            new String[] { mULICE, mVOGONI },
+            new String[] { mULICE },
             HEAVY+oSTROM, HEAVY+oNÁKLAĎÁK, HEAVY+oBULDOZER,  oKVĚTINA, oKÁMEN
             )
     ,

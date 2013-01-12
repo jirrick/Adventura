@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.dFORMÁT_INFORMACE;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.ICommand;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.Collection;
@@ -92,8 +92,7 @@ public abstract class ACommand implements ICommand
         String[] words = line.split("\\s+");
         ACommand command = NAME_2_COMMAND.get(words[0]);
         if (command == null) {
-            return "Tento příkaz neznám." +
-                   "\nChcete-li poradit, zadejte příkaz ?";
+            return zNEZNÁMÝ_PŘÍKAZ;
         }
         String answer = command.execute(words);
         return answer;
