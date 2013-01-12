@@ -42,7 +42,7 @@ public class CommandPolož extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return "Nezadali jste objekt, který chcete položit" + status();
+            return zPŘEDMĚT_NEZADAN + status();
         }
         String thingName = arguments[1];
 
