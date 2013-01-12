@@ -133,9 +133,7 @@ public class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR +
-            String.format(rFORMÁT, jFORD, rA_1) +
-            String.format(rFORMÁT, jARTHUR, rPOSITIVE),
+            nROZHOVOR_START + jARTHUR + rA,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
@@ -143,9 +141,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jPROSSER,
-            nROZHOVOR_START + jPROSSER +
-            String.format(rFORMÁT, jFORD, rB_1) +
-            String.format(rFORMÁT, jPROSSER, rPOSITIVE),
+            nROZHOVOR_START + jPROSSER + rB,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
@@ -153,9 +149,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR +
-            String.format(rFORMÁT, jFORD, rC_1) +
-            String.format(rFORMÁT, jARTHUR, rPOSITIVE),
+            nROZHOVOR_START + jARTHUR + rC,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
@@ -193,9 +187,7 @@ public class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN +
-            String.format(rFORMÁT, jFORD, rD_1) +
-            String.format(rFORMÁT, jBARMAN, rPOSITIVE),
+            nROZHOVOR_START + jBARMAN + rD,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
@@ -278,9 +270,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR +
-            String.format(rFORMÁT, jFORD, rE_1) +
-            String.format(rFORMÁT, jARTHUR, rPOSITIVE),
+            nROZHOVOR_START + jARTHUR + rE,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
@@ -288,9 +278,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN +
-            String.format(rFORMÁT, jFORD, rF_1) +
-            String.format(rFORMÁT, jBARMAN, rPOSITIVE),
+            nROZHOVOR_START + jBARMAN + rF,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },

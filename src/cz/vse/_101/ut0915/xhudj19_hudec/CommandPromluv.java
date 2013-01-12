@@ -53,7 +53,7 @@ public class CommandPromluv extends ACommand
         }
 
 
-        return "";
+        return nROZHOVOR_START;
     }
 
 

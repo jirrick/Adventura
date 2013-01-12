@@ -240,23 +240,24 @@ public class Texts
      */
     public static final String
 
-    rFORMÁT = "\n\n%s: „%s“",
+    rA = rozhovorBilder(jFORD, "Ahoj Arthure.") +
+                  rozhovorBilder(jARTHUR, "Dobře."),
 
-    rNEGATIVE = "Promiňte, teď se s vámi nebudu bavit.",
-    rPOSITIVE = "Dobře.",
+    rB = rozhovorBilder(jFORD, "Haló, promiňte, že ruším.") +
+                  rozhovorBilder(jPROSSER, "Dobře."),
 
-    rA_1 =   "Ahoj Arthure. ",
+    rC = rozhovorBilder(jFORD, "Tak dělej, vstávej.") +
+                  rozhovorBilder(jARTHUR, "Dobře."),
 
-    rB_1 =   "Haló, promiňte, že ruším. ",
+    rD = rozhovorBilder(jFORD,
+                  "Dva kousky hořkého, ale rychle, bude konec světa.") +
+                  rozhovorBilder(jBARMAN, "Dobře."),
 
-    rC_1 =   "Tak dělej, vstávej. ",
+    rE = rozhovorBilder(jFORD, "Dělej, pij, máš tu pivo.") +
+                  rozhovorBilder(jARTHUR, "Dobře."),
 
-    rD_1 =   "Dva kousky hořkého, ale rychle, bude konec světa.",
-
-    rE_1 =   "Dělej, pij, máš tu pivo.",
-
-    rF_1 =   "Poprosil bych o balíček buráků.";
-
+    rF = rozhovorBilder(jFORD, "Poprosil bych o balíček buráků.") +
+                  rozhovorBilder(jBARMAN, "Dobře.");
 
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
@@ -284,6 +285,16 @@ public class Texts
         return sb.toString();
     }
 
+    /***************************************************************************
+     * Vytvoří jednu položku rozhovoru
+     *
+     * @param osoba Jméno osoby
+     * @param fráze Její promluva
+     * @return Výsledný řetězec
+     */
+    static String rozhovorBilder(String osoba, String fráze){
+        return String.format("\n%s: „%s“", osoba, fráze);
+    }
 
 
 //##############################################################################
