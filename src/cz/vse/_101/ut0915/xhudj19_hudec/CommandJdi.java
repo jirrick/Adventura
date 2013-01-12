@@ -56,7 +56,7 @@ public class CommandJdi extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return zCÍL_NEZADÁN;
+            return zCÍL_NEZADÁN + status();
         }
         String destName = arguments[1];
         Place currentRoom = Place.getCurrentPlace();
@@ -64,10 +64,10 @@ public class CommandJdi extends ACommand
             if (destName.equalsIgnoreCase(neighbor.getName())) {
                 Place.setCurrentPlace(neighbor);
                 return zPŘESUN +
-                       neighbor.getName();
+                       neighbor.getName() + status();
             }
         }
-        return zNENÍ_CIL + destName;
+        return zNENÍ_CIL + destName + status();
     }
 
 

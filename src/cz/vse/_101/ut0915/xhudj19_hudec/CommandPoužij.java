@@ -61,7 +61,7 @@ public class CommandPoužij extends ACommand
               break;
       }
 
-        return result;
+        return result + status() ;
     }
 
     //== PRIVATE AND AUXILIARY CLASS METHODS =======================================

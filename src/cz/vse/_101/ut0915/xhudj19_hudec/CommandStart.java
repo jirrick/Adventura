@@ -58,7 +58,7 @@ public class CommandStart extends ACommand
     {
         Game game = Game.getInstance();
         if (game.isAlive()) {
-            return zPRÁZDNÝ_PŘÍKAZ;
+            return zPRÁZDNÝ_PŘÍKAZ + status();
         }
         //Inicializuje příkazy, prostory i batoh
         ACommand.initializeCommands();

@@ -52,7 +52,7 @@ public class CommandPrůvodce extends ACommand
                         break;
                     case ".":
                         CM.setGuideOff();
-                        result = nPRŮVODCE_STOP;
+                        result = nPRŮVODCE_STOP + status();
                         break;
                     default:
                         result = nPRŮVODCE_UNKNOWN;

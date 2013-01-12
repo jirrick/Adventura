@@ -51,6 +51,7 @@ public abstract class ACommand implements ICommand
         new CommandVezmi();
         new CommandKonec();
         new CommandPoužij();
+        new CommandPromluv();
     }
 
 
@@ -116,7 +117,6 @@ public abstract class ACommand implements ICommand
         }
 
         String answer = command.execute(words);
-        answer += status();
         return answer;
     }
 
