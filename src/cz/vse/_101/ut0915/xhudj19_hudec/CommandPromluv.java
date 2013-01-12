@@ -27,7 +27,7 @@ public class CommandPromluv extends ACommand
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
      * ***********************************************************************
-     * Vytvoří příkaz nastražující pastičku.
+     * Vytvoří příkaz pro vykonávání rozhovorů.
      */
     public CommandPromluv()
     {
@@ -40,10 +40,7 @@ public class CommandPromluv extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * ***********************************************************************
-     * Instance třídy CommandNastraz představují příkazy realizující
-     * nastražení pastičky. Pokud je v místnosti myš a v rukou pastička,
-     * vyndá z rukou pastičku a vloží do nich myš a to samé i v místnosti.
+     * Vykonává rozhovory
      */
     @Override
     public String execute(String... arguments)
@@ -56,33 +53,52 @@ public class CommandPromluv extends ACommand
         ConditionManager CM = ConditionManager.getInstance();
         Place currentPlace = Place.getCurrentPlace();
         String osoba = arguments[1];
+        boolean success = false;
 
         if (currentPlace.getObject(osoba) != null) {
-            result = nROZHOVOR_NEJDE;
+            result = nROZHOVOR_START;
+            if (osoba.equals("arthur")) {
+                result += jARTHUR;
+                if (CM.get_rA()) {
+                    success = true;
+                    result += rA;
+                    CM.evaluate_rA();
+                }
+                if (CM.get_rC()) {
+                    success = true;
+                    result += rC;
+                    CM.evaluate_rC();
+                }
+                if (CM.get_rE()) {
+                    success = true;
+                    result += rE;
+                    CM.evaluate_rE();
+                }
+            }
+            if (osoba.equals("prosser")) {
+                result += jPROSSER;
+                if (CM.get_rB()) {
+                    success = true;
+                    result += rB;
+                    CM.evaluate_rB();
+                }
+            }
+            if (osoba.equals("barman")) {
+                result += jBARMAN;
+                if (CM.get_rD()) {
+                    success = true;
+                    result += rD;
+                    CM.evaluate_rD();
+                }
 
-            if (CM.get_rA() && (osoba.equals("arthur"))) {
-                result = rA;
-                CM.evaluate_rA();
+                if (CM.get_rF()) {
+                    success = true;
+                    result += rF;
+                    CM.evaluate_rF();
+                }
             }
-            if (CM.get_rB() && (osoba.equals("prosser"))) {
-                result = rB;
-                CM.evaluate_rB();
-            }
-            if (CM.get_rC() && (osoba.equals("arthur"))) {
-                result = rC;
-                CM.evaluate_rC();
-            }
-            if (CM.get_rD() && (osoba.equals("barman"))) {
-                result = rD;
-                CM.evaluate_rD();
-            }
-            if (CM.get_rE() && (osoba.equals("arthur"))) {
-                result = rE;
-                CM.evaluate_rE();
-            }
-            if (CM.get_rF() && (osoba.equals("barman"))) {
-                result = rF;
-                CM.evaluate_rF();
+            if (!success) {
+                result += nROZHOVOR_NEJDE;
             }
         }
         else {
