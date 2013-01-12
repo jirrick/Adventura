@@ -92,20 +92,28 @@ public abstract class ACommand implements ICommand
         ConditionManager CM = ConditionManager.getInstance();
 
         line = line.trim().toLowerCase();
-        if (line.isEmpty()) {
-            return NAME_2_COMMAND.get("").execute((String[]) null);
-        }
-        String[] words = line.split("\\s+");
-        ACommand command = NAME_2_COMMAND.get(words[0]);
-        if (command == null) {
-            // neznámý řetězec se v režimu průvodce vyhodnotí jako parametr
-            if (CM.getGuideActive()) {
-                command = guideCommand;
+        String[] words = null;
+
+        ACommand command;
+        // režim průvodce
+        if (CM.getGuideActive()) {
+            command = guideCommand;
+            if (!line.isEmpty()) {
+                words = line.split("\\s+");
             }
-            else {
+        }
+        //režim normální hry
+        else {
+            if (line.isEmpty()) {
+                return NAME_2_COMMAND.get("").execute((String[]) null);
+            }
+            words = line.split("\\s+");
+            command = NAME_2_COMMAND.get(words[0]);
+            if (command == null) {
                 return zNEZNÁMÝ_PŘÍKAZ;
             }
         }
+
         String answer = command.execute(words);
         answer += status();
         return answer;

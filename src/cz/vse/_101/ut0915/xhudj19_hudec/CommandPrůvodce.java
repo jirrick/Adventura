@@ -43,21 +43,25 @@ public class CommandPrůvodce extends ACommand
     {
         ConditionManager CM = ConditionManager.getInstance();
         String result = "";
-        if (arguments.length > 0) {
-            String objectName = arguments[0];
-            switch (objectName) {
-                case "ručník":
-                    result = nPRŮVODCE_RUČNÍK;
-                    break;
-                case ".":
-                    CM.setGuideOff();
-                    result = nPRŮVODCE_STOP;
-                    break;
-                default:
-                    result = nPRŮVODCE_UNKNOWN;
-                    break;
+        if (arguments != null) {
+            if (arguments.length > 0) {
+                String objectName = arguments[0];
+                switch (objectName) {
+                    case "ručník":
+                        result = nPRŮVODCE_RUČNÍK;
+                        break;
+                    case ".":
+                        CM.setGuideOff();
+                        result = nPRŮVODCE_STOP;
+                        break;
+                    default:
+                        result = nPRŮVODCE_UNKNOWN;
+                        break;
+                }
             }
-        } 
+        } else {
+            result = nPRŮVODCE_EMPTY;
+        }
         return result;
     }
 

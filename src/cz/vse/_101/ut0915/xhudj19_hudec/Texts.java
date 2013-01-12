@@ -178,12 +178,16 @@ public class Texts
      */
     public static final String
 
+    nPRŮVODCE_RETURN = "\n\nPro návrat do hry napiš tečku.",
     nPRŮVODCE_START = "\nOtevřel jsi vesmírnou encykolopedii " +
             "\"Stopařův průvodce\ngalaxií\", ptej se na to, co tě zajímá." +
-            "\nPro návrat do hry napiš tečku.",
+            nPRŮVODCE_RETURN,
     nPRŮVODCE_STOP = "\nNashledanou příště.\nA hlavně: NEPROPADEJTE PANICE!.",
     nPRŮVODCE_UNKNOWN = "\nAčkoliv je to vysoce nepravděpodobné, " +
-            "tak \"Stopařův průvodce galaxií\" toto heslo nezná.",
+            "tak \"Stopařův průvodce galaxií\" toto heslo nezná." +
+            nPRŮVODCE_RETURN,
+    nPRŮVODCE_EMPTY = "\nNezadali jste heslo k vyhledání." +
+            nPRŮVODCE_RETURN,
     nPRŮVODCE_RUČNÍK = "\nRučník je skutečně kolosálně užitečná " +
             "součást výbavy hvězdného stopaře." +
             "\nPředevším má značnou praktickou cenu -" +
@@ -208,7 +212,8 @@ public class Texts
             " Když jste v úzkých, můžete jím" +
             "\nsignalizovat o pomoc. No, a samozřejmě se " +
             "jím také můžete utřít, pokud vám" +
-            "\npo tom všem ještě připadá dost čistý.",
+            "\npo tom všem ještě připadá dost čistý." +
+            nPRŮVODCE_RETURN,
 
     nPRSTEN = "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
             "\nNěkterá by vás měla být ochotná přijmout.",
