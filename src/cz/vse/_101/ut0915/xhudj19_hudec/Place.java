@@ -36,7 +36,7 @@ public enum Place implements IPlace
                   )
     ,
     Ulice   ("Zcela zapomenutá ulice zajímavá snad jen tím, zde bydlí Arthur.",
-            new String[] { mHOSPODA, mZAHRADA },
+            new String[] { mHOSPODA, mZAHRADA, mLOUKA },
             HEAVY+oZNAČKA, oPATNÍK, HEAVY+oAUTO
             )
     ,

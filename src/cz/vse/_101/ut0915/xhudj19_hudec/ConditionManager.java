@@ -49,6 +49,9 @@ public class ConditionManager
     /** Indikátor, zda Artur následuje Forda */
     private boolean arthurFollows = false;
 
+    /** Indikátor, zda je aktivní režim průvodce */
+    private boolean guideActive = false;
+
 
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
@@ -100,6 +103,16 @@ public class ConditionManager
         return arthurFollows;
     }
 
+     /***************************************************************************
+     * Indikátor, zda je hra v režimu Průvodce galaxií
+     *
+     * @return Vrací {@code true} pokud je v režimu průvodce, jinak {@code false}
+     */
+    public boolean getGuideActive()
+    {
+        return guideActive;
+    }
+
     /***************************************************************************
      *
      *
@@ -118,16 +131,16 @@ public class ConditionManager
      * Výsledek lze získat getterem {@code canDoNextMove()}.
      *
      */
-    public void triggerNextRound()
+    public void evaluateNextRound()
     {
-        canDoNextMove = !EvaluateEarthDestruction();
+        canDoNextMove = !evaluateEarthDestruction();
     }
 
     /***************************************************************************
      * Spustí odpočet vykonatelných tahů do konce světa.
      *
      */
-    public void triggerEndOfEarthRound()
+    public void startEndOfEarthRound()
     {
         endOfEarthRoundCountdown = true;
     }
@@ -136,7 +149,7 @@ public class ConditionManager
      * Spustí odpočet reálného času do konce světa.
      *
      */
-    public void triggerEndOfEarthTime()
+    public void startEndOfEarthTime()
     {
         endOfEarthTimeCountdown = true;
         timeOfActivation = new Date();
@@ -146,7 +159,7 @@ public class ConditionManager
      * Artur začne následovat Forda při pohybu ve hře.
      *
      */
-    public void triggerArthurFollow()
+    public void setArthurFollow()
     {
         arthurFollows = true;
     }
@@ -155,11 +168,28 @@ public class ConditionManager
      * Artur zůstane v aktuální prostoru.
      *
      */
-    public void triggerArthurStop()
+    public void setArthurStop()
     {
         arthurFollows = false;
     }
 
+         /***************************************************************************
+     * Hra se přepne do režimu procházení průvodce.
+     *
+     */
+    public void setGuideOn()
+    {
+        guideActive = true;
+    }
+
+     /***************************************************************************
+     * hra se přepne do normálního režimu.
+     *
+     */
+    public void setGuideOff()
+    {
+        guideActive = false;
+    }
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
@@ -170,7 +200,7 @@ public class ConditionManager
      * @return Vrací {@code true} pokud země byla zničena,
      * {@code false} pokud ještě ne.
      */
-    private boolean EvaluateEarthDestruction(){
+    private boolean evaluateEarthDestruction(){
         boolean result = false;
         // konec země počítadlem příkazů
         if (endOfEarthRoundCountdown) {

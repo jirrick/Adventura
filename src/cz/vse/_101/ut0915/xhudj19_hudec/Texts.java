@@ -213,6 +213,8 @@ public class Texts
     nPRSTEN = "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
             "\nNěkterá by vás měla být ochotná přijmout.",
 
+    nNELZE_POUŽÍT = "\nTento předmět nelze použít",
+
     nROZHOVOR_START =   "\nZačal(a) jsi se bavit s postavou: ",
 
     nPOZŘÍT =   "\nPozřel(a) jsi: ",

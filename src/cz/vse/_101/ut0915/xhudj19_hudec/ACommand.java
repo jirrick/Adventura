@@ -34,18 +34,22 @@ public abstract class ACommand implements ICommand
 //== CONSTANT CLASS ATTRIBUTES =================================================
     private static final Map<String, ACommand> NAME_2_COMMAND = new HashMap<>();
 
+    private static final ACommand guideCommand;
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
+
     /**
      * Statický konstruktor (konstruktor třídy) -
      * vytvoří po jedné instanci od každé ze svých dceřiných tříd.
      */
     static {
+        guideCommand = new CommandPrůvodce();
         new CommandStart();
         new CommandJdi();
         new CommandVezmi();
         new CommandKonec();
+        new CommandPoužij();
     }
 
 
@@ -85,6 +89,8 @@ public abstract class ACommand implements ICommand
      */
     static String executeCommand(String line)
     {
+        ConditionManager CM = ConditionManager.getInstance();
+
         line = line.trim().toLowerCase();
         if (line.isEmpty()) {
             return NAME_2_COMMAND.get("").execute((String[]) null);
@@ -92,9 +98,16 @@ public abstract class ACommand implements ICommand
         String[] words = line.split("\\s+");
         ACommand command = NAME_2_COMMAND.get(words[0]);
         if (command == null) {
-            return zNEZNÁMÝ_PŘÍKAZ;
+            // neznámý řetězec se v režimu průvodce vyhodnotí jako parametr
+            if (CM.getGuideActive()) {
+                command = guideCommand;
+            }
+            else {
+                return zNEZNÁMÝ_PŘÍKAZ;
+            }
         }
         String answer = command.execute(words);
+        answer += status();
         return answer;
     }
 
@@ -111,16 +124,16 @@ public abstract class ACommand implements ICommand
         Place currentPlace = Place.getCurrentPlace();
 
         return String.
-                             format(dFORMÁT_INFORMACE,
-                                    currentPlace.getName(),
-                                    toCommaSeparatedString(currentPlace.
-                             getNeighbors()),
-                                    toCommaSeparatedString(currentPlace.
-                             getPersons()),
-                                    toCommaSeparatedString(currentPlace.
-                             getObjects()),
-                                    toCommaSeparatedString(Bag.getInstance().
-                             getObjects()));
+                format(dFORMÁT_INFORMACE,
+                       currentPlace.getName(),
+                       toCommaSeparatedString(currentPlace.
+                getNeighbors()),
+                       toCommaSeparatedString(currentPlace.
+                getPersons()),
+                       toCommaSeparatedString(currentPlace.
+                getObjects()),
+                       toCommaSeparatedString(Bag.getInstance().
+                getObjects()));
     }
 
 
