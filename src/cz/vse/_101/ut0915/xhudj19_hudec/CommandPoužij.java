@@ -5,6 +5,8 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
+
+
 /**
  * *****************************************************************************
  * Instances of class {@code CommandPouzij} represent ...
@@ -41,27 +43,27 @@ public class CommandPoužij extends ACommand
     public String execute(String... arguments)
     {
         ConditionManager CM = ConditionManager.getInstance();
-      if (arguments.length < 2) {
+        if (arguments.length < 2) {
             return zPŘEDMĚT_NEZADAN + status();
-          }
+        }
 
-      String objectName = arguments[1];
-      Bag BAG = Bag.getInstance();
-      Place currentPlace = Place.getCurrentPlace();
+        String objectName = arguments[1];
+        Bag BAG = Bag.getInstance();
+        Place currentPlace = Place.getCurrentPlace();
 
-      String result = "";
+        String result = "";
 
-      switch (objectName){
-          case "průvodce":
-              CM.setGuideOn();
-              result = nPRŮVODCE_START;
-              break;
-          default:
-              result = nNELZE_POUŽÍT;
-              break;
-      }
+        switch (objectName) {
+            case "průvodce":
+                CM.setGuideOn();
+                result = nPRŮVODCE_START;
+                break;
+            default:
+                result = nNELZE_POUŽÍT;
+                break;
+        }
 
-        return result + status() ;
+        return result + status();
     }
 
     //== PRIVATE AND AUXILIARY CLASS METHODS =======================================

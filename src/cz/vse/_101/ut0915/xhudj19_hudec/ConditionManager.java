@@ -274,11 +274,12 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru A.
      *
      */
-    public void evaluate_rA()
+    public void after_rA()
     {
         if (rA) {
             rA = false;
             rB = true;
+            setArthurFollow();
         }
     }
 
@@ -286,7 +287,7 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru B.
      *
      */
-    public void evaluate_rB()
+    public void after_rB()
     {
         if (rB) {
             rB = false;
@@ -298,7 +299,7 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru C.
      *
      */
-    public void evaluate_rC()
+    public void after_rC()
     {
         if (rC) {
             rC = false;
@@ -310,7 +311,7 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru D.
      *
      */
-    public void evaluate_rD()
+    public void after_rD()
     {
         if (rD) {
             rD = false;
@@ -322,7 +323,7 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru E.
      *
      */
-    public void evaluate_rE()
+    public void after_rE()
     {
         if (rE) {
             rE = false;
@@ -334,7 +335,7 @@ public class ConditionManager
      * Vyhodnocení podmínek po rozhovoru F.
      *
      */
-    public void evaluate_rF()
+    public void after_rF()
     {
         if (rF) {
             rF = false;

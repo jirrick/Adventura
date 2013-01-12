@@ -62,17 +62,17 @@ public class CommandPromluv extends ACommand
                 if (CM.get_rA()) {
                     success = true;
                     result += rA;
-                    CM.evaluate_rA();
+                    CM.after_rA();
                 }
                 if (CM.get_rC()) {
                     success = true;
                     result += rC;
-                    CM.evaluate_rC();
+                    CM.after_rC();
                 }
                 if (CM.get_rE()) {
                     success = true;
                     result += rE;
-                    CM.evaluate_rE();
+                    CM.after_rE();
                 }
             }
             if (osoba.equals("prosser")) {
@@ -80,7 +80,7 @@ public class CommandPromluv extends ACommand
                 if (CM.get_rB()) {
                     success = true;
                     result += rB;
-                    CM.evaluate_rB();
+                    CM.after_rB();
                 }
             }
             if (osoba.equals("barman")) {
@@ -88,13 +88,13 @@ public class CommandPromluv extends ACommand
                 if (CM.get_rD()) {
                     success = true;
                     result += rD;
-                    CM.evaluate_rD();
+                    CM.after_rD();
                 }
 
                 if (CM.get_rF()) {
                     success = true;
                     result += rF;
-                    CM.evaluate_rF();
+                    CM.after_rF();
                 }
             }
             if (!success) {

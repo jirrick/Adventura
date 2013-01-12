@@ -265,6 +265,16 @@ public enum Place implements IPlace
         objects.remove(thing);
     }
 
+    /**
+     * *************************************************************************
+     * Přidá zadaný objekt do daného prostoru.
+     *
+     * @param thing Přidávaný objekt
+     */
+    void add(Thing thing)
+    {
+        objects.add(thing);
+    }
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
     //Maps

@@ -55,6 +55,7 @@ public class CommandJdi extends ACommand
     @Override
     public String execute(String... arguments)
     {
+        ConditionManager CM = ConditionManager.getInstance();
         if (arguments.length < 2) {
             return zCÍL_NEZADÁN + status();
         }
@@ -62,6 +63,13 @@ public class CommandJdi extends ACommand
         Place currentRoom = Place.getCurrentPlace();
         for (Place neighbor : currentRoom.getNeighbors()) {
             if (destName.equalsIgnoreCase(neighbor.getName())) {
+                if (CM.getArthurFollows()){
+                    Thing arthur = currentRoom.getObject("arthur");
+                    if (arthur != null){
+                        currentRoom.remove(arthur);
+                        neighbor.add(arthur);
+                    }
+                }
                 Place.setCurrentPlace(neighbor);
                 return zPŘESUN +
                        neighbor.getName() + status();
