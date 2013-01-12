@@ -3,7 +3,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IObject;
-
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /*******************************************************************************
@@ -28,12 +28,6 @@ public class Thing implements IObject, INamed
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 
-    /** Prefix určující, že předmět nepůjde zvednout. */
-    public static final char HEAVY = '#';
-
-    /** Prefix určující, že se jedná o osobu. */
-    public static final char PERSON = '$';
-
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
@@ -44,9 +38,6 @@ public class Thing implements IObject, INamed
     /** Váha objektu. U nezvednutelných objektů
      *  musí být větší než kapacita batohu. */
     private final int weight;
-
-    /** Indikátor lisdtví. */
-    private final boolean person;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
@@ -63,25 +54,13 @@ public class Thing implements IObject, INamed
      */
     public Thing(String name)
     {
-        boolean foo = false;
-        switch (name.charAt(0)) {
-            case PERSON:
-                this.person = true;
+        if (name.charAt(0) == HEAVY) {
                 this.name   = name.substring(1);
                 this.weight = Integer.MAX_VALUE;
-                break;
-
-            case HEAVY:
-                this.person = false;
-                this.name   = name.substring(1);
-                this.weight = Integer.MAX_VALUE;
-                break;
-
-            default:
-                this.person = false;
+        }
+        else {
                 this.name   = name;
                 this.weight = 1;
-                break;
         }
     }
 
@@ -89,17 +68,7 @@ public class Thing implements IObject, INamed
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
-    /***************************************************************************
-     * Je objekt osobou?.
-     *
-     * @return Název instance
-     */
-    public boolean isPerson()
-    {
-        return person;
-    }
-
-
+  
     /***************************************************************************
      * Vrátí název dané instance.
      *
@@ -138,7 +107,7 @@ public class Thing implements IObject, INamed
 //     */
 //    public static void test()
 //    {
-//        Something inst = new Something();
+//        Thing inst = new Thing();
 //    }
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main( String[] args )  {  test();  }

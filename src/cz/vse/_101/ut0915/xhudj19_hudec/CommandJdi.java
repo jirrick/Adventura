@@ -64,7 +64,7 @@ public class CommandJdi extends ACommand
         for (Place neighbor : currentRoom.getNeighbors()) {
             if (destName.equalsIgnoreCase(neighbor.getName())) {
                 if (CM.getArthurFollows()){
-                    Thing arthur = currentRoom.getObject("arthur");
+                    Thing arthur = currentRoom.get("arthur");
                     if (arthur != null){
                         currentRoom.remove(arthur);
                         neighbor.add(arthur);

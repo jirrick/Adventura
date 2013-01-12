@@ -128,7 +128,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA},
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsMOVE ),
 
@@ -136,7 +136,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jARTHUR + rA,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsNON_STANDARD),
 
@@ -144,7 +144,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jPROSSER + rB,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsNON_STANDARD),
 
@@ -152,7 +152,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jARTHUR + rC,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsNON_STANDARD),
 
@@ -167,7 +167,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mULICE,
             new String[] { mZAHRADA, mHOSPODA, mLOUKA },
-            new String[] { oZNAČKA, oAUTO, oPATNÍK, jARTHUR },
+            new String[] { oZNAČKA, oAUTO, oPATNÍK },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsMOVE ),
 
@@ -182,7 +182,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsMOVE ),
 
@@ -190,7 +190,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jBARMAN + rD,
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -205,7 +205,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -220,7 +220,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPIVO },
             tsNON_STANDARD ),
 
@@ -235,7 +235,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -250,11 +250,11 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPIVO },
             tsNON_STANDARD ),
 
-          new ScenarioStep( pPOZŘI + " " + oPIVO,
+          new ScenarioStep( pPOUŽIJ + " " + oPIVO,
             nPOZŘÍT + oPIVO +
             String.format(dFORMÁT_INFORMACE,
                                     mHOSPODA,
@@ -265,7 +265,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -273,7 +273,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jARTHUR + rE,
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -281,7 +281,7 @@ public class ScenarioManager extends AScenarioManager
             nROZHOVOR_START + jBARMAN + rF,
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA },
             tsNON_STANDARD ),
 
@@ -296,7 +296,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK},
             tsNON_STANDARD ),
 
@@ -311,7 +311,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mHOSPODA,
             new String[] { mULICE },
-            new String[] { oŽIDLE, oSKLENICE, jARTHUR, jBARMAN },
+            new String[] { oŽIDLE, oSKLENICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oBURÁKY },
             tsNON_STANDARD ),
 
@@ -326,7 +326,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mULICE,
             new String[] { mZAHRADA, mHOSPODA, mLOUKA },
-            new String[] { oZNAČKA, oAUTO, oPATNÍK, jARTHUR },
+            new String[] { oZNAČKA, oAUTO, oPATNÍK },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
@@ -341,7 +341,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mULICE,
             new String[] { mZAHRADA, mHOSPODA, mLOUKA },
-            new String[] { oZNAČKA, oAUTO, oPATNÍK, jARTHUR, oSCÉNÁŘ },
+            new String[] { oZNAČKA, oAUTO, oPATNÍK, oSCÉNÁŘ },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsPUT_DOWN ),
 
@@ -356,7 +356,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
@@ -371,11 +371,11 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mDŮM,
             new String[] { mZAHRADA },
-            new String[] { jARTHUR, oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
+            new String[] { oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
-           new ScenarioStep( pZVEDNI + " " + oRUČNÍK,
+           new ScenarioStep( pSEBER + " " + oRUČNÍK,
             zZVEDNUTO + oRUČNÍK +
             String.format(dFORMÁT_INFORMACE,
                                     mDŮM,
@@ -386,7 +386,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mDŮM,
             new String[] { mZAHRADA },
-            new String[] { jARTHUR, oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
+            new String[] { oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY, oRUČNÍK },
             tsPICK_UP ),
 
@@ -401,7 +401,22 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mDŮM,
             new String[] { mZAHRADA },
-            new String[] { jARTHUR, oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
+            new String[] { oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
+            new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
+            tsNON_STANDARD ),
+
+           new ScenarioStep( pARTHUR + " " + pINVENTÁŘ,
+            nARTHUR_INVENTÁŘ + cat (oRUČNÍK) +
+            String.format(dFORMÁT_INFORMACE,
+                                    mDŮM,
+                                    cat(mZAHRADA),
+                                    cat(jARTHUR),
+                                    cat(oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE),
+                                    cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY)
+                         ),
+            mDŮM,
+            new String[] { mZAHRADA },
+            new String[] { oPANTOFLE, oKARTÁČEK, oKONVICE, oHRNEK, oPĚTILIBROVKA, oTALÍŘ, oSKLENICE, oLEDNICE },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsNON_STANDARD ),
 
@@ -431,7 +446,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mULICE,
             new String[] { mZAHRADA, mHOSPODA, mLOUKA },
-            new String[] { oZNAČKA, oAUTO, oPATNÍK, jARTHUR },
+            new String[] { oZNAČKA, oAUTO, oPATNÍK },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
@@ -445,7 +460,7 @@ public class ScenarioManager extends AScenarioManager
                                     cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY)),
             mLOUKA,
             new String[] { mULICE },
-            new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN, jARTHUR },
+            new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN},
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY},
             tsMOVE ),
 
@@ -459,7 +474,7 @@ public class ScenarioManager extends AScenarioManager
                                     cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY)),
             mLOUKA,
             new String[] { mULICE, mVOGONI },
-            new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN, jARTHUR },
+            new String[] { oSTROM, oNÁKLAĎÁK, oBULDOZER, oKVĚTINA, oKÁMEN },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY},
             tsNON_STANDARD ),
 
@@ -472,8 +487,8 @@ public class ScenarioManager extends AScenarioManager
                                     cat(),
                                     cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY)),
             mVOGONI,
-            new String[] {  },
-            new String[] { jARTHUR },
+            new String[] { },
+            new String[] { },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY},
             tsMOVE ),
 //        UKONČENÍ
@@ -515,7 +530,7 @@ public class ScenarioManager extends AScenarioManager
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
             tsBAD_NEIGHBOR ),
 
-        new ScenarioStep( pZVEDNI + " " + oRUČNÍK,
+        new ScenarioStep( pSEBER + " " + oRUČNÍK,
             zNENÍ_PŘEDMĚT + oRUČNÍK,
             mLOUKA,
             new String[] { mULICE },
@@ -531,7 +546,7 @@ public class ScenarioManager extends AScenarioManager
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
             tsMOVE_WA ),
 
-        new ScenarioStep( pZVEDNI + " " + oSTROM,
+        new ScenarioStep( pSEBER + " " + oSTROM,
             zTĚŽKÝ_PŘEDMĚT + oSTROM,
             mLOUKA,
             new String[] { mULICE },
@@ -555,7 +570,7 @@ public class ScenarioManager extends AScenarioManager
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
             tsHELP ),
 
-        new ScenarioStep( pZVEDNI,
+        new ScenarioStep( pSEBER,
             zPŘEDMĚT_NEZADAN,
             mLOUKA,
             new String[] { mULICE },
@@ -571,7 +586,7 @@ public class ScenarioManager extends AScenarioManager
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oSCÉNÁŘ, oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
             tsPUT_DOWN_WA ),
 
-        new ScenarioStep( pZVEDNI + " " + oKÁMEN,
+        new ScenarioStep( pSEBER + " " + oKÁMEN,
             zBATOH_PLNÝ,
             mLOUKA,
             new String[] { mULICE },

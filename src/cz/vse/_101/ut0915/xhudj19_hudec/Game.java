@@ -174,7 +174,7 @@ public class Game implements IGame
      */
     @Override
     public Commands getBasicCommands() {
-        return new Commands("jdi", "polož", "vezmi", "?", "konec");
+        return new Commands("jdi", "polož", "seber", "?", "konec");
     }
 
 

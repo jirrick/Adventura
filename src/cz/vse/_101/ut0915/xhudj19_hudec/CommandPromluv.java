@@ -55,7 +55,7 @@ public class CommandPromluv extends ACommand
         String osoba = arguments[1];
         boolean success = false;
 
-        if (currentPlace.getObject(osoba) != null) {
+        if (currentPlace.getPerson(osoba) != null) {
             result = nROZHOVOR_START;
             if (osoba.equals("arthur")) {
                 result += jARTHUR;

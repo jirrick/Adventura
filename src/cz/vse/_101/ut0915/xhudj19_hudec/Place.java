@@ -2,8 +2,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
-import static cz.vse._101.ut0915.xhudj19_hudec.Thing.HEAVY;
-import static cz.vse._101.ut0915.xhudj19_hudec.Thing.PERSON;
+import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IPlace;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,8 +28,8 @@ public enum Place implements IPlace
 {
     Louka(
     "Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou stavební technikou.",
-          new String[] {mULICE},
-          HEAVY + oSTROM, HEAVY + oNÁKLAĎÁK, HEAVY + oBULDOZER, oKVĚTINA, oKÁMEN),
+    new String[] {mULICE},
+    HEAVY + oSTROM, HEAVY + oNÁKLAĎÁK, HEAVY + oBULDOZER, oKVĚTINA, oKÁMEN),
     Vogonská_loď("Vogonská těžební loď - vaše zkáza a zároveň záchrana.",
                  new String[] {mLOUKA}),
     Ulice("Zcela zapomenutá ulice zajímavá snad jen tím, zde bydlí Arthur.",
@@ -41,9 +40,9 @@ public enum Place implements IPlace
             oŽIDLE, oSKLENICE, PERSON + jBARMAN),
     Zahrada(
     "Zahrada u Arhturova domu, toho času okupovaná stavební technikou\nsnažící se mu ten dům zbourat.",
-            new String[] {mULICE, mDŮM},
-            HEAVY + oBULDOZER, HEAVY + oBLÁTO, oKVĚTINA, PERSON + jARTHUR,
-            PERSON + jPROSSER),
+    new String[] {mULICE, mDŮM},
+    HEAVY + oBULDOZER, HEAVY + oBLÁTO, oKVĚTINA, PERSON + jARTHUR,
+    PERSON + jPROSSER),
     Dům("Arthurův dům, už tři čtvrtě roku naplánován k demolici.",
         new String[] {mZAHRADA},
         oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oPĚTILIBROVKA, oHRNEK, oTALÍŘ,
@@ -68,7 +67,13 @@ public enum Place implements IPlace
     private static final EnumMap<Place, List<Thing>> initialObjects =
                                                      new EnumMap<>(Place.class);
 
-  //    //2D arrays
+    /**
+     * Počáteční osoby umístěné v místnostech.
+     */
+    private static final EnumMap<Place, List<Person>> initialPersons =
+                                                      new EnumMap<>(Place.class);
+
+    //    //2D arrays
 //    /** Počáteční sousedé jednotlivých místností. */
 //    private static final Room[][] initialNeighbors =
 //                                  new Room[values().length][];
@@ -98,6 +103,11 @@ public enum Place implements IPlace
      * Aktuální objekty v prostoru.
      */
     private final Collection<Thing> objects = new ArrayList<>();
+
+    /**
+     * Aktuální osoby v prostoru.
+     */
+    private final Collection<Person> persons = new ArrayList<>();
 
     /**
      * Aktuální sousedé prostoru.
@@ -234,13 +244,25 @@ public enum Place implements IPlace
 
     /**
      * *************************************************************************
+     * Vrátí kolekci osob nacházejících se v daném prostoru.
+     *
+     * @return Kolekce osob nacházejících se v daném prostoru
+     */
+    Collection<Person> getPersons()
+    {
+        return persons;
+    }
+
+
+    /**
+     * *************************************************************************
      * Vrací požadovanou věc z prostoru. Pokud věc v prostoru není vrací
      * {@code null}
      *
      * @param requestedObject Název požadovaného předmětu
      * @return Instance požadovaného předmětu nebo {@code null}
      */
-    public Thing getObject(String requestedObject)
+    public Thing get(String requestedObject)
     {
         Thing result = null;
         for (Thing thingFromPlace : objects) {
@@ -248,12 +270,33 @@ public enum Place implements IPlace
                     requestedObject.toLowerCase())) {
                 result = thingFromPlace;
             }
+        }
+        return result;
+    }
 
+
+    /**
+     * *************************************************************************
+     * Vrací požadovanou osobu z prostoru. Pokud osoba v prostoru není vrací
+     * {@code null}
+     *
+     * @param requestedObject Název požadovaného předmětu
+     * @return Instance požadovaného předmětu nebo {@code null}
+     */
+    public Person getPerson(String requestedObject)
+    {
+        Person result = null;
+        for (Person personFromPlace : persons) {
+            if (personFromPlace.getName().toLowerCase().equals(
+                    requestedObject.toLowerCase())) {
+                result = personFromPlace;
+            }
         }
         return result;
     }
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+
     /**
      * *************************************************************************
      * Odebere zadaný objekt z daného prostoru.
@@ -264,6 +307,7 @@ public enum Place implements IPlace
     {
         objects.remove(thing);
     }
+
 
     /**
      * *************************************************************************
@@ -276,8 +320,33 @@ public enum Place implements IPlace
         objects.add(thing);
     }
 
+
+    /**
+     * *************************************************************************
+     * Odebere zadaný objekt z daného prostoru.
+     *
+     * @param person Odebíraná osoba
+     */
+    void remove(Person person)
+    {
+        persons.remove(person);
+    }
+
+
+    /**
+     * *************************************************************************
+     * Přidá zadanou osobu do daného prostoru.
+     *
+     * @param person Přidávaná osoba
+     */
+    void add(Person person)
+    {
+        persons.add(person);
+    }
+
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
     //Maps
+
     /**
      * *************************************************************************
      * Inicializuje mapy,
@@ -294,11 +363,18 @@ public enum Place implements IPlace
             initialNeighbors.put(place, places);
             place.neighborNames = null;
 
-            List<Thing> things = new ArrayList<>(place.objectNames.length);
+            List<Thing> things = new ArrayList<>();
+            List<Person> persons = new ArrayList<>();
             for (String name : place.objectNames) {
+                if (name.charAt(0) == PERSON) {
+                    persons.add(new Person(name));
+                }
+                else {
                     things.add(new Thing(name));
+                }
             }
             initialObjects.put(place, things);
+            initialPersons.put(place, persons);
             place.objectNames = null;
         }
     }
@@ -314,10 +390,12 @@ public enum Place implements IPlace
     {
         neighbors.clear();
         objects.clear();
+        persons.clear();
 
         //Maps
         neighbors.addAll(initialNeighbors.get(this));
         objects.addAll(initialObjects.get(this));
+        persons.addAll(initialPersons.get(this));
     }
 
 

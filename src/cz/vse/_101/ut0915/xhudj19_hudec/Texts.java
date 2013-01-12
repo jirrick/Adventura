@@ -25,6 +25,12 @@ public class Texts
     /** Xname autora programu. */
     private static final String XNAME = "XHUDJ19";
 
+    /** Prefix určující, že předmět nepůjde zvednout. */
+    public static final char HEAVY = '#';
+
+    /** Prefix určující, že se jedná o osobu. */
+    public static final char PERSON = '$';
+
     /** Názvy používaných prostorů - místností.
      *  Prefix "m" - místo
      */
@@ -82,14 +88,15 @@ public class Texts
      */
     public static final String
             pHELP = "?",
+            pARTHUR = "Arthur",
+            pINVENTÁŘ = "Inventář",
             pJDI = "Jdi",
             pPOLOŽ = "Polož",
-            pZVEDNI = "Zvedni",
+            pSEBER = "Seber",
             pVEZMI = "Vezmi",
             pPROMLUV = "Promluv",
             pPŘEDEJ = "Předej",
             pPOUŽIJ = "Použij",
-            pPOZŘI = "Pozři",
             pKONEC = "Konec";
 
 
@@ -132,14 +139,15 @@ public class Texts
 
     zNÁPOVĚDA       = "\nPříkazy, které je možno v průběhu hry zadat:" +
                       "\n============================================" +
+                      "\nArthur [příkaz] - Jednoduché ovládání Arthura" +
                       "\nJdi [kam] - Přesun do určeného prostoru" +
                       "\nPolož [co] - Položí určený předmět do prostor" +
                       "\nPoužij [co] - Použije určený předmět z tašky" +
-                      "\nPozři [co] - Sní/vypije určený předmět" +
                       "\nPromluv [kdo] - Zahají rozhovor s danou osobou" +
                       "\nPředej [co] [kdo] - Předá předmět osobě" +
+                      "\nSeber [co] - Zvedne předmět z prostoru" +
                       "\nVezmi [co] [kdo] - Vezme předmět od osoby" +
-                      "\nZvedni [co] - Zvedne předmět z prostoru",
+                      "\nKonec - Ukončí hru",
 
     zUVÍTÁNÍ        =
         "\nJmenuješ se Ford Prefect." +
@@ -219,6 +227,7 @@ public class Texts
             "\nNěkterá by vás měla být ochotná přijmout.",
 
     nNELZE_POUŽÍT = "\nTento předmět nelze použít",
+    nARTHUR_INVENTÁŘ = "\nArthur má v inventáři tyto předměty: ",
 
     nROZHOVOR_START =   "\nZačal(a) jsi se bavit s postavou: ",
     nROZHOVOR_NEJDE =   "\nTato postava se s tebou teď odmítá bavit.",

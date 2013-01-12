@@ -136,10 +136,8 @@ public abstract class ACommand implements ICommand
                 format(dFORMÁT_INFORMACE,
                        currentPlace.getName(),
                        toCommaSeparatedString(currentPlace.getNeighbors()),
-                       toCommaSeparatedString(
-                selectPersonObject(currentPlace.getObjects(), true, false)),
-                       toCommaSeparatedString(
-                selectPersonObject(currentPlace.getObjects(), false, true)),
+                       toCommaSeparatedString(currentPlace.getPersons()),
+                       toCommaSeparatedString(currentPlace.getObjects()),
                        toCommaSeparatedString(Bag.getInstance().getObjects()));
     }
 
@@ -261,31 +259,6 @@ public abstract class ACommand implements ICommand
         return resultString;
     }
 
-
-    /**
-     * *************************************************************************
-     * Vrátí novou kolekci obsahující pouze vybrané typy objektů
-     *
-     * @param collection Kolekce objektů
-     * @param persons    Zachovávat osoby
-     * @param objects    Zachovávat objekty
-     * @return Kolekce obsahující pouze vybrané prvky
-     */
-    private static Collection<Thing> selectPersonObject(
-            Collection<Thing> collection,
-            boolean persons, boolean objects)
-    {
-        ArrayList<Thing> result = new ArrayList<>();
-        for (Thing item : collection) {
-            if (item.isPerson() && persons) {
-                result.add(item);
-            }
-            if (!item.isPerson() && objects) {
-                result.add(item);
-            }
-        }
-        return result;
-    }
 
     //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
