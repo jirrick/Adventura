@@ -234,7 +234,12 @@ public class Texts
     nROZHOVOR_NENÍ =   "\nPostava tohoto jména v tomto prostoru není.",
     nROZHOVOR_NIKDO =   "\nMusíš zadat jméno postavy, se kterou se chceš bavit.",
 
-    nPOZŘÍT =   "\nPozřel(a) jsi: ",
+    nPŘEDMĚT_NEBO_OSOBA_NEZADÁNA =
+    "\nNebyl zadán předmět, s nímž mám manipulovat nebo osoba, " +
+            "která s ním interaguje",
+
+    nPŘEDEJ_OSOBA_CHYBA = "\nTato osoba v tomto prostoru není",
+    nPŘEDEJ_PŘEDMĚT_CHYBA = "\nTento předmět v tašce nemáte",
 
     nPŘEDAT_FORMÁT =   "\nPostavě %s jsi předal(a) předmět: %s",
     nVZÍT_FORMÁT =   "\nOd postavy %s jsi převzal(a) předmět: %s",

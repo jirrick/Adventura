@@ -67,6 +67,28 @@ public class Person implements INamed
         return name;
     }
 
+    /**
+     * *************************************************************************
+     * Vloží osobě předmět do inventáře
+     *
+     * @param thing vkládaný předmět
+     */
+    public void add(Thing thing)
+    {
+        objects.add(thing);
+    }
+
+    /**
+     * *************************************************************************
+     * Odebere osobě předmět z inventáře
+     *
+     * @param thing odebíraný předmět
+     */
+    public void remove(Thing thing)
+    {
+        objects.remove(thing);
+    }
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

@@ -54,6 +54,7 @@ public abstract class ACommand implements ICommand
         new CommandPromluv();
         new CommandPolož();
         new CommandNápověda();
+        new CommandPředej();
     }
 
 
