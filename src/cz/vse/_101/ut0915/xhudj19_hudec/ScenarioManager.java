@@ -25,7 +25,7 @@ import cz.vse.adv_framework.test_util._Test_101;
  * @author  Jiří HUDEC
  * @version 0.01
  */
-public class ScenarioManager extends AScenarioManager
+public final class ScenarioManager extends AScenarioManager
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 
@@ -133,7 +133,7 @@ public class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rA,
+            nROZHOVOR_START + jARTHUR + rozhovorA,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -141,7 +141,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jPROSSER,
-            nROZHOVOR_START + jPROSSER + rB,
+            nROZHOVOR_START + jPROSSER + rozhovor,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -149,7 +149,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rC,
+            nROZHOVOR_START + jARTHUR + rozhovorC,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -187,7 +187,7 @@ public class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN + rD,
+            nROZHOVOR_START + jBARMAN + rozhovorD,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },
@@ -270,7 +270,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rE,
+            nROZHOVOR_START + jARTHUR + rozhovorE,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },
@@ -278,7 +278,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN + rF,
+            nROZHOVOR_START + jBARMAN + rozhovorF,
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },
@@ -406,7 +406,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
            new ScenarioStep( pARTHUR + " " + pINVENTÁŘ,
-            nARTHUR_INVENTÁŘ + cat (oRUČNÍK) +
+            nARTH_INVENT + cat (oRUČNÍK) +
             String.format(dFORMÁT_INFORMACE,
                                     mDŮM,
                                     cat(mZAHRADA),

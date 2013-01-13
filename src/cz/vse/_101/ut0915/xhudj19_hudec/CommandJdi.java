@@ -56,7 +56,7 @@ public class CommandJdi extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        ConditionManager CM = ConditionManager.getInstance();
+        ConditionManager conditionManager = ConditionManager.getInstance();
         if (arguments.length < 2) {
             return zCÍL_NEZADÁN + status();
         }
@@ -64,25 +64,30 @@ public class CommandJdi extends ACommand
         Place currentPlace = Place.getCurrentPlace();
 
         Place neighbor = currentPlace.getNeighbor(destName);
-        if (neighbor != null) {
-           if (CM.getArthurFollows()) {
-                Person arthur = currentPlace.getPerson("arthur");
-                if (arthur != null) {
-                    currentPlace.remove(arthur);
-                    neighbor.add(arthur);
-                }
-            }
-            Place.setCurrentPlace(neighbor);
-            if (destName.equalsIgnoreCase(mVOGONI)){
-                Game.getInstance().stop();
-                return zPŘESUN +
-                   neighbor.getName() + nVÝHRA;
-            }
-            return zPŘESUN +
-                   neighbor.getName() + status();
-
+        if (neighbor == null) {
+            return zNENÍ_CIL + destName + status();
         }
-        return zNENÍ_CIL + destName + status();
+
+        // Arthur v režimu sledování
+        if (conditionManager.getArthurFollows()) {
+            Person arthur = currentPlace.getPerson("arthur");
+            if (arthur != null) {
+                currentPlace.remove(arthur);
+                neighbor.add(arthur);
+            }
+        }
+
+        // Standardní přesun
+        Place.setCurrentPlace(neighbor);
+
+        // Přechod do konečného prostoru
+        if (destName.equalsIgnoreCase(mVOGONI)) {
+            Game.getInstance().stop();
+            return zPŘESUN + neighbor.getName() + nVÝHRA;
+        }
+
+        // Výpis po standardním přesunu
+        return zPŘESUN + neighbor.getName() + status();
     }
 
 

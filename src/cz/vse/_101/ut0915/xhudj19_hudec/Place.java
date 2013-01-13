@@ -2,7 +2,6 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
-import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IPlace;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -266,7 +265,7 @@ public enum Place implements IPlace
     {
         Thing result = null;
         for (Thing thingFromPlace : objects) {
-            if (thingFromPlace.getName().toLowerCase().equals(
+            if (thingFromPlace.getName().equalsIgnoreCase(
                     requestedObject.toLowerCase())) {
                 result = thingFromPlace;
             }
@@ -287,7 +286,7 @@ public enum Place implements IPlace
     {
         Person result = null;
         for (Person personFromPlace : persons) {
-            if (personFromPlace.getName().toLowerCase().equals(
+            if (personFromPlace.getName().equalsIgnoreCase(
                     requestedObject.toLowerCase())) {
                 result = personFromPlace;
             }
@@ -307,7 +306,7 @@ public enum Place implements IPlace
     {
         Place result = null;
         for (Place neighborOfPlace : neighbors) {
-            if (neighborOfPlace.getName().toLowerCase().equals(
+            if (neighborOfPlace.getName().equalsIgnoreCase(
                     requestedObject.toLowerCase())) {
                 result = neighborOfPlace;
             }

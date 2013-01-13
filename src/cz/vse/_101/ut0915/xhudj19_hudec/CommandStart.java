@@ -3,7 +3,8 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zPRÁZDNÝ_PŘÍKAZ;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zUVÍTÁNÍ;
 
 
 /*******************************************************************************

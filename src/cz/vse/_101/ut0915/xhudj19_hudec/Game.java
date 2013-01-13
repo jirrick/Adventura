@@ -25,7 +25,7 @@ import java.util.Collection;
  * @author    Rudolf PECINOVSKÝ
  * @version   0.00.000
  */
-public class Game implements IGame
+public final class Game implements IGame
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 

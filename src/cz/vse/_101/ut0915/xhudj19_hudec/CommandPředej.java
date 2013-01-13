@@ -42,7 +42,7 @@ public class CommandPředej extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 3) {
-            return nPŘEDMĚT_NEBO_OSOBA_NEZADÁNA + status();
+            return nNENÍ_PŘEDMĚT_OSOBA + status();
         }
 
         String thingName = arguments[1];
@@ -60,10 +60,10 @@ public class CommandPředej extends ACommand
                    status();
         }
         if (thing == null) {
-            return nPŘEDEJ_PŘEDMĚT_CHYBA + status();
+            return nNEMÁTE_PŘEDMĚT + status();
         }
         if (person == null) {
-            return nPŘEDEJ_VEZMI_OSOBA_CHYBA + status();
+            return nOSOBA_NENÍ + status();
         }
         return zZANP + status();
     }

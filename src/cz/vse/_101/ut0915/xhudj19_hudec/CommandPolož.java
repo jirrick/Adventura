@@ -50,12 +50,15 @@ public class CommandPolož extends ACommand
         Place currentPlace = Place.getCurrentPlace();
 
         Thing thing = bag.getObject(thingName);
-        if (thing != null) {
+        if (thing == null) {
+            return zNENÍ_V_BATOHU + thingName + status();
+        }
+        else {
             currentPlace.add(thing);
             bag.remove(thing);
             return zPOLOŽENO + thing.getName() + status();
         }
-        return zNENÍ_V_BATOHU + thingName + status();
+
     }
 
 

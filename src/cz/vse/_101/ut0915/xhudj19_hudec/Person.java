@@ -3,7 +3,6 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -112,7 +111,7 @@ public class Person implements INamed
     {
         Thing result = null;
         for (Thing thingFromBag : objects) {
-            if (thingFromBag.getName().toLowerCase().equals(
+            if (thingFromBag.getName().equalsIgnoreCase(
                     requestedObject.toLowerCase())) {
                 result = thingFromBag;
             }

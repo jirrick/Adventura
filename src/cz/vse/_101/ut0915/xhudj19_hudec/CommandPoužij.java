@@ -42,7 +42,7 @@ public class CommandPoužij extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        ConditionManager CM = ConditionManager.getInstance();
+        ConditionManager conditionManager = ConditionManager.getInstance();
         if (arguments.length < 2) {
             return zPŘEDMĚT_NEZADAN + status();
         }
@@ -51,13 +51,15 @@ public class CommandPoužij extends ACommand
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
         Thing thing = bag.getObject(objectName);
+        String result;
 
-        String result = "";
-
-        if (thing != null) {
+        if (thing == null) {
+            result = zNENÍ_V_BATOHU;
+        }
+        else {
             switch (objectName) {
                 case "průvodce":
-                    CM.setGuideOn();
+                    conditionManager.setGuideOn();
                     result = nPRŮVODCE_START;
                     break;
                 case "pivo":
@@ -73,10 +75,6 @@ public class CommandPoužij extends ACommand
                     break;
             }
         }
-        else {
-            result = zNENÍ_V_BATOHU;
-        }
-
         return result + status();
     }
 

@@ -42,7 +42,7 @@ public class CommandVezmi extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 3) {
-            return nPŘEDMĚT_NEBO_OSOBA_NEZADÁNA + status();
+            return nNENÍ_PŘEDMĚT_OSOBA + status();
         }
 
         String thingName = arguments[1];
@@ -66,10 +66,10 @@ public class CommandVezmi extends ACommand
             return zBATOH_PLNÝ + thing.getName() + status();
         }
         if (thing == null) {
-            return nVEZMI_PŘEDMĚT_CHYBA + status();
+            return nOSOBA_NEMÁ_PŘEDMĚT + status();
         }
         if (person == null) {
-            return nPŘEDEJ_VEZMI_OSOBA_CHYBA + status();
+            return nOSOBA_NENÍ + status();
         }
         return zZANP + status();
     }

@@ -18,13 +18,13 @@ import java.util.Date;
  * @author Jiří HUDEC
  * @version 0.01.000
  */
-public class ConditionManager
+public final class ConditionManager
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
     /**
      * Jediná instance manažeru.
      */
-    private static final ConditionManager CM = new ConditionManager();
+    private static final ConditionManager conditionManager = new ConditionManager();
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
@@ -32,7 +32,7 @@ public class ConditionManager
     /**
      * Délka časovače do zničení země v sekundách
      */
-    int END_OF_EARTH_TIMER_DURATION = 120;
+    final static int END_OF_EARTH_TIMER = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
     /**
@@ -43,7 +43,7 @@ public class ConditionManager
     /**
      * Indikátor odpočítávání počtu zadaných příkazů do konce světa
      */
-    private boolean endOfEarthRoundCountdown = false;
+    private boolean endOfEarthRound = false;
 
     /**
      * Počet tahů do konce světa
@@ -53,7 +53,7 @@ public class ConditionManager
     /**
      * Indikátor odpočítávání zbývajícího reálného času do konce světa
      */
-    private boolean endOfEarthTimeCountdown = false;
+    private boolean endOfEarthTime = false;
 
     /**
      * Reálný čas, kdy byl spuštěn odpočet konce světa
@@ -113,7 +113,7 @@ public class ConditionManager
      */
     public static ConditionManager getInstance()
     {
-        return CM;
+        return conditionManager;
     }
 
 
@@ -173,7 +173,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rA()
+    public boolean canStartA()
     {
         return rA;
     }
@@ -186,7 +186,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rB()
+    public boolean canStartB()
     {
         return rB;
     }
@@ -199,7 +199,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rC()
+    public boolean canStartC()
     {
         return rC;
     }
@@ -212,7 +212,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rD()
+    public boolean canStartD()
     {
         return rD;
     }
@@ -225,7 +225,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rE()
+    public boolean canStartE()
     {
         return rE;
     }
@@ -238,7 +238,7 @@ public class ConditionManager
      * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
      *         {@code false}
      */
-    public boolean get_rF()
+    public boolean canStartF()
     {
         return rF;
     }
@@ -276,7 +276,7 @@ public class ConditionManager
      */
     public void startEndOfEarthRound()
     {
-        endOfEarthRoundCountdown = true;
+        endOfEarthRound = true;
     }
 
 
@@ -287,7 +287,7 @@ public class ConditionManager
      */
     public void startEndOfEarthTime()
     {
-        endOfEarthTimeCountdown = true;
+        endOfEarthTime = true;
         timeOfActivation = new Date();
     }
 
@@ -440,7 +440,7 @@ public class ConditionManager
     {
         boolean result = false;
         // konec země počítadlem příkazů
-        if (endOfEarthRoundCountdown) {
+        if (endOfEarthRound) {
             if (roundsLeft >= 1) {
                 roundsLeft--;
             }
@@ -448,10 +448,8 @@ public class ConditionManager
                 result = true;
             }
             //konec země časovačem
-            if (endOfEarthTimeCountdown) {
-                if (EarthDestroyedByTimer()) {
-                    result = true;
-                }
+            if (endOfEarthTime && earthDestroyedByTimer()) {
+                result = true;
             }
         }
         return result;
@@ -466,15 +464,15 @@ public class ConditionManager
      *         {@code false} pokud časovač ještě nebyl spuštěn anebo
      *         země ještě nebyla zničena.
      */
-    private boolean EarthDestroyedByTimer()
+    private boolean earthDestroyedByTimer()
     {
         boolean result = false;
-        if (endOfEarthTimeCountdown) {
+        if (endOfEarthTime) {
             // počet sekund od zapnutí časovače
             int secondsDiff = (int) Math.
                     abs((new Date().getTime() / 1000) -
                         (timeOfActivation.getTime() / 1000));
-            if (secondsDiff > END_OF_EARTH_TIMER_DURATION) {
+            if (secondsDiff > END_OF_EARTH_TIMER) {
                 result = true; //země byla zničena
             }
             else {

@@ -41,34 +41,34 @@ public class CommandArthur extends ACommand
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
-            return nARTHUR_CHYBÍ_PŘÍIKAZ + status();
+            return nARTH_NENÍ_PŘÍIKAZ + status();
         }
 
-        ConditionManager CM = ConditionManager.getInstance();
+        ConditionManager conditionManager = ConditionManager.getInstance();
         String command = arguments[1];
-        String result = "";
+        String result;
         Person arthur = Place.getCurrentPlace().getPerson(jARTHUR);
 
-        if (arthur != null){
+        if (arthur == null){
+            result = nARTHUR_NELZE;
+        } else {
             switch (command) {
                 case "inventář":
-                    result = nARTHUR_INVENTÁŘ +
+                    result = nARTH_INVENT +
                              toCommaSeparatedString(arthur.getObjects());
                     break;
                 case "následuj":
                     result = nARTHUR_SLEDUJE;
-                    CM.setArthurFollow();
+                    conditionManager.setArthurFollow();
                     break;
                 case "stůj":
                     result = nARTHUR_STŮJ;
-                    CM.setArthurStop();
+                    conditionManager.setArthurStop();
                     break;
                 default:
-                    result = nARTHUR_NEZNÁMÝ_PŘÍIKAZ;
+                    result = nART_NEZNÁM_PŘÍIKAZ;
                     break;
             }
-        } else {
-            result = nARTHUR_NELZE;
         }
         return result + status();
     }

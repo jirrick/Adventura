@@ -3,7 +3,6 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.IBag;
-import cz.vse.adv_framework.game_txt.IObject;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -17,7 +16,7 @@ import java.util.Collection;
  * @author Jiří HUDEC
  * @version 0.1
  */
-public class Bag implements IBag
+public final class Bag implements IBag
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
     /**
@@ -107,7 +106,7 @@ public class Bag implements IBag
     {
         Thing result = null;
         for (Thing thingFromBag : objects) {
-            if (thingFromBag.getName().toLowerCase().equals(
+            if (thingFromBag.getName().equalsIgnoreCase(
                     requestedObject.toLowerCase())) {
                 result = thingFromBag;
             }

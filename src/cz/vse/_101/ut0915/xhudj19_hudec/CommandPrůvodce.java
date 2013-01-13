@@ -39,11 +39,16 @@ public class CommandPrůvodce extends ACommand
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    @Override
     public String execute(String... arguments)
     {
-        ConditionManager CM = ConditionManager.getInstance();
+        ConditionManager conditionManager = ConditionManager.getInstance();
         String result = "";
-        if (arguments != null) {
+
+        if (arguments == null) {
+            result = nPRŮVODCE_EMPTY;
+        }
+        else {
             if (arguments.length > 0) {
                 String objectName = arguments[0];
                 switch (objectName) {
@@ -51,7 +56,7 @@ public class CommandPrůvodce extends ACommand
                         result = nPRŮVODCE_RUČNÍK;
                         break;
                     case ".":
-                        CM.setGuideOff();
+                        conditionManager.setGuideOff();
                         result = nPRŮVODCE_STOP + status();
                         break;
                     default:
@@ -59,8 +64,6 @@ public class CommandPrůvodce extends ACommand
                         break;
                 }
             }
-        } else {
-            result = nPRŮVODCE_EMPTY;
         }
         return result;
     }

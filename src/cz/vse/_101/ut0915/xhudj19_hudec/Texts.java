@@ -15,7 +15,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
  * @author    Jiří HUDEC
  * @version   0.01.000
  */
-public class Texts
+public final class Texts
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 
@@ -230,9 +230,9 @@ public class Texts
 
     nNELZE_POUŽÍT = "\nTento předmět nelze použít",
 
-    nARTHUR_INVENTÁŘ = "\nArthur má v inventáři tyto předměty: ",
-    nARTHUR_CHYBÍ_PŘÍIKAZ = "\nNezadali jste příkaz pro Arthura",
-    nARTHUR_NEZNÁMÝ_PŘÍIKAZ = "\nTento příkaz Arthur neumí",
+    nARTH_INVENT = "\nArthur má v inventáři tyto předměty: ",
+    nARTH_NENÍ_PŘÍIKAZ = "\nNezadali jste příkaz pro Arthura",
+    nART_NEZNÁM_PŘÍIKAZ = "\nTento příkaz Arthur neumí",
     nARTHUR_NELZE = "\nPříkazy nejde vykonávat, když Arthur není v místnosti",
     nARTHUR_SLEDUJE = "\nArthur vás nyní následuje",
     nARTHUR_STŮJ = "\nArthur zůstane v této místnosti",
@@ -242,13 +242,13 @@ public class Texts
     nROZHOVOR_NENÍ =   "\nPostava tohoto jména v tomto prostoru není.",
     nROZHOVOR_NIKDO =   "\nMusíš zadat jméno postavy, se kterou se chceš bavit.",
 
-    nPŘEDMĚT_NEBO_OSOBA_NEZADÁNA =
+    nNENÍ_PŘEDMĚT_OSOBA =
     "\nNebyl zadán předmět, s nímž mám manipulovat nebo osoba, " +
             "která s ním interaguje",
 
-    nPŘEDEJ_VEZMI_OSOBA_CHYBA = "\nTato osoba v tomto prostoru není",
-    nPŘEDEJ_PŘEDMĚT_CHYBA = "\nTento předmět v tašce nemáte",
-    nVEZMI_PŘEDMĚT_CHYBA = "\nTento předmět osoba v tašce nemá",
+    nOSOBA_NENÍ = "\nTato osoba v tomto prostoru není",
+    nNEMÁTE_PŘEDMĚT = "\nTento předmět v tašce nemáte",
+    nOSOBA_NEMÁ_PŘEDMĚT = "\nTento předmět osoba v tašce nemá",
 
     nPŘEDAT_FORMÁT =   "\nPostavě %s jsi předal(a) předmět: %s",
     nVZÍT_FORMÁT =   "\nOd postavy %s jsi převzal(a) předmět: %s",
@@ -264,23 +264,23 @@ public class Texts
      */
     public static final String
 
-    rA = rozhovorBilder(jFORD, "Ahoj Arthure.") +
+    rozhovorA = rozhovorBilder(jFORD, "Ahoj Arthure.") +
                   rozhovorBilder(jARTHUR, "Dobře."),
 
-    rB = rozhovorBilder(jFORD, "Haló, promiňte, že ruším.") +
+    rozhovor = rozhovorBilder(jFORD, "Haló, promiňte, že ruším.") +
                   rozhovorBilder(jPROSSER, "Dobře."),
 
-    rC = rozhovorBilder(jFORD, "Tak dělej, vstávej.") +
+    rozhovorC = rozhovorBilder(jFORD, "Tak dělej, vstávej.") +
                   rozhovorBilder(jARTHUR, "Dobře."),
 
-    rD = rozhovorBilder(jFORD,
+    rozhovorD = rozhovorBilder(jFORD,
                   "Dva kousky hořkého, ale rychle, bude konec světa.") +
                   rozhovorBilder(jBARMAN, "Dobře."),
 
-    rE = rozhovorBilder(jFORD, "Dělej, pij, máš tu pivo.") +
+    rozhovorE = rozhovorBilder(jFORD, "Dělej, pij, máš tu pivo.") +
                   rozhovorBilder(jARTHUR, "Dobře."),
 
-    rF = rozhovorBilder(jFORD, "Poprosil bych o balíček buráků.") +
+    rozhovorF = rozhovorBilder(jFORD, "Poprosil bych o balíček buráků.") +
                   rozhovorBilder(jBARMAN, "Dobře.");
 
 
@@ -302,11 +302,11 @@ public class Texts
         if (názvy.length == 0) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(názvy[0]);
+        StringBuilder stringBuilder = new StringBuilder(názvy[0]);
         for (int i=1;   i < názvy.length;   i++) {
-            sb.append(", ").append(názvy[i]);
+            stringBuilder.append(", ").append(názvy[i]);
         }
-        return sb.toString();
+        return stringBuilder.toString();
     }
 
     /***************************************************************************

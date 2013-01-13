@@ -5,13 +5,16 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
-/*******************************************************************************
+
+
+/**
+ * *****************************************************************************
  * Instance třídy {@code CommandSeber} představují příkazy
  * realizující standardní přesun objektu z prostoru do batohu.
  * Instance by mohla být definována jako jedináček,
  * ale v dané aplikaci svěřuje tuto starost do ruhou správce příkazů.
  *
- * @author  Rudolf PECINOVSKÝ
+ * @author Rudolf PECINOVSKÝ
  * @version 0.00.0000 — 20yy-mm-dd
  */
 public class CommandSeber extends ACommand
@@ -23,25 +26,23 @@ public class CommandSeber extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     public CommandSeber()
     {
-        super("Seber", "");
+        super("Seber", "Příkaz pro zvednutí předmětu z prostoru");
     }
-
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda realizující reakci hry na zadání příkazu
      * pro standardní přesun objektu z prostoru do batohu.
      * V parametru by měly být dvě položky: název příkazu
@@ -60,20 +61,21 @@ public class CommandSeber extends ACommand
         Place currentPlace = Place.getCurrentPlace();
 
         Thing thing = currentPlace.getObject(thingName);
-        if (thing != null)
-        {
-            if (thing.getWeight() > 1) {
-                    return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
-                }
-                if (Bag.getInstance().add(thing)) {
-                    currentPlace.remove(thing);
-                    return zZVEDNUTO + thing.getName() + status();
-                }
-                return zBATOH_PLNÝ + thing.getName() + status();
+        if (thing == null) {
+            return zNENÍ_PŘEDMĚT + thingName + status();
         }
-        return zNENÍ_PŘEDMĚT + thingName + status();
-    }
 
+        if (thing.getWeight() > 1) {
+            return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
+        }
+
+        if (Bag.getInstance().add(thing)) {
+            currentPlace.remove(thing);
+            return zZVEDNUTO + thing.getName() + status();
+        } else {
+        return zBATOH_PLNÝ + thing.getName() + status();
+        }
+    }
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
@@ -91,3 +93,5 @@ public class CommandSeber extends ACommand
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

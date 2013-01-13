@@ -93,21 +93,21 @@ public abstract class ACommand implements ICommand
      * @param line Zadávaný příkaz
      * @return Textová odpověď hry na zadaný příkaz
      */
-    static String executeCommand(String line)
+    static String executeCommand(String input)
     {
-        ConditionManager CM = ConditionManager.getInstance();
+        ConditionManager conditionManager = ConditionManager.getInstance();
 
-        line = line.trim().toLowerCase();
+        String line = input.trim().toLowerCase();
         String[] words = null;
 
-        if (!CM.getCanDoNextMove()) {
+        if (!conditionManager.getCanDoNextMove()) {
             Game.getInstance().stop();
             return nPROHRA;
         }
 
         ACommand command;
         // režim průvodce
-        if (CM.getGuideActive()) {
+        if (conditionManager.getGuideActive()) {
             command = guideCommand;
             if (!line.isEmpty()) {
                 words = line.split("\\s+");
@@ -123,11 +123,10 @@ public abstract class ACommand implements ICommand
             if (command == null) {
                 return zNEZNÁMÝ_PŘÍKAZ;
             }
-            CM.evaluateNextRound();
+            conditionManager.evaluateNextRound();
         }
 
-        String answer = command.execute(words);
-        return answer;
+        return command.execute(words);
     }
 
 
@@ -234,12 +233,10 @@ public abstract class ACommand implements ICommand
      * *************************************************************************
      * Inicializuje daný příkaz.
      * Implicitní, zděděná verze této metody je prázdná.
-     * Většině příkazů stačí a ty, které opravdu potřebují něco inicializovat,
+     * Většině příkazů stačí a ty, které o pravdu potřebují něco inicializovat,
      * tak ji překryjí vlastní verzí.
      */
-    void initialize()
-    {
-        return;
+    void initialize(){
     }
 
 

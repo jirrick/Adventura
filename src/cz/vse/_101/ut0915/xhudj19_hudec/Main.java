@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author  Rudolf PECINOVSKÝ
  * @version 0.00.0000 — 20yy-mm-dd
  */
-public class Main
+public final class Main
 {
     /***************************************************************************
      * Metoda startující aplikaci je podle parametrů příkazového řádku

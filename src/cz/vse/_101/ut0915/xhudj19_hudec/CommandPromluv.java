@@ -49,8 +49,8 @@ public class CommandPromluv extends ACommand
             return nROZHOVOR_NIKDO + status();
         }
 
-        String result = "";
-        ConditionManager CM = ConditionManager.getInstance();
+        String result;
+        ConditionManager conditionManager = ConditionManager.getInstance();
         Place currentPlace = Place.getCurrentPlace();
         String osoba = arguments[1];
         boolean success = false;
@@ -59,42 +59,42 @@ public class CommandPromluv extends ACommand
             result = nROZHOVOR_START;
             if (osoba.equals("arthur")) {
                 result += jARTHUR;
-                if (CM.get_rA()) {
+                if (conditionManager.canStartA()) {
                     success = true;
-                    result += rA;
-                    CM.after_rA();
+                    result += rozhovorA;
+                    conditionManager.after_rA();
                 }
-                if (CM.get_rC()) {
+                if (conditionManager.canStartC()) {
                     success = true;
-                    result += rC;
-                    CM.after_rC();
+                    result += rozhovorC;
+                    conditionManager.after_rC();
                 }
-                if (CM.get_rE()) {
+                if (conditionManager.canStartE()) {
                     success = true;
-                    result += rE;
-                    CM.after_rE();
+                    result += rozhovorE;
+                    conditionManager.after_rE();
                 }
             }
             if (osoba.equals("prosser")) {
                 result += jPROSSER;
-                if (CM.get_rB()) {
+                if (conditionManager.canStartB()) {
                     success = true;
-                    result += rB;
-                    CM.after_rB();
+                    result += rozhovor;
+                    conditionManager.after_rB();
                 }
             }
             if (osoba.equals("barman")) {
                 result += jBARMAN;
-                if (CM.get_rD()) {
+                if (conditionManager.canStartD()) {
                     success = true;
-                    result += rD;
-                    CM.after_rD();
+                    result += rozhovorD;
+                    conditionManager.after_rD();
                 }
 
-                if (CM.get_rF()) {
+                if (conditionManager.canStartF()) {
                     success = true;
-                    result += rF;
-                    CM.after_rF();
+                    result += rozhovorF;
+                    conditionManager.after_rF();
                 }
             }
             if (!success) {

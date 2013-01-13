@@ -1,9 +1,9 @@
 package cz.vse._101.ut0915.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.HEAVY;
 import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IObject;
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /*******************************************************************************
@@ -68,7 +68,7 @@ public class Thing implements IObject, INamed
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
-  
+
     /***************************************************************************
      * Vrátí název dané instance.
      *
