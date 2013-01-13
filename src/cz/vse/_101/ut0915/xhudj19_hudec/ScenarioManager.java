@@ -431,7 +431,7 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mZAHRADA,
             new String[] { mDŮM, mULICE },
-            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA, jARTHUR, jPROSSER },
+            new String[] { oBULDOZER, oBLÁTO, oKVĚTINA},
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
@@ -446,12 +446,12 @@ public class ScenarioManager extends AScenarioManager
                          ),
             mULICE,
             new String[] { mZAHRADA, mHOSPODA, mLOUKA },
-            new String[] { oZNAČKA, oAUTO, oPATNÍK },
+            new String[] { oZNAČKA, oAUTO, oPATNÍK, oSCÉNÁŘ },
             new String[] { oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY },
             tsMOVE ),
 
            new ScenarioStep( pJDI + " " + mLOUKA,
-            zPŘESUN + mZAHRADA +
+            zPŘESUN + mLOUKA +
             String.format(dFORMÁT_INFORMACE,
                                     mLOUKA,
                                     cat(mULICE),
@@ -465,7 +465,7 @@ public class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
            new ScenarioStep( pPOUŽIJ + " " + oPALEC,
-            nPRSTEN +
+            nPALEC +
             String.format(dFORMÁT_INFORMACE,
                                     mLOUKA,
                                     cat(mULICE, mVOGONI),

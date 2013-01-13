@@ -31,7 +31,7 @@ public enum Place implements IPlace
     new String[] {mULICE},
     HEAVY + oSTROM, HEAVY + oNÁKLAĎÁK, HEAVY + oBULDOZER, oKVĚTINA, oKÁMEN),
     Vogonská_loď("Vogonská těžební loď - vaše zkáza a zároveň záchrana.",
-                 new String[] {mLOUKA}),
+                 new String[] {}),
     Ulice("Zcela zapomenutá ulice zajímavá snad jen tím, zde bydlí Arthur.",
           new String[] {mHOSPODA, mZAHRADA, mLOUKA},
           HEAVY + oZNAČKA, oPATNÍK, HEAVY + oAUTO),

@@ -64,6 +64,10 @@ public class CommandPoužij extends ACommand
                     result = nPOUŽIJ_PIVO;
                     bag.remove(thing);
                     break;
+                case "palec":
+                    result = nPALEC;
+                    currentPlace.getNeighbors().add(Place.Vogonská_loď);
+                    break;
                 default:
                     result = nNELZE_POUŽÍT;
                     break;

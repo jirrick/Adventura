@@ -225,7 +225,7 @@ public class Texts
             "\npo tom všem ještě připadá dost čistý." +
             nPRŮVODCE_RETURN,
 
-    nPRSTEN = "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
+    nPALEC = "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
             "\nNěkterá by vás měla být ochotná přijmout.",
 
     nNELZE_POUŽÍT = "\nTento předmět nelze použít",
