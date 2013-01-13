@@ -7,78 +7,106 @@ import java.util.Date;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Instance třídy {@code ConditionManager} udržuje a vyhodnocuje podmínky
  * pro vykonávání akcí ve hře.
  * Hra, jakožto knižní adaptace, vyžaduje dodržení striktního postupu, což
  * vyžaduje velké množství podmínek. Pro zvýšení přehlednosti jsou proto
  * odděleny od hlavní herní logiky.
  *
- * @author    Jiří HUDEC
- * @version   0.01.000
+ * @author Jiří HUDEC
+ * @version 0.01.000
  */
 public class ConditionManager
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
-    /** Jediná instance manažeru. */
+    /**
+     * Jediná instance manažeru.
+     */
     private static final ConditionManager CM = new ConditionManager();
-
-
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-    /** Délka časovače do zničení země v sekundách  */
+    /**
+     * Délka časovače do zničení země v sekundách
+     */
     int END_OF_EARTH_TIMER_DURATION = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
-
-    /** Indikátor, zda hráč ještě může zadávat příkazy */
+    /**
+     * Indikátor, zda hráč ještě může zadávat příkazy
+     */
     private boolean canDoNextMove = true;
 
-    /** Indikátor odpočítávání počtu zadaných příkazů do konce světa*/
+    /**
+     * Indikátor odpočítávání počtu zadaných příkazů do konce světa
+     */
     private boolean endOfEarthRoundCountdown = false;
-    /** Počet tahů do konce světa */
+
+    /**
+     * Počet tahů do konce světa
+     */
     private int roundsLeft = 15;
 
-    /** Indikátor odpočítávání zbývajícího reálného času do konce světa */
+    /**
+     * Indikátor odpočítávání zbývajícího reálného času do konce světa
+     */
     private boolean endOfEarthTimeCountdown = false;
 
-    /** Reálný čas, kdy byl spuštěn odpočet konce světa */
+    /**
+     * Reálný čas, kdy byl spuštěn odpočet konce světa
+     */
     private Date timeOfActivation;
 
-    /** Indikátor, zda Artur následuje Forda */
+    /**
+     * Indikátor, zda Artur následuje Forda
+     */
     private boolean arthurFollows = false;
 
-    /** Indikátor, zda je aktivní režim průvodce */
+    /**
+     * Indikátor, zda je aktivní režim průvodce
+     */
     private boolean guideActive = false;
 
-    /** Indikátor, zda se může spustit rozhovor A */
+    /**
+     * Indikátor, zda se může spustit rozhovor A
+     */
     private boolean rA = true;
 
-    /** Indikátor, zda se může spustit rozhovor B */
+    /**
+     * Indikátor, zda se může spustit rozhovor B
+     */
     private boolean rB = false;
 
-    /** Indikátor, zda se může spustit rozhovor C */
+    /**
+     * Indikátor, zda se může spustit rozhovor C
+     */
     private boolean rC = false;
 
-    /** Indikátor, zda se může spustit rozhovor D */
+    /**
+     * Indikátor, zda se může spustit rozhovor D
+     */
     private boolean rD = false;
 
-    /** Indikátor, zda se může spustit rozhovor E */
+    /**
+     * Indikátor, zda se může spustit rozhovor E
+     */
     private boolean rE = false;
 
-    /** Indikátor, zda se může spustit rozhovor E */
+    /**
+     * Indikátor, zda se může spustit rozhovor E
+     */
     private boolean rF = false;
 
-   //== CLASS GETTERS AND SETTERS =================================================
+    //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí odkaz na jedináčka - jedinou existující instanci třídy.
      *
      * @return Odkaz na jedináčka
@@ -89,7 +117,8 @@ public class ConditionManager
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří instanci jedináčka.
      */
     private ConditionManager()
@@ -97,14 +126,14 @@ public class ConditionManager
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-     /***************************************************************************
+    /**
+     * *************************************************************************
      * Indikátor, zda se může vykonat další krok hry.
      *
      * @return Pokud se může vykonat další krok vrátí {@code true},
-     * jinak {@code false}
+     *         jinak {@code false}
      */
     public boolean getCanDoNextMove()
     {
@@ -112,7 +141,8 @@ public class ConditionManager
     }
 
 
-     /***************************************************************************
+    /**
+     * *************************************************************************
      * Indikátor, zda Artur následuje Forda při pohybu ve hře
      *
      * @return Vrací {@code true} pokud Artur Forda sleduje, jinak {@code false}
@@ -122,77 +152,100 @@ public class ConditionManager
         return arthurFollows;
     }
 
-     /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Indikátor, zda je hra v režimu Průvodce galaxií
      *
-     * @return Vrací {@code true} pokud je v režimu průvodce, jinak {@code false}
+     * @return Vrací {@code true} pokud je v režimu průvodce, jinak
+     *         {@code false}
      */
     public boolean getGuideActive()
     {
         return guideActive;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor A?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rA()
     {
         return rA;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor B?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rB()
     {
         return rB;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor C?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rC()
     {
         return rC;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor D?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rD()
     {
         return rD;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor E?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rE()
     {
         return rE;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Může se spustit rozhovor F?
      *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak {@code false}
+     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
+     *         {@code false}
      */
     public boolean get_rF()
     {
         return rF;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      *
      *
      * @return {@code true}, jinak {@code false}
@@ -204,8 +257,8 @@ public class ConditionManager
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po zadání dalšího příkazu.
      * Výsledek lze získat getterem {@code canDoNextMove()}.
      *
@@ -215,7 +268,9 @@ public class ConditionManager
         canDoNextMove = !evaluateEarthDestruction();
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Spustí odpočet vykonatelných tahů do konce světa.
      *
      */
@@ -224,7 +279,9 @@ public class ConditionManager
         endOfEarthRoundCountdown = true;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Spustí odpočet reálného času do konce světa.
      *
      */
@@ -234,7 +291,9 @@ public class ConditionManager
         timeOfActivation = new Date();
     }
 
-     /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Artur začne následovat Forda při pohybu ve hře.
      *
      */
@@ -243,7 +302,9 @@ public class ConditionManager
         arthurFollows = true;
     }
 
-     /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Artur zůstane v aktuální prostoru.
      *
      */
@@ -252,7 +313,9 @@ public class ConditionManager
         arthurFollows = false;
     }
 
-         /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Hra se přepne do režimu procházení průvodce.
      *
      */
@@ -261,7 +324,9 @@ public class ConditionManager
         guideActive = true;
     }
 
-     /***************************************************************************
+
+    /**
+     * *************************************************************************
      * hra se přepne do normálního režimu.
      *
      */
@@ -270,7 +335,9 @@ public class ConditionManager
         guideActive = false;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru A.
      *
      */
@@ -282,7 +349,9 @@ public class ConditionManager
         }
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru B.
      *
      */
@@ -294,7 +363,9 @@ public class ConditionManager
         }
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru C.
      *
      */
@@ -307,7 +378,9 @@ public class ConditionManager
         }
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru D.
      *
      */
@@ -321,7 +394,9 @@ public class ConditionManager
         }
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru E.
      *
      */
@@ -330,11 +405,17 @@ public class ConditionManager
         if (rE) {
             rE = false;
             rF = true;
-            Place.getCurrentPlace().getPerson("barman").add(new Thing("Buráky"));
+            Place.getCurrentPlace().getPerson("barman").
+                    add(new Thing("Buráky"));
+            Place.getCurrentPlace().getPerson("arthur").remove(
+                    Place.getCurrentPlace().getPerson("arthur").
+                    getObject("Pivo"));
         }
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Vyhodnocení podmínek po rozhovoru F.
      *
      */
@@ -348,19 +429,22 @@ public class ConditionManager
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
-   /***************************************************************************
+    /**
+     * *************************************************************************
      * Vyhodnotí, zda země byla zničena.
      *
      * @return Vrací {@code true} pokud země byla zničena,
-     * {@code false} pokud ještě ne.
+     *         {@code false} pokud ještě ne.
      */
-    private boolean evaluateEarthDestruction(){
+    private boolean evaluateEarthDestruction()
+    {
         boolean result = false;
         // konec země počítadlem příkazů
         if (endOfEarthRoundCountdown) {
             if (roundsLeft >= 1) {
                 roundsLeft--;
-            } else {
+            }
+            else {
                 result = true;
             }
             //konec země časovačem
@@ -374,23 +458,26 @@ public class ConditionManager
     }
 
 
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Časovač zničení země
      *
      * @return Vrací {@code true} pokud země byla zničena časovačem,
-     * {@code false} pokud časovač ještě nebyl spuštěn anebo
-     * země ještě nebyla zničena.
+     *         {@code false} pokud časovač ještě nebyl spuštěn anebo
+     *         země ještě nebyla zničena.
      */
-    private boolean EarthDestroyedByTimer(){
+    private boolean EarthDestroyedByTimer()
+    {
         boolean result = false;
         if (endOfEarthTimeCountdown) {
             // počet sekund od zapnutí časovače
-            int secondsDiff = (int) Math.abs((new Date().getTime()/1000) -
-                                  (timeOfActivation.getTime()/1000));
+            int secondsDiff = (int) Math.
+                    abs((new Date().getTime() / 1000) -
+                        (timeOfActivation.getTime() / 1000));
             if (secondsDiff > END_OF_EARTH_TIMER_DURATION) {
                 result = true; //země byla zničena
-            } else {
+            }
+            else {
                 result = false; //země ještě nebyla zničena
             }
         }
@@ -410,3 +497,5 @@ public class ConditionManager
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

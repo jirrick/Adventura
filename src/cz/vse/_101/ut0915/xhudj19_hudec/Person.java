@@ -67,6 +67,18 @@ public class Person implements INamed
         return name;
     }
 
+     /**
+     * *************************************************************************
+     * Vrátí kolekci objektů nacházejících se v inventáři postavy.
+     *
+     * @return Kolekce objektů nacházejících se v inventáři postavy
+     */
+    public Collection<Thing> getObjects()
+    {
+        return objects;
+    }
+
+
     /**
      * *************************************************************************
      * Vloží osobě předmět do inventáře

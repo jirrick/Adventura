@@ -229,7 +229,13 @@ public class Texts
             "\nNěkterá by vás měla být ochotná přijmout.",
 
     nNELZE_POUŽÍT = "\nTento předmět nelze použít",
+
     nARTHUR_INVENTÁŘ = "\nArthur má v inventáři tyto předměty: ",
+    nARTHUR_CHYBÍ_PŘÍIKAZ = "\nNezadali jste příkaz pro Arthura",
+    nARTHUR_NEZNÁMÝ_PŘÍIKAZ = "\nTento příkaz Arthur neumí",
+    nARTHUR_NELZE = "\nPříkazy nejde vykonávat, když Arthur není v místnosti",
+    nARTHUR_SLEDUJE = "\nArthur vás nyní následuje",
+    nARTHUR_STŮJ = "\nArthur zůstane v této místnosti",
 
     nROZHOVOR_START =   "\nZačal(a) jsi se bavit s postavou: ",
     nROZHOVOR_NEJDE =   "\nTato postava se s tebou teď odmítá bavit.",
