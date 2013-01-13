@@ -71,34 +71,34 @@ public final class ConditionManager
     private boolean guideActive = false;
 
     /**
-     * Indikátor, zda se může spustit rozhovor A
+     * Indikátor, zda proběhl rozhovor  A
      */
-    private boolean rA = true;
+    private boolean passedA = true;
 
     /**
-     * Indikátor, zda se může spustit rozhovor B
+     * Indikátor, zda proběhl rozhovor  B
      */
-    private boolean rB = false;
+    private boolean passedB = false;
 
     /**
-     * Indikátor, zda se může spustit rozhovor C
+     * Indikátor, zda proběhl rozhovor  C
      */
-    private boolean rC = false;
+    private boolean passedC = false;
 
     /**
-     * Indikátor, zda se může spustit rozhovor D
+     * Indikátor, zda proběhl rozhovor  D
      */
-    private boolean rD = false;
+    private boolean passedD = false;
 
     /**
-     * Indikátor, zda se může spustit rozhovor E
+     * Indikátor, zda proběhl rozhovor  E
      */
-    private boolean rE = false;
+    private boolean passedE = false;
 
     /**
-     * Indikátor, zda se může spustit rozhovor E
+     * Indikátor, zda proběhl rozhovor  E
      */
-    private boolean rF = false;
+    private boolean passedF = false;
 
     //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
@@ -175,7 +175,7 @@ public final class ConditionManager
      */
     public boolean canStartA()
     {
-        return rA;
+        return !passedA;
     }
 
 
@@ -188,7 +188,7 @@ public final class ConditionManager
      */
     public boolean canStartB()
     {
-        return rB;
+        return passedA;
     }
 
 
@@ -201,7 +201,7 @@ public final class ConditionManager
      */
     public boolean canStartC()
     {
-        return rC;
+        return passedB;
     }
 
 
@@ -214,7 +214,7 @@ public final class ConditionManager
      */
     public boolean canStartD()
     {
-        return rD;
+        return passedC;
     }
 
 
@@ -227,7 +227,7 @@ public final class ConditionManager
      */
     public boolean canStartE()
     {
-        return rE;
+        return passedD;
     }
 
 
@@ -240,7 +240,7 @@ public final class ConditionManager
      */
     public boolean canStartF()
     {
-        return rF;
+        return passedE;
     }
 
 
@@ -343,9 +343,9 @@ public final class ConditionManager
      */
     public void after_rA()
     {
-        if (rA) {
-            rA = false;
-            rB = true;
+        if (passedA) {
+            passedA = false;
+            passedB = true;
         }
     }
 
@@ -357,9 +357,9 @@ public final class ConditionManager
      */
     public void after_rB()
     {
-        if (rB) {
-            rB = false;
-            rC = true;
+        if (passedB) {
+            passedB = false;
+            passedC = true;
         }
     }
 
@@ -371,9 +371,9 @@ public final class ConditionManager
      */
     public void after_rC()
     {
-        if (rC) {
-            rC = false;
-            rD = true;
+        if (passedC) {
+            passedC = false;
+            passedD = true;
             setArthurFollow();
         }
     }
@@ -386,9 +386,9 @@ public final class ConditionManager
      */
     public void after_rD()
     {
-        if (rD) {
-            rD = false;
-            rE = true;
+        if (passedD) {
+            passedD = false;
+            passedE = true;
             Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
             Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
         }
@@ -402,9 +402,9 @@ public final class ConditionManager
      */
     public void after_rE()
     {
-        if (rE) {
-            rE = false;
-            rF = true;
+        if (passedE) {
+            passedE = false;
+            passedF = true;
             Place.getCurrentPlace().getPerson("barman").
                     add(new Thing("Buráky"));
             Place.getCurrentPlace().getPerson("arthur").remove(
@@ -421,8 +421,8 @@ public final class ConditionManager
      */
     public void after_rF()
     {
-        if (rF) {
-            rF = false;
+        if (passedF) {
+            passedF = false;
         }
     }
 
