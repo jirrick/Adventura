@@ -50,17 +50,27 @@ public class CommandPoužij extends ACommand
         String objectName = arguments[1];
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
+        Thing thing = bag.getObject(objectName);
 
         String result = "";
 
-        switch (objectName) {
-            case "průvodce":
-                CM.setGuideOn();
-                result = nPRŮVODCE_START;
-                break;
-            default:
-                result = nNELZE_POUŽÍT;
-                break;
+        if (thing != null) {
+            switch (objectName) {
+                case "průvodce":
+                    CM.setGuideOn();
+                    result = nPRŮVODCE_START;
+                    break;
+                case "pivo":
+                    result = nPOUŽIJ_PIVO;
+                    bag.remove(thing);
+                    break;
+                default:
+                    result = nNELZE_POUŽÍT;
+                    break;
+            }
+        }
+        else {
+            result = zNENÍ_V_BATOHU;
         }
 
         return result + status();

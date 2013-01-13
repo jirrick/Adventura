@@ -186,6 +186,8 @@ public class Texts
      */
     public static final String
 
+    nPOUŽIJ_PIVO = "\nVypil jsi pivo.",
+
     nPRŮVODCE_RETURN = "\n\nPro návrat do hry napiš tečku.",
     nPRŮVODCE_START = "\nOtevřel jsi vesmírnou encykolopedii " +
             "\"Stopařův průvodce\ngalaxií\", ptej se na to, co tě zajímá." +

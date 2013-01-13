@@ -255,7 +255,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPOUŽIJ + " " + oPIVO,
-            pPOUŽIJ + oPIVO +
+            nPOUŽIJ_PIVO +
             String.format(dFORMÁT_INFORMACE,
                                     mHOSPODA,
                                     cat(mULICE),
