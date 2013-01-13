@@ -89,6 +89,25 @@ public class Person implements INamed
         objects.remove(thing);
     }
 
+    /**
+     * *************************************************************************
+     * Vybere oředmět z inventáře dané osoby
+     *
+     * @param requestedObject vybraný předmět
+     * @return instance vybraného předmětu
+     */
+    Thing getObject(String requestedObject)
+    {
+        Thing result = null;
+        for (Thing thingFromBag : objects) {
+            if (thingFromBag.getName().toLowerCase().equals(
+                    requestedObject.toLowerCase())) {
+                result = thingFromBag;
+            }
+        }
+        return result;
+    }
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

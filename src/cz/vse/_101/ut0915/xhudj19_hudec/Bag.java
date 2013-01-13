@@ -28,7 +28,7 @@ public class Bag implements IBag
     /**
      * Odkaz na jedináčka.
      */
-    private static final Bag BAG = new Bag();
+    private static final Bag bag = new Bag();
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
@@ -61,7 +61,7 @@ public class Bag implements IBag
      */
     public static Bag getInstance()
     {
-        return BAG;
+        return bag;
     }
 
 

@@ -238,8 +238,9 @@ public class Texts
     "\nNebyl zadán předmět, s nímž mám manipulovat nebo osoba, " +
             "která s ním interaguje",
 
-    nPŘEDEJ_OSOBA_CHYBA = "\nTato osoba v tomto prostoru není",
+    nPŘEDEJ_VEZMI_OSOBA_CHYBA = "\nTato osoba v tomto prostoru není",
     nPŘEDEJ_PŘEDMĚT_CHYBA = "\nTento předmět v tašce nemáte",
+    nVEZMI_PŘEDMĚT_CHYBA = "\nTento předmět osoba v tašce nemá",
 
     nPŘEDAT_FORMÁT =   "\nPostavě %s jsi předal(a) předmět: %s",
     nVZÍT_FORMÁT =   "\nOd postavy %s jsi převzal(a) předmět: %s",

@@ -315,6 +315,9 @@ public class ConditionManager
     {
         if (rD) {
             rD = false;
+            rE = true;
+            Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
+            Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
         }
     }
 
@@ -327,6 +330,7 @@ public class ConditionManager
         if (rE) {
             rE = false;
             rF = true;
+            Place.getCurrentPlace().getPerson("barman").add(new Thing("Buráky"));
         }
     }
 

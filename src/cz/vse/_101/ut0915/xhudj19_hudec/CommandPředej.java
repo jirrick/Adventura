@@ -47,14 +47,14 @@ public class CommandPředej extends ACommand
 
         String thingName = arguments[1];
         String personName = arguments[2];
-        Bag BAG = Bag.getInstance();
+        Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
 
-        Thing thing = BAG.getObject(thingName);
+        Thing thing = bag.getObject(thingName);
         Person person = currentPlace.getPerson(personName);
         if ((thing != null) && (person != null)) {
             person.add(thing);
-            BAG.remove(thing);
+            bag.remove(thing);
             return String.format(
                     nPŘEDAT_FORMÁT, person.getName(), thing.getName()) +
                    status();
@@ -63,7 +63,7 @@ public class CommandPředej extends ACommand
             return nPŘEDEJ_PŘEDMĚT_CHYBA + status();
         }
         if (person == null) {
-            return nPŘEDEJ_OSOBA_CHYBA + status();
+            return nPŘEDEJ_VEZMI_OSOBA_CHYBA + status();
         }
         return zZANP + status();
     }

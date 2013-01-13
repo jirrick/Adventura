@@ -48,7 +48,7 @@ public class CommandPoužij extends ACommand
         }
 
         String objectName = arguments[1];
-        Bag BAG = Bag.getInstance();
+        Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
 
         String result = "";

@@ -9,12 +9,12 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instance třídy {@code CommandPolož} představují ...
+ * Instance třídy {@code CommandVezmi} představují ...
  *
  * @author jméno autora
  * @version 0.00.0000 — 20yy-mm-dd
  */
-public class CommandPolož extends ACommand
+public class CommandVezmi extends ACommand
 {
     //== KONSTANTNÍ ATRIBUTY TŘÍDY =============================================
     //== PROMĚNNÉ ATRIBUTY TŘÍDY ===============================================
@@ -29,9 +29,9 @@ public class CommandPolož extends ACommand
      * *************************************************************************
      *
      */
-    public CommandPolož()
+    public CommandVezmi()
     {
-        super("Polož", "Příkaz, který položí do prostoru věc z tašky");
+        super("Vezmi", "Příkaz, který vezme věc od postavy a uloží do tašky.");
     }
 
 
@@ -41,21 +41,37 @@ public class CommandPolož extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        if (arguments.length < 2) {
-            return zPŘEDMĚT_NEZADAN + status();
+        if (arguments.length < 3) {
+            return nPŘEDMĚT_NEBO_OSOBA_NEZADÁNA + status();
         }
-        String thingName = arguments[1];
 
+        String thingName = arguments[1];
+        String personName = arguments[2];
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
 
-        Thing thing = bag.getObject(thingName);
-        if (thing != null) {
-            currentPlace.add(thing);
-            bag.remove(thing);
-            return zPOLOŽENO + thing.getName() + status();
+        Person person = currentPlace.getPerson(personName);
+        Thing thing = person.getObject(thingName);
+
+        if ((thing != null) && (person != null)) {
+            if (thing.getWeight() > 1) {
+                return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
+            }
+            if (bag.add(thing)) {
+                person.remove(thing);
+                return String.format(
+                        nVZÍT_FORMÁT, person.getName(), thing.getName()) +
+                       status();
+            }
+            return zBATOH_PLNÝ + thing.getName() + status();
         }
-        return zNENÍ_V_BATOHU + thingName + status();
+        if (thing == null) {
+            return nVEZMI_PŘEDMĚT_CHYBA + status();
+        }
+        if (person == null) {
+            return nPŘEDEJ_VEZMI_OSOBA_CHYBA + status();
+        }
+        return zZANP + status();
     }
 
 
@@ -73,7 +89,7 @@ public class CommandPolož extends ACommand
 //      */
 //     public static void test()
 //     {
-//         CommandPolož instance = new CommandPolož();
+//         CommandVezmi instance = new CommandVezmi();
 //     }
 //     /** @param args Parametry příkazového řádku - nepoužívané. */
 //     public static void main(String[] args)  {  test();  }
