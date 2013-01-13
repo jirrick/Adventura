@@ -79,7 +79,7 @@ public class CommandPromluv extends ACommand
                 result += jPROSSER;
                 if (conditionManager.canStartB()) {
                     success = true;
-                    result += rozhovor;
+                    result += rozhovorB;
                     conditionManager.after_rB();
                 }
             }

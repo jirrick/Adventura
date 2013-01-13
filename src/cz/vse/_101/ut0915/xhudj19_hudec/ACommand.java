@@ -23,7 +23,7 @@ import java.util.Map;
  * (např. s osobou přítomnou v místnosti) a tím přepne systém do režimu,
  * v němž se zadávané texty neinterpretují jako příkazy,
  * ale předávají se definovanému objektu až do chvíle,
- * kdy uživatel rozhovor ukončí a objekt rozhovoru přepne hru zpět
+ * kdy uživatel rozhovorB ukončí a objekt rozhovoru přepne hru zpět
  * do režimu klasických příkazů.
  *
  * @author Rudolf PECINOVSKÝ
@@ -233,7 +233,7 @@ public abstract class ACommand implements ICommand
      * *************************************************************************
      * Inicializuje daný příkaz.
      * Implicitní, zděděná verze této metody je prázdná.
-     * Většině příkazů stačí a ty, které o pravdu potřebují něco inicializovat,
+     * Většině příkazů stačí a ty, které opravdu potřebují něco inicializovat,
      * tak ji překryjí vlastní verzí.
      */
     void initialize(){

@@ -267,7 +267,7 @@ public final class Texts
     rozhovorA = rozhovorBilder(jFORD, "Ahoj Arthure.") +
                   rozhovorBilder(jARTHUR, "Dobře."),
 
-    rozhovor = rozhovorBilder(jFORD, "Haló, promiňte, že ruším.") +
+    rozhovorB = rozhovorBilder(jFORD, "Haló, promiňte, že ruším.") +
                   rozhovorBilder(jPROSSER, "Dobře."),
 
     rozhovorC = rozhovorBilder(jFORD, "Tak dělej, vstávej.") +

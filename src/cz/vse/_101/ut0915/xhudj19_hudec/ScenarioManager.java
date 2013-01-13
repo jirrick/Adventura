@@ -141,7 +141,7 @@ public final class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jPROSSER,
-            nROZHOVOR_START + jPROSSER + rozhovor,
+            nROZHOVOR_START + jPROSSER + rozhovorB,
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
