@@ -479,13 +479,7 @@ public class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
            new ScenarioStep( pJDI + " " + mVOGONI,
-            zPŘESUN + mVOGONI + nVÝHRA +
-            String.format(dFORMÁT_INFORMACE,
-                                    mVOGONI,
-                                    cat(),
-                                    cat(jARTHUR),
-                                    cat(),
-                                    cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ, oRUČNÍK, oBURÁKY)),
+            zPŘESUN + mVOGONI + nVÝHRA,
             mVOGONI,
             new String[] { },
             new String[] { },

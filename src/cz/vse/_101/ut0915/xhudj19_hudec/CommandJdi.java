@@ -65,7 +65,7 @@ public class CommandJdi extends ACommand
 
         Place neighbor = currentPlace.getNeighbor(destName);
         if (neighbor != null) {
-            if (CM.getArthurFollows()) {
+           if (CM.getArthurFollows()) {
                 Person arthur = currentPlace.getPerson("arthur");
                 if (arthur != null) {
                     currentPlace.remove(arthur);
@@ -73,6 +73,11 @@ public class CommandJdi extends ACommand
                 }
             }
             Place.setCurrentPlace(neighbor);
+            if (destName.equalsIgnoreCase(mVOGONI)){
+                Game.getInstance().stop();
+                return zPŘESUN +
+                   neighbor.getName() + nVÝHRA;
+            }
             return zPŘESUN +
                    neighbor.getName() + status();
 
