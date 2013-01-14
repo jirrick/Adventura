@@ -3,7 +3,9 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import java.util.Date;
+import java.util.EnumMap;
 
 
 
@@ -24,7 +26,8 @@ public final class ConditionManager
     /**
      * Jediná instance manažeru.
      */
-    private static final ConditionManager conditionManager = new ConditionManager();
+    private static final ConditionManager condMan =
+                                          new ConditionManager();
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
@@ -35,15 +38,13 @@ public final class ConditionManager
     final static int END_OF_EARTH_TIMER = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
+    private EnumMap<Condition, Boolean> conditions = new EnumMap<>(
+            Condition.class);
+
     /**
      * Indikátor, zda hráč ještě může zadávat příkazy
      */
     private boolean canDoNextMove = true;
-
-    /**
-     * Indikátor odpočítávání počtu zadaných příkazů do konce světa
-     */
-    private boolean endOfEarthRound = false;
 
     /**
      * Počet tahů do konce světa
@@ -51,58 +52,13 @@ public final class ConditionManager
     private int roundsLeft = 15;
 
     /**
-     * Indikátor odpočítávání zbývajícího reálného času do konce světa
-     */
-    private boolean endOfEarthTime = false;
-
-    /**
      * Reálný čas, kdy byl spuštěn odpočet konce světa
      */
     private Date timeOfActivation;
 
-    /**
-     * Indikátor, zda Artur následuje Forda
-     */
-    private boolean arthurFollows = false;
-
-    /**
-     * Indikátor, zda je aktivní režim průvodce
-     */
-    private boolean guideActive = false;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  A
-     */
-    private boolean passedA = true;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  B
-     */
-    private boolean passedB = false;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  C
-     */
-    private boolean passedC = false;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  D
-     */
-    private boolean passedD = false;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  E
-     */
-    private boolean passedE = false;
-
-    /**
-     * Indikátor, zda proběhl rozhovor  E
-     */
-    private boolean passedF = false;
 
     //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
@@ -113,7 +69,7 @@ public final class ConditionManager
      */
     public static ConditionManager getInstance()
     {
-        return conditionManager;
+        return condMan;
     }
 
 
@@ -123,6 +79,7 @@ public final class ConditionManager
      */
     private ConditionManager()
     {
+        initialize();
     }
 
 
@@ -143,116 +100,26 @@ public final class ConditionManager
 
     /**
      * *************************************************************************
-     * Indikátor, zda Artur následuje Forda při pohybu ve hře
+     * Vrátí hodnotu požadováné podmínky
      *
-     * @return Vrací {@code true} pokud Artur Forda sleduje, jinak {@code false}
+     * @return pravdivost požadované podmínky
      */
-    public boolean getArthurFollows()
+    public boolean get(Condition condition)
     {
-        return arthurFollows;
+        return conditions.get(condition);
     }
 
 
     /**
      * *************************************************************************
-     * Indikátor, zda je hra v režimu Průvodce galaxií
+     * Nastaví hodnotu požadováné podmínky
      *
-     * @return Vrací {@code true} pokud je v režimu průvodce, jinak
-     *         {@code false}
+     * @param condition název nastavované podmínky
+     * @param value     hodnota nastavované podmínky
      */
-    public boolean getGuideActive()
+    public void set(Condition condition, boolean value)
     {
-        return guideActive;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor A?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartA()
-    {
-        return !passedA;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor B?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartB()
-    {
-        return passedA;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor C?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartC()
-    {
-        return passedB;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor D?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartD()
-    {
-        return passedC;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor E?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartE()
-    {
-        return passedD;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Může se spustit rozhovor F?
-     *
-     * @return Vrátí {@code true} pokud se může rozhovor spustit, jinak
-     *         {@code false}
-     */
-    public boolean canStartF()
-    {
-        return passedE;
-    }
-
-
-    /**
-     * *************************************************************************
-     *
-     *
-     * @return {@code true}, jinak {@code false}
-     */
-    public boolean get()
-    {
-        return true;
+        conditions.put(condition, value);
     }
 
 
@@ -271,159 +138,13 @@ public final class ConditionManager
 
     /**
      * *************************************************************************
-     * Spustí odpočet vykonatelných tahů do konce světa.
-     *
-     */
-    public void startEndOfEarthRound()
-    {
-        endOfEarthRound = true;
-    }
-
-
-    /**
-     * *************************************************************************
      * Spustí odpočet reálného času do konce světa.
      *
      */
     public void startEndOfEarthTime()
     {
-        endOfEarthTime = true;
+        set(Condition.TIMER_RUNNING, Boolean.TRUE);
         timeOfActivation = new Date();
-    }
-
-
-    /**
-     * *************************************************************************
-     * Artur začne následovat Forda při pohybu ve hře.
-     *
-     */
-    public void setArthurFollow()
-    {
-        arthurFollows = true;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Artur zůstane v aktuální prostoru.
-     *
-     */
-    public void setArthurStop()
-    {
-        arthurFollows = false;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Hra se přepne do režimu procházení průvodce.
-     *
-     */
-    public void setGuideOn()
-    {
-        guideActive = true;
-    }
-
-
-    /**
-     * *************************************************************************
-     * hra se přepne do normálního režimu.
-     *
-     */
-    public void setGuideOff()
-    {
-        guideActive = false;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru A.
-     *
-     */
-    public void after_rA()
-    {
-        if (passedA) {
-            passedA = false;
-            passedB = true;
-        }
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru B.
-     *
-     */
-    public void after_rB()
-    {
-        if (passedB) {
-            passedB = false;
-            passedC = true;
-        }
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru C.
-     *
-     */
-    public void after_rC()
-    {
-        if (passedC) {
-            passedC = false;
-            passedD = true;
-            setArthurFollow();
-        }
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru D.
-     *
-     */
-    public void after_rD()
-    {
-        if (passedD) {
-            passedD = false;
-            passedE = true;
-            Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
-            Place.getCurrentPlace().getPerson("barman").add(new Thing("Pivo"));
-        }
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru E.
-     *
-     */
-    public void after_rE()
-    {
-        if (passedE) {
-            passedE = false;
-            passedF = true;
-            Place.getCurrentPlace().getPerson("barman").
-                    add(new Thing("Buráky"));
-            Place.getCurrentPlace().getPerson("arthur").remove(
-                    Place.getCurrentPlace().getPerson("arthur").
-                    getObject("Pivo"));
-        }
-    }
-
-
-    /**
-     * *************************************************************************
-     * Vyhodnocení podmínek po rozhovoru F.
-     *
-     */
-    public void after_rF()
-    {
-        if (passedF) {
-            passedF = false;
-        }
     }
 
 
@@ -438,21 +159,30 @@ public final class ConditionManager
      */
     private boolean evaluateEarthDestruction()
     {
-        boolean result = false;
         // konec země počítadlem příkazů
-        if (endOfEarthRound) {
+        if (get(Condition.TURN_COUNTDOWN_RUNNING)) {
             if (roundsLeft >= 1) {
                 roundsLeft--;
             }
             else {
-                result = true;
-            }
-            //konec země časovačem
-            if (endOfEarthTime && earthDestroyedByTimer()) {
-                result = true;
+                return true;
             }
         }
-        return result;
+        //konec země časovačem
+        if (earthDestroyedByTimer()) {
+            return true;
+        }
+
+        return false;
+    }
+
+
+    private void initialize()
+    {
+        for (Condition condition : Condition.values()) {
+            conditions.put(condition, Boolean.FALSE);
+        }
+        conditions.put(Condition.DIALOG_A_POSSIBLE, Boolean.TRUE);
     }
 
 
@@ -467,7 +197,7 @@ public final class ConditionManager
     private boolean earthDestroyedByTimer()
     {
         boolean result = false;
-        if (endOfEarthTime) {
+        if (get(Condition.TIMER_RUNNING)) {
             // počet sekund od zapnutí časovače
             int secondsDiff = (int) Math.
                     abs((new Date().getTime() / 1000) -

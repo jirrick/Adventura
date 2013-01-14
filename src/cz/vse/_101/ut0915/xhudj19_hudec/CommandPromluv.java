@@ -50,56 +50,12 @@ public class CommandPromluv extends ACommand
         }
 
         String result;
-        ConditionManager conditionManager = ConditionManager.getInstance();
+        ConditionManager condMan = ConditionManager.getInstance();
         Place currentPlace = Place.getCurrentPlace();
         String osoba = arguments[1];
-        boolean success = false;
 
         if (currentPlace.getPerson(osoba) != null) {
             result = nROZHOVOR_START;
-            if (osoba.equals("arthur")) {
-                result += jARTHUR;
-                if (conditionManager.canStartA()) {
-                    success = true;
-                    result += rozhovorA;
-                    conditionManager.after_rA();
-                }
-                if (conditionManager.canStartC()) {
-                    success = true;
-                    result += rozhovorC;
-                    conditionManager.after_rC();
-                }
-                if (conditionManager.canStartE()) {
-                    success = true;
-                    result += rozhovorE;
-                    conditionManager.after_rE();
-                }
-            }
-            if (osoba.equals("prosser")) {
-                result += jPROSSER;
-                if (conditionManager.canStartB()) {
-                    success = true;
-                    result += rozhovorB;
-                    conditionManager.after_rB();
-                }
-            }
-            if (osoba.equals("barman")) {
-                result += jBARMAN;
-                if (conditionManager.canStartD()) {
-                    success = true;
-                    result += rozhovorD;
-                    conditionManager.after_rD();
-                }
-
-                if (conditionManager.canStartF()) {
-                    success = true;
-                    result += rozhovorF;
-                    conditionManager.after_rF();
-                }
-            }
-            if (!success) {
-                result += nROZHOVOR_NEJDE;
-            }
         }
         else {
             result = nROZHOVOR_NENÍ;

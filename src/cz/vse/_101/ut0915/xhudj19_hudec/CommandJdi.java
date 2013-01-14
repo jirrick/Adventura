@@ -56,7 +56,7 @@ public class CommandJdi extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        ConditionManager conditionManager = ConditionManager.getInstance();
+        ConditionManager condMan = ConditionManager.getInstance();
         if (arguments.length < 2) {
             return zCÍL_NEZADÁN + status();
         }
@@ -69,7 +69,7 @@ public class CommandJdi extends ACommand
         }
 
         // Arthur v režimu sledování
-        if (conditionManager.getArthurFollows()) {
+        if (condMan.get(Condition.ARTHUR_FOLLOWS)) {
             Person arthur = currentPlace.getPerson("arthur");
             if (arthur != null) {
                 currentPlace.remove(arthur);

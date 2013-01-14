@@ -5,10 +5,13 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
-/*******************************************************************************
+
+
+/**
+ * *****************************************************************************
  * Instances of class {@code CommandArthur} represent ...
  *
- * @author  Rudolf PECINOVSKÝ
+ * @author Rudolf PECINOVSKÝ
  * @version 0.00.0000 — 20yy-mm-dd
  */
 public class CommandArthur extends ACommand
@@ -20,11 +23,10 @@ public class CommandArthur extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     public CommandArthur()
@@ -33,25 +35,26 @@ public class CommandArthur extends ACommand
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-      @Override
+    @Override
     public String execute(String... arguments)
     {
         if (arguments.length < 2) {
             return nARTH_NENÍ_PŘÍIKAZ + status();
         }
 
-        ConditionManager conditionManager = ConditionManager.getInstance();
+        ConditionManager condMan = ConditionManager.getInstance();
         String command = arguments[1];
         String result;
         Person arthur = Place.getCurrentPlace().getPerson(jARTHUR);
 
-        if (arthur == null){
-            result = nARTHUR_NELZE;
-        } else {
+        if (arthur == null) {
+            return nARTHUR_NELZE + status();
+        }
+
+        if (condMan.get(Condition.ARTHUR_CAN_FOLLOW)) {
             switch (command) {
                 case "inventář":
                     result = nARTH_INVENT +
@@ -59,16 +62,21 @@ public class CommandArthur extends ACommand
                     break;
                 case "následuj":
                     result = nARTHUR_SLEDUJE;
-                    conditionManager.setArthurFollow();
+                    condMan.set(Condition.ARTHUR_FOLLOWS,
+                                Boolean.TRUE);
                     break;
                 case "stůj":
                     result = nARTHUR_STŮJ;
-                    conditionManager.setArthurStop();
+                    condMan.set(Condition.ARTHUR_FOLLOWS,
+                                Boolean.FALSE);
                     break;
                 default:
                     result = nART_NEZNÁM_PŘÍIKAZ;
                     break;
             }
+        }
+        else {
+            result = nARTHUR_NEPOSLOUCHÁ;
         }
         return result + status();
     }
@@ -87,3 +95,5 @@ public class CommandArthur extends ACommand
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

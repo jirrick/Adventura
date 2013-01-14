@@ -42,7 +42,7 @@ public class CommandPoužij extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        ConditionManager conditionManager = ConditionManager.getInstance();
+        ConditionManager condMan = ConditionManager.getInstance();
         if (arguments.length < 2) {
             return zPŘEDMĚT_NEZADAN + status();
         }
@@ -59,7 +59,8 @@ public class CommandPoužij extends ACommand
         else {
             switch (objectName) {
                 case "průvodce":
-                    conditionManager.setGuideOn();
+                    condMan.set(
+                            Condition.HITCHHIKERS_GUIDE_ACTIVE, Boolean.TRUE);
                     result = nPRŮVODCE_START;
                     break;
                 case "pivo":

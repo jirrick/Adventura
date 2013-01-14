@@ -3,19 +3,44 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 
-/**
- * *****************************************************************************
- * Instances of class {@code CommandPrůvodce} represent ...
+
+/*******************************************************************************
+ * Instances of enumerated type {@code Condition} represents ...
  *
- * @author Rudolf PECINOVSKÝ
+ * @author  Rudolf PECINOVSKÝ
  * @version 0.00.0000 — 20yy-mm-dd
  */
-public class CommandPrůvodce extends ACommand
+public enum Condition
 {
+//== VALUES OF THE ENUMERATION TYPE ============================================
+//
+    DIALOG_A_POSSIBLE,
+    DIALOG_A_DONE,
+    DIALOG_B_POSSIBLE,
+    DIALOG_B_DONE,
+    DIALOG_C_POSSIBLE,
+    DIALOG_C_DONE,
+    DIALOG_D_POSSIBLE,
+    DIALOG_D_DONE,
+    DIALOG_E_POSSIBLE,
+    DIALOG_E_DONE,
+    DIALOG_F_POSSIBLE,
+    DIALOG_F_DONE,
+    ARTHUR_CAN_FOLLOW,
+    ARTHUR_FOLLOWS,
+    FORD_CAN_BUY_BEERS,
+    FORD_CAN_BUY_NUTS,
+    FORD_DRANK_BEER,
+    TURN_COUNTDOWN_RUNNING,
+    TIMER_RUNNING,
+    HITCHHIKERS_GUIDE_ACTIVE
+    ;
+
+
+
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
@@ -23,54 +48,23 @@ public class CommandPrůvodce extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
+
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-    /**
-     * *************************************************************************
+
+    /***************************************************************************
      *
      */
-    public CommandPrůvodce()
+    private Condition()
     {
-        super("Pomocný příkaz, který by neměl jít přímo spustit",
-              "Pomocný příkaz, který by neměl jít přímo spustit");
     }
+
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-    @Override
-    public String execute(String... arguments)
-    {
-        ConditionManager condMan = ConditionManager.getInstance();
-        String result = "";
-
-        if (arguments == null) {
-            result = nPRŮVODCE_EMPTY;
-        }
-        else {
-            if (arguments.length > 0) {
-                String objectName = arguments[0];
-                switch (objectName) {
-                    case "ručník":
-                        result = nPRŮVODCE_RUČNÍK;
-                        break;
-                    case ".":
-                        condMan.set(Condition.HITCHHIKERS_GUIDE_ACTIVE,
-                                    Boolean.FALSE);
-                        result = nPRŮVODCE_STOP + status();
-                        break;
-                    default:
-                        result = nPRŮVODCE_UNKNOWN;
-                        break;
-                }
-            }
-        }
-        return result;
-    }
-
-
-    //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
+//== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
 //== TESTING CLASSES AND METHODS ===============================================
@@ -80,10 +74,7 @@ public class CommandPrůvodce extends ACommand
 //     */
 //    public static void test()
 //    {
-//        HelpCommandAno inst = new HelpCommandAno();
 //    }
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
-
-

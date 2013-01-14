@@ -95,19 +95,19 @@ public abstract class ACommand implements ICommand
      */
     static String executeCommand(String input)
     {
-        ConditionManager conditionManager = ConditionManager.getInstance();
+        ConditionManager condMan = ConditionManager.getInstance();
 
         String line = input.trim().toLowerCase();
         String[] words = null;
 
-        if (!conditionManager.getCanDoNextMove()) {
+        if (!condMan.getCanDoNextMove()) {
             Game.getInstance().stop();
             return nPROHRA;
         }
 
         ACommand command;
         // režim průvodce
-        if (conditionManager.getGuideActive()) {
+        if (condMan.get(Condition.HITCHHIKERS_GUIDE_ACTIVE)) {
             command = guideCommand;
             if (!line.isEmpty()) {
                 words = line.split("\\s+");
@@ -123,7 +123,7 @@ public abstract class ACommand implements ICommand
             if (command == null) {
                 return zNEZNÁMÝ_PŘÍKAZ;
             }
-            conditionManager.evaluateNextRound();
+            condMan.evaluateNextRound();
         }
 
         return command.execute(words);

@@ -236,6 +236,7 @@ public final class Texts
     nARTHUR_NELZE = "\nPříkazy nejde vykonávat, když Arthur není v místnosti",
     nARTHUR_SLEDUJE = "\nArthur vás nyní následuje",
     nARTHUR_STŮJ = "\nArthur zůstane v této místnosti",
+    nARTHUR_NEPOSLOUCHÁ = "\nArthura ještě nemůžeš řídit",
 
     nROZHOVOR_START =   "\nZačal(a) jsi se bavit s postavou: ",
     nROZHOVOR_NEJDE =   "\nTato postava se s tebou teď odmítá bavit.",
