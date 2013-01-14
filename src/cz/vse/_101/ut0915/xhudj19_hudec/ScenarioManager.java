@@ -133,7 +133,7 @@ public final class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rozhovorA,
+            nROZHOVOR_START + jARTHUR + rozhovory[0],
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -141,7 +141,7 @@ public final class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jPROSSER,
-            nROZHOVOR_START + jPROSSER + rozhovorB,
+            nROZHOVOR_START + jPROSSER + rozhovory[1],
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -149,7 +149,7 @@ public final class ScenarioManager extends AScenarioManager
             tsNON_STANDARD),
 
          new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rozhovorC,
+            nROZHOVOR_START + jARTHUR + rozhovory[2],
             mZAHRADA,
             new String[] { mDŮM, mULICE },
             new String[] { oBULDOZER, oBLÁTO, oKVĚTINA },
@@ -187,7 +187,7 @@ public final class ScenarioManager extends AScenarioManager
             tsMOVE ),
 
          new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN + rozhovorD,
+            nROZHOVOR_START + jBARMAN + rozhovory[3],
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },
@@ -270,7 +270,7 @@ public final class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jARTHUR,
-            nROZHOVOR_START + jARTHUR + rozhovorE,
+            nROZHOVOR_START + jARTHUR + rozhovory[4],
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },
@@ -278,7 +278,7 @@ public final class ScenarioManager extends AScenarioManager
             tsNON_STANDARD ),
 
           new ScenarioStep( pPROMLUV + " " + jBARMAN,
-            nROZHOVOR_START + jBARMAN + rozhovorF,
+            nROZHOVOR_START + jBARMAN + rozhovory[5],
             mHOSPODA,
             new String[] { mULICE },
             new String[] { oŽIDLE, oSKLENICE },

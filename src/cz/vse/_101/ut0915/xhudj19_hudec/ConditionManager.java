@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.EnumMap;
 
@@ -38,6 +38,11 @@ public final class ConditionManager
     final static int END_OF_EARTH_TIMER = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
+    private boolean[] dialogue_possible = new boolean[6];
+
+    private boolean[] dialogue_done = new boolean[6];
+
+
     private EnumMap<Condition, Boolean> conditions = new EnumMap<>(
             Condition.class);
 
@@ -123,6 +128,31 @@ public final class ConditionManager
     }
 
 
+
+    /**
+     * *************************************************************************
+     * Může se provést rozhovor?
+     *
+     * @param  dialogue číslo rozhovoru
+     * @return pravdivost požadované podmínky
+     */
+    public boolean isDialoguePossible(int dialogue)
+    {
+        return dialogue_possible[dialogue];
+    }
+
+        /**
+     * *************************************************************************
+     * Rozhovor se provedl
+     *
+     * @param dialogue číslo rozhovoru
+     */
+    public void setDialogueDone(int dialogue)
+    {
+        dialogue_done[dialogue] = true;
+    }
+
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
      * *************************************************************************
@@ -182,7 +212,9 @@ public final class ConditionManager
         for (Condition condition : Condition.values()) {
             conditions.put(condition, Boolean.FALSE);
         }
-        conditions.put(Condition.DIALOG_A_POSSIBLE, Boolean.TRUE);
+        Arrays.fill(dialogue_done, Boolean.FALSE);
+        Arrays.fill(dialogue_possible, Boolean.FALSE);
+        dialogue_possible[0] = true;
     }
 
 

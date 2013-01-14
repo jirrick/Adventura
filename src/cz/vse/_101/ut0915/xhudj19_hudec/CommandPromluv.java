@@ -49,18 +49,22 @@ public class CommandPromluv extends ACommand
             return nROZHOVOR_NIKDO + status();
         }
 
-        String result;
         ConditionManager condMan = ConditionManager.getInstance();
         Place currentPlace = Place.getCurrentPlace();
-        String osoba = arguments[1];
+        Person person = currentPlace.getPerson(arguments[1]);
 
-        if (currentPlace.getPerson(osoba) != null) {
-            result = nROZHOVOR_START;
+        if (person == null) {
+            return nROZHOVOR_NENÍ + status();
         }
-        else {
-            result = nROZHOVOR_NENÍ;
+
+        for (int dialogue : person.getDialogues()){
+            if (condMan.isDialoguePossible(dialogue)){
+                condMan.setDialogueDone(dialogue);
+                return nROZHOVOR_START + person.getName() + rozhovory[dialogue];
+            }
         }
-        return result + status();
+
+        return nROZHOVOR_NEJDE + status();
     }
 
 

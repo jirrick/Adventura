@@ -3,6 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,6 +23,8 @@ public class Person implements INamed
 //== VARIABLE CLASS ATTRIBUTES ================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
+    private ArrayList<Integer> dialogues = new ArrayList<>();
+
     /**
      * Název osoby.
      */
@@ -47,12 +50,23 @@ public class Person implements INamed
      */
     public Person(String name)
     {
-        this.name = name.substring(1);
+        String[] input = name.split((String.valueOf(PERSON)));
+        if (input.length > 1) {
+            // input[0] by mělo být prázdné
+            this.name = input[1];
+            char[] dialog = input[2].toCharArray();
+            for (char d : dialog){
+                if ((d >= '0') && (d <= '9')) {
+                    dialogues.add(Character.getNumericValue(d));
+                }
+            }
+        } else {
+            this.name = name.substring(1);
+        }
     }
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
 
     /**
      * *************************************************************************
@@ -66,7 +80,20 @@ public class Person implements INamed
         return name;
     }
 
-     /**
+
+    /**
+     * *************************************************************************
+     * Vrátí kolekci možných rozhovorů.
+     *
+     * @return Kolekce možných rozhovorů
+     */
+    public Collection<Integer> getDialogues()
+    {
+        return dialogues;
+    }
+
+
+    /**
      * *************************************************************************
      * Vrátí kolekci objektů nacházejících se v inventáři postavy.
      *
@@ -89,6 +116,7 @@ public class Person implements INamed
         objects.add(thing);
     }
 
+
     /**
      * *************************************************************************
      * Odebere osobě předmět z inventáře
@@ -99,6 +127,7 @@ public class Person implements INamed
     {
         objects.remove(thing);
     }
+
 
     /**
      * *************************************************************************
