@@ -3,6 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.EnumMap;
@@ -163,7 +164,7 @@ public final class ConditionManager
     {
         canDoNextMove = !evaluateEarthDestruction();
         evaluateDialogues();
-
+        evaluateCanBuyBeers();
     }
 
 
@@ -211,9 +212,9 @@ public final class ConditionManager
                         break;
                     // akce po rozhovoru E
                     case 4:
-                        /**
-                         * TODO: Arthur Remove beer
-                         */
+                        Person arthur = Person.getArthur();
+                        Thing beer = arthur.getObject(oPIVO);
+                        arthur.remove(beer);
                         break;
                     // akce po rozhovoru F
                     case 5:
@@ -221,6 +222,26 @@ public final class ConditionManager
                         break;
                 }
             }
+        }
+    }
+
+
+    /**
+     * *************************************************************************
+     * Vyhodnotí, zda může Ford kouit piva.
+     */
+    private void evaluateCanBuyBeers()
+    {
+        if (condMan.get(Condition.FORD_CAN_BUY_BEERS) &&
+            (Person.getBarman().
+             getObject(
+             oPĚTILIBROVKA) != null)) {
+            Person barman = Person.getBarman();
+            Thing money = barman.getObject(oPĚTILIBROVKA);
+            barman.remove(money);
+            barman.add(new Thing(oPIVO));
+            barman.add(new Thing(oPIVO));
+            condMan.set(Condition.FORD_CAN_BUY_BEERS, Boolean.FALSE);
         }
     }
 

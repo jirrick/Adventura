@@ -42,11 +42,11 @@ public class Person implements INamed
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 
-    public Person getArthur(){
+    public static Person getArthur(){
         return arthur;
     }
 
-    public Person getBarman(){
+    public static Person getBarman(){
         return barman;
     }
 
