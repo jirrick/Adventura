@@ -40,7 +40,7 @@ public class CommandNápověda extends ACommand
       @Override
     public String execute(String... arguments)
     {
-        return zNÁPOVĚDA;
+        return zNÁPOVĚDA + status();
     }
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================

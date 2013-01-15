@@ -57,23 +57,25 @@ public class CommandPoužij extends ACommand
             result = zNENÍ_V_BATOHU;
         }
         else {
+            result = nNELZE_POUŽÍT;
             switch (objectName) {
                 case "průvodce":
-                    condMan.set(
+                    condMan.setValue(
                             Condition.HITCHHIKERS_GUIDE_ACTIVE, Boolean.TRUE);
                     result = nPRŮVODCE_START;
                     break;
                 case "pivo":
                     result = nPOUŽIJ_PIVO;
                     bag.remove(thing);
-                    condMan.set(Condition.FORD_DRANK_BEER, Boolean.TRUE);
+                    condMan.setValue(Condition.FORD_DRANK_BEER, Boolean.TRUE);
                     break;
                 case "palec":
-                    result = nPALEC;
-                    currentPlace.getNeighbors().add(Place.Vogonská_loď);
+                    if (condMan.getValue(Condition.TIMER_RUNNING)) {
+                        result = nPALEC;
+                        currentPlace.getNeighbors().add(Place.Vogonská_loď);
+                    }
                     break;
                 default:
-                    result = nNELZE_POUŽÍT;
                     break;
             }
         }
@@ -94,6 +96,7 @@ public class CommandPoužij extends ACommand
 //    }
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
+
 }
 
 

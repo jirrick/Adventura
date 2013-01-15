@@ -185,12 +185,14 @@ public final class Texts
     public static final String nPOUŽIJ_PIVO = "\nVypil jsi pivo.",
             nPRŮVODCE_RETURN = "\n\nPro návrat do hry napiš tečku.",
             nPRŮVODCE_START = "\nOtevřel jsi vesmírnou encykolopedii " +
-                              "\"Stopařův průvodce\ngalaxií\", ptej se na to, co tě zajímá." +
+                              "\"Stopařův průvodce\ngalaxií\"," +
+                              "ptej se na to, co tě zajímá." +
                               nPRŮVODCE_RETURN,
             nPRŮVODCE_STOP =
             "\nNashledanou příště.\nA hlavně: NEPROPADEJTE PANICE!.",
             nPRŮVODCE_UNKNOWN = "\nAčkoliv je to vysoce nepravděpodobné, " +
-                                "tak \"Stopařův průvodce galaxií\" toto heslo nezná." +
+                                "tak \"Stopařův průvodce galaxií\"" +
+                                "toto heslo nezná." +
                                 nPRŮVODCE_RETURN,
             nPRŮVODCE_EMPTY = "\nNezadali jste heslo k vyhledání." +
                               nPRŮVODCE_RETURN,
@@ -230,8 +232,9 @@ public final class Texts
             nARTHUR_NELZE =
             "\nPříkazy nejde vykonávat, když Arthur není v místnosti",
             nARTHUR_SLEDUJE = "\nArthur vás nyní následuje",
-            nARTHUR_STŮJ = "\nArthur zůstane v této místnosti",
+            nARTHUR_STŮJ = "\nArthur zůstane v tomto prostoru",
             nARTHUR_NEPOSLOUCHÁ = "\nArthura ještě nemůžeš řídit",
+            nARTHUR_ZŮSTAL = "\nNeopouštěj Zemi bez Arthura!",
             nROZHOVOR_START = "\nZačal(a) jsi se bavit s postavou: ",
             nROZHOVOR_NEJDE = "\nTato postava se s tebou teď odmítá bavit.",
             nROZHOVOR_NENÍ = "\nPostava tohoto jména v tomto prostoru není.",

@@ -69,24 +69,28 @@ public class CommandJdi extends ACommand
         }
 
         // Arthur v režimu sledování
-        if (condMan.get(Condition.ARTHUR_FOLLOWS)) {
-            Person arthur = currentPlace.getPerson("arthur");
+        if (condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
+            Person arthur = currentPlace.getPerson(jARTHUR);
             if (arthur != null) {
                 currentPlace.remove(arthur);
                 neighbor.add(arthur);
             }
         }
 
-        // Standardní přesun
-        Place.setCurrentPlace(neighbor);
-
         // Přechod do konečného prostoru
         if (destName.equalsIgnoreCase(mVOGONI)) {
-            Game.getInstance().stop();
-            return zPŘESUN + neighbor.getName() + nVÝHRA;
+            if (condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
+                Place.setCurrentPlace(neighbor);
+                Game.getInstance().stop();
+                return zPŘESUN + neighbor.getName() + nVÝHRA;
+            }
+            else {
+                return nARTHUR_ZŮSTAL + status();
+            }
         }
 
-        // Výpis po standardním přesunu
+        // Standardní přesun
+        Place.setCurrentPlace(neighbor);
         return zPŘESUN + neighbor.getName() + status();
     }
 

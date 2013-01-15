@@ -56,7 +56,7 @@ public class CommandPrůvodce extends ACommand
                         result = nPRŮVODCE_RUČNÍK;
                         break;
                     case ".":
-                        condMan.set(Condition.HITCHHIKERS_GUIDE_ACTIVE,
+                        condMan.setValue(Condition.HITCHHIKERS_GUIDE_ACTIVE,
                                     Boolean.FALSE);
                         result = nPRŮVODCE_STOP + status();
                         break;

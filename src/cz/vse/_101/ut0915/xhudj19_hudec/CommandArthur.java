@@ -54,7 +54,7 @@ public class CommandArthur extends ACommand
             return nARTHUR_NELZE + status();
         }
 
-        if (condMan.get(Condition.ARTHUR_CAN_FOLLOW)) {
+        if (condMan.getValue(Condition.ARTHUR_CAN_FOLLOW)) {
             switch (command) {
                 case "inventář":
                     result = nARTH_INVENT +
@@ -62,12 +62,12 @@ public class CommandArthur extends ACommand
                     break;
                 case "následuj":
                     result = nARTHUR_SLEDUJE;
-                    condMan.set(Condition.ARTHUR_FOLLOWS,
+                    condMan.setValue(Condition.ARTHUR_FOLLOWS,
                                 Boolean.TRUE);
                     break;
                 case "stůj":
                     result = nARTHUR_STŮJ;
-                    condMan.set(Condition.ARTHUR_FOLLOWS,
+                    condMan.setValue(Condition.ARTHUR_FOLLOWS,
                                 Boolean.FALSE);
                     break;
                 default:

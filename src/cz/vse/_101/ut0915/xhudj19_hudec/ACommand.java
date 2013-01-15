@@ -108,7 +108,7 @@ public abstract class ACommand implements ICommand
 
         ACommand command;
         // režim průvodce
-        if (condMan.get(Condition.HITCHHIKERS_GUIDE_ACTIVE)) {
+        if (condMan.getValue(Condition.HITCHHIKERS_GUIDE_ACTIVE)) {
             command = guideCommand;
             if (!line.isEmpty()) {
                 words = line.split("\\s+");
@@ -150,12 +150,12 @@ public abstract class ACommand implements ICommand
                        toCommaSeparatedString(currentPlace.getObjects()),
                        toCommaSeparatedString(Bag.getInstance().getObjects()));
 
-        if (condMan.get(Condition.TURN_COUNTDOWN_RUNNING)) {
+        if (condMan.getValue(Condition.TURN_COUNTDOWN_RUNNING)) {
             result += "\n\nVogonské lodě se blíží! Můžeš provést jen " +
                       condMan.getRoundsLeft() + " tah(ů)!";
         }
 
-        if (condMan.get(Condition.TIMER_RUNNING)) {
+        if (condMan.getValue(Condition.TIMER_RUNNING)) {
             result +=
             "\nVogonské lodě už jsou na oběžné dráze Země! Zbývá ti už jen " +
             condMan.getTimeLeft() + " sekund reálného času!";

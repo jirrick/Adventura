@@ -122,7 +122,7 @@ public final class ConditionManager
      *
      * @return pravdivost požadované podmínky
      */
-    public boolean get(Condition condition)
+    public boolean getValue(Condition condition)
     {
         return conditions.get(condition);
     }
@@ -135,7 +135,7 @@ public final class ConditionManager
      * @param condition název nastavované podmínky
      * @param value     hodnota nastavované podmínky
      */
-    public void set(Condition condition, boolean value)
+    public void setValue(Condition condition, boolean value)
     {
         conditions.put(condition, value);
     }
@@ -221,12 +221,12 @@ public final class ConditionManager
                         break;
                     // akce po rozhovoru C
                     case 2:
-                        set(Condition.ARTHUR_CAN_FOLLOW, Boolean.TRUE);
-                        set(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
+                        setValue(Condition.ARTHUR_CAN_FOLLOW, Boolean.TRUE);
+                        setValue(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
                         break;
                     // akce po rozhovoru D
                     case 3:
-                        set(Condition.FORD_CAN_BUY_BEERS, Boolean.TRUE);
+                        setValue(Condition.FORD_CAN_BUY_BEERS, Boolean.TRUE);
                         dialogue_possible[4] = false;
                         break;
                     // akce po rozhovoru E
@@ -237,7 +237,7 @@ public final class ConditionManager
                         break;
                     // akce po rozhovoru F
                     case 5:
-                        set(Condition.FORD_CAN_BUY_NUTS, Boolean.TRUE);
+                        setValue(Condition.FORD_CAN_BUY_NUTS, Boolean.TRUE);
                         break;
                 }
             }
@@ -252,7 +252,7 @@ public final class ConditionManager
     private void evaluateDialogueE()
     {
         if ((dialogue_done[3]) &&
-            get(Condition.FORD_DRANK_BEER) &&
+            getValue(Condition.FORD_DRANK_BEER) &&
             (Person.getArthur().getObject(oPIVO) != null)) {
             dialogue_possible[4] = true;
         }
@@ -269,7 +269,7 @@ public final class ConditionManager
      */
     private void evaluateCanBuy(Condition cond, String name)
     {
-        if (get(cond) &&
+        if (getValue(cond) &&
             (Person.getBarman().getObject(oPĚTILIBROVKA) != null)) {
             Person barman = Person.getBarman();
             Thing money = barman.getObject(oPĚTILIBROVKA);
@@ -279,7 +279,7 @@ public final class ConditionManager
             if (name.equalsIgnoreCase(oPIVO)) {
                 barman.add(new Thing(name));
             }
-            condMan.set(cond, Boolean.FALSE);
+            condMan.setValue(cond, Boolean.FALSE);
         }
     }
 
@@ -291,9 +291,9 @@ public final class ConditionManager
     private void evaluateStartCountdown()
     {
         if ((dialogue_done[5]) &&
-            !get(Condition.TURN_COUNTDOWN_RUNNING) &&
+            !getValue(Condition.TURN_COUNTDOWN_RUNNING) &&
             (Bag.getInstance().getObject(oBURÁKY) != null)) {
-            set(Condition.TURN_COUNTDOWN_RUNNING, Boolean.TRUE);
+            setValue(Condition.TURN_COUNTDOWN_RUNNING, Boolean.TRUE);
         }
     }
 
@@ -304,9 +304,9 @@ public final class ConditionManager
      */
     private void evaluateStartTimer()
     {
-        if (get(Condition.TURN_COUNTDOWN_RUNNING) &&
+        if (getValue(Condition.TURN_COUNTDOWN_RUNNING) &&
             (Place.getCurrentPlace().getName().equalsIgnoreCase(mLOUKA))) {
-            set(Condition.TIMER_RUNNING, Boolean.TRUE);
+            setValue(Condition.TIMER_RUNNING, Boolean.TRUE);
             timeOfActivation = new Date();
         }
     }
@@ -322,7 +322,7 @@ public final class ConditionManager
     private boolean evaluateEarthDestruction()
     {
         // konec země počítadlem příkazů
-        if (get(Condition.TURN_COUNTDOWN_RUNNING)) {
+        if (getValue(Condition.TURN_COUNTDOWN_RUNNING)) {
             if (roundsLeft >= 1) {
                 roundsLeft--;
             }
@@ -331,7 +331,7 @@ public final class ConditionManager
             }
         }
         //konec země časovačem
-        if (get(Condition.TIMER_RUNNING)) {
+        if (getValue(Condition.TIMER_RUNNING)) {
             // počet sekund od zapnutí časovače
             int secondsDiff = (int) Math.
                     abs((new Date().getTime() / 1000) -
