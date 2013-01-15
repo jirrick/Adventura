@@ -3,7 +3,7 @@
  */
 package cz.vse._101.ut0915.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._101.ut0915.xhudj19_hudec.Texts.PERSON;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,6 +21,10 @@ public class Person implements INamed
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES ================================================
+    private static Person arthur = null;
+
+    private static Person barman = null;
+
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
     private ArrayList<Integer> dialogues = new ArrayList<>();
@@ -37,7 +41,31 @@ public class Person implements INamed
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
+
+    public Person getArthur(){
+        return arthur;
+    }
+
+    public Person getBarman(){
+        return barman;
+    }
+
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
+
+    public static void findArthurBarman(){
+        for (Place place : Place.values()) {
+            Person temp;
+            temp = place.getPerson("Arthur");
+            if (temp != null){
+                arthur = temp;
+            }
+
+            temp = place.getPerson("Barman");
+            if (temp != null){
+                barman = temp;
+            }
+        }
+    }
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================

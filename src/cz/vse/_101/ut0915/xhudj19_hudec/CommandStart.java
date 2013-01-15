@@ -66,6 +66,7 @@ public class CommandStart extends ACommand
         Place    .initializePlaces();
         Bag.getInstance().initialize();
         Game.getInstance().setAlive(true);
+        Person.findArthurBarman();
         return zUVÍTÁNÍ + status();
     }
 
