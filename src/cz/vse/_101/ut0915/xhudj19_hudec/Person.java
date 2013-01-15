@@ -51,7 +51,7 @@ public class Person implements INamed
     public Person(String name)
     {
         String[] input = name.split((String.valueOf(PERSON)));
-        if (input.length > 1) {
+        if (input.length > 2) {
             // input[0] by mělo být prázdné
             this.name = input[1];
             char[] dialog = input[2].toCharArray();

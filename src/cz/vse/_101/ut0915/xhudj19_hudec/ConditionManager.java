@@ -42,7 +42,6 @@ public final class ConditionManager
 
     private boolean[] dialogue_done = new boolean[6];
 
-
     private EnumMap<Condition, Boolean> conditions = new EnumMap<>(
             Condition.class);
 
@@ -128,12 +127,11 @@ public final class ConditionManager
     }
 
 
-
     /**
      * *************************************************************************
      * Může se provést rozhovor?
      *
-     * @param  dialogue číslo rozhovoru
+     * @param dialogue číslo rozhovoru
      * @return pravdivost požadované podmínky
      */
     public boolean isDialoguePossible(int dialogue)
@@ -141,7 +139,8 @@ public final class ConditionManager
         return dialogue_possible[dialogue];
     }
 
-        /**
+
+    /**
      * *************************************************************************
      * Rozhovor se provedl
      *
@@ -163,6 +162,8 @@ public final class ConditionManager
     public void evaluateNextRound()
     {
         canDoNextMove = !evaluateEarthDestruction();
+        evaluateDialogues();
+
     }
 
 
@@ -180,6 +181,50 @@ public final class ConditionManager
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
+    /**
+     * *************************************************************************
+     * Vyhodnotí podmínky u rozhovorů.
+     */
+    private void evaluateDialogues()
+    {
+        for (int i = 0; i < 6; i++) {
+            // rozhovor byl nedávno proveden
+            if (dialogue_done[i] && dialogue_possible[i]) {
+                dialogue_possible[i] = false;
+                dialogue_possible[i + 1] = true;
+                switch (i) {
+                    // akce po rozhovoru A
+                    case 0:
+                        break;
+                    // akce po rozhovoru B
+                    case 1:
+                        break;
+                    // akce po rozhovoru C
+                    case 2:
+                        set(Condition.ARTHUR_CAN_FOLLOW, Boolean.TRUE);
+                        set(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
+                        break;
+                    // akce po rozhovoru D
+                    case 3:
+                        set(Condition.FORD_CAN_BUY_BEERS, Boolean.TRUE);
+                        dialogue_possible[4] = false;
+                        break;
+                    // akce po rozhovoru E
+                    case 4:
+                        /**
+                         * TODO: Arthur Remove beer
+                         */
+                        break;
+                    // akce po rozhovoru F
+                    case 5:
+                        set(Condition.FORD_CAN_BUY_NUTS, Boolean.TRUE);
+                        break;
+                }
+            }
+        }
+    }
+
+
     /**
      * *************************************************************************
      * Vyhodnotí, zda země byla zničena.
