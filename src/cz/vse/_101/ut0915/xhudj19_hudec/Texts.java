@@ -183,6 +183,7 @@ public final class Texts
      * Prefix "n" - nepovinná zpráva
      */
     public static final String nPOUŽIJ_PIVO = "\nVypil jsi pivo.",
+            nPOUŽIJ_PIVO_NEJDE = "\nJedno pivo nech Arthurovi.",
             nPRŮVODCE_RETURN = "\n\nPro návrat do hry napiš tečku.",
             nPRŮVODCE_START = "\nOtevřel jsi vesmírnou encykolopedii " +
                               "\"Stopařův průvodce\ngalaxií\"," +
@@ -245,6 +246,13 @@ public final class Texts
             nPALEC =
             "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
             "\nNěkterá by vás měla být ochotná přijmout.",
+            nPŘÍJMAČ =
+            "\nSenzomatický subéterový příjmač pípá čím dál tím rychleji.\n" +
+            "Vogonské lodě se pomalu, ale jistě blíží.",
+             nSCÉNÁŘ =
+            "\nProlistoval jsi scénář ke hře Bohem zakletý, který s sebou" +
+            "\nstále nosíš, protože předstířáš, že jsi nezaměstnaný herec." +
+            "\nPravděpodobně ho už nebudš potřebovat.",
             nNELZE_POUŽÍT = "\nTento předmět nelze použít",
             nARTH_INVENT = "\nArthur má v inventáři tyto předměty: ",
             nARTH_NENÍ_PŘÍIKAZ = "\nNezadali jste příkaz pro Arthura",
@@ -254,7 +262,6 @@ public final class Texts
             nARTHUR_SLEDUJE = "\nArthur vás nyní následuje",
             nARTHUR_STŮJ = "\nArthur zůstane v tomto prostoru",
             nARTHUR_NEPOSLOUCHÁ = "\nArthura ještě nemůžeš řídit",
-            nARTHUR_ZŮSTAL = "\nNeopouštěj Zemi bez Arthura!",
             nROZHOVOR_START = "\nZačal(a) jsi se bavit s postavou: ",
             nROZHOVOR_NEJDE = "\nTato postava se s tebou teď odmítá bavit.",
             nROZHOVOR_NENÍ = "\nPostava tohoto jména v tomto prostoru není.",
@@ -270,7 +277,12 @@ public final class Texts
             nVZÍT_FORMÁT = "\nOd postavy %s jsi převzal(a) předmět: %s",
             nVÝHRA = "\nGratuluji! Úspěšně jsi zachránil Arthura Denta!",
             nPROHRA = "\nTo ses moc nepředvedl, Forde." +
-                      "\nNepodařilo se ti zachránit Arthura Denta";
+                      "\nNepodařilo se ti zachránit Arthura Denta",
+            nCHYBÍ_ARTHUR = "\nNeopouštěj Zemi bez Arthura!",
+            nCHYBÍ_RUČNÍK = "\nBez ručníku nemůžeš stopovat.",
+            nCHYBÍ_PRŮVODCE = "\nNěkde jsi nechal Stopařova průvodce Galaxií.",
+            nCHYBÍ_VYBAVENÍ = "\nKe stopování potřebuješ elektronický palec" +
+            "\na subéterický příjmač.";
 
     /**
      * Texty rozhovorů.

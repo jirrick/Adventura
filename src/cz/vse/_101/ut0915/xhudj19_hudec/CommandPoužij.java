@@ -65,9 +65,21 @@ public class CommandPoužij extends ACommand
                     result = nPRŮVODCE_START;
                     break;
                 case "pivo":
-                    result = nPOUŽIJ_PIVO;
-                    bag.remove(thing);
-                    condMan.setValue(Condition.FORD_DRANK_BEER, Boolean.TRUE);
+                    if (condMan.getValue(Condition.FORD_DRANK_BEER)) {
+                        result = nPOUŽIJ_PIVO_NEJDE;
+                    }
+                    else {
+                        result = nPOUŽIJ_PIVO;
+                        bag.remove(thing);
+                        condMan.setValue(
+                                Condition.FORD_DRANK_BEER, Boolean.TRUE);
+                    }
+                    break;
+                case "příjmač":
+                    result = nPŘÍJMAČ;
+                    break;
+                case "scénář":
+                    result = nSCÉNÁŘ;
                     break;
                 case "palec":
                     if (condMan.getValue(Condition.TIMER_RUNNING)) {

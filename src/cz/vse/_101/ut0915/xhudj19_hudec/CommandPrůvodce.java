@@ -55,9 +55,12 @@ public class CommandPrůvodce extends ACommand
                     case "ručník":
                         result = nPRŮVODCE_RUČNÍK;
                         break;
+                    case "průvodce":
+                        result = nPRŮVODCE_PRŮVODCE;
+                        break;
                     case ".":
                         condMan.setValue(Condition.HITCHHIKERS_GUIDE_ACTIVE,
-                                    Boolean.FALSE);
+                                         Boolean.FALSE);
                         result = nPRŮVODCE_STOP + status();
                         break;
                     default:

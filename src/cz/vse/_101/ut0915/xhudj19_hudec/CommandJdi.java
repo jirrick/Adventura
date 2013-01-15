@@ -79,14 +79,23 @@ public class CommandJdi extends ACommand
 
         // Přechod do konečného prostoru
         if (destName.equalsIgnoreCase(mVOGONI)) {
-            if (condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
-                Place.setCurrentPlace(neighbor);
+            if (!condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
+                return nCHYBÍ_ARTHUR + status();
+            }
+            if ((Bag.getInstance().getObject(oRUČNÍK) == null) ||
+                Person.getArthur().getObject(oRUČNÍK) == null) {
+                return nCHYBÍ_RUČNÍK + status();
+            }
+            if (Bag.getInstance().getObject(oPRŮVODCE) == null)  {
+                return nCHYBÍ_PRŮVODCE + status();
+            }
+            if ((Bag.getInstance().getObject(oPALEC) == null) ||
+                Bag.getInstance().getObject(oPŘÍJMAČ) == null) {
+                return nCHYBÍ_VYBAVENÍ + status();
+            }
+            Place.setCurrentPlace(neighbor);
                 Game.getInstance().stop();
                 return zPŘESUN + neighbor.getName() + nVÝHRA;
-            }
-            else {
-                return nARTHUR_ZŮSTAL + status();
-            }
         }
 
         // Standardní přesun
