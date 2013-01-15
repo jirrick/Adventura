@@ -21,12 +21,13 @@ import java.util.List;
  * které mohou hráči pomoci v dosažení cíle hry.
  *
  * @author Jiří HUDEC
- * @version 0.1
+ * @version 2013.01.15
  */
 public enum Place implements IPlace
 {
     Louka(
-    "Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou stavební technikou.",
+    "Louka nedaleko od Arturova domu, dnes mimořádně okupovaná\ntěžkou" +
+    "stavební technikou.",
     new String[] {mULICE},
     HEAVY + oSTROM, HEAVY + oNÁKLAĎÁK, HEAVY + oBULDOZER, oKVĚTINA, oKÁMEN),
     Vogonská_loď("Vogonská těžební loď - vaše zkáza a zároveň záchrana.",
@@ -38,10 +39,12 @@ public enum Place implements IPlace
             new String[] {mULICE},
             oŽIDLE, oSKLENICE, PERSON + jBARMAN + PERSON + "35"),
     Zahrada(
-    "Zahrada u Arhturova domu, toho času okupovaná stavební technikou\nsnažící se mu ten dům zbourat.",
+    "Zahrada u Arhturova domu, toho času okupovaná stavební technikou\n" +
+    "snažící se mu ten dům zbourat.",
     new String[] {mULICE, mDŮM},
-    HEAVY + oBULDOZER, HEAVY + oBLÁTO, oKVĚTINA, PERSON + jARTHUR + PERSON + "024",
-    PERSON + jPROSSER + PERSON + "1" ),
+    HEAVY + oBULDOZER, HEAVY + oBLÁTO, oKVĚTINA, PERSON + jARTHUR + PERSON +
+                                                 "024",
+    PERSON + jPROSSER + PERSON + "1"),
     Dům("Arthurův dům, už tři čtvrtě roku naplánován k demolici.",
         new String[] {mZAHRADA},
         oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oPĚTILIBROVKA, oHRNEK, oTALÍŘ,
@@ -294,7 +297,8 @@ public enum Place implements IPlace
         return result;
     }
 
-     /**
+
+    /**
      * *************************************************************************
      * Vrací požadovanou osobu z prostoru. Pokud osoba v prostoru není vrací
      * {@code null}

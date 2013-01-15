@@ -6,7 +6,9 @@ import cz.vse.adv_framework.game_txt.INamed;
 import cz.vse.adv_framework.game_txt.IObject;
 
 
-/*******************************************************************************
+
+/**
+ * *****************************************************************************
  * Instance třídy {@code Something} přestavují objekty v místnostech.
  * Objekty mohou být jak věci, tak i osoby či jiné skutečnosti (vůně,
  * světlo, fluidum, ...).
@@ -21,22 +23,24 @@ import cz.vse.adv_framework.game_txt.IObject;
  * prostoru, do kterého se "vstupuje" např. příkazem "prozkoumej truhlu"
  * a který se opouští např. příkazem "zavři truhlu".
  *
- * @author    Rudolf PECINOVSKÝ
- * @version   0.00.000
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class Thing implements IObject, INamed
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
 //== VARIABLE CLASS ATTRIBUTES =================================================
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-
-    /** Název objektu. */
+    /**
+     * Název objektu.
+     */
     private final String name;
 
-    /** Váha objektu. U nezvednutelných objektů
-     *  musí být větší než kapacita batohu. */
+    /**
+     * Váha objektu. U nezvednutelných objektů
+     * musí být větší než kapacita batohu.
+     */
     private final int weight;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
@@ -45,31 +49,30 @@ public class Thing implements IObject, INamed
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-      /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří nový objekt se zadaným názvem
      * a vahou odvozenou od prvního znaku názvu.
      *
-     * @param name   Název vytvářeného objektu
+     * @param name Název vytvářeného objektu
      */
     public Thing(String name)
     {
         if (name.charAt(0) == HEAVY) {
-                this.name   = name.substring(1);
-                this.weight = Integer.MAX_VALUE;
+            this.name = name.substring(1);
+            this.weight = Integer.MAX_VALUE;
         }
         else {
-                this.name   = name;
-                this.weight = 1;
+            this.name = name;
+            this.weight = 1;
         }
     }
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
-
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí název dané instance.
      *
      * @return Název instance
@@ -81,7 +84,8 @@ public class Thing implements IObject, INamed
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vrátí váhu objektu, resp. charakteristiku jí odpovídající.
      * Objekty, které není možno zvednout, vrací -1.
      *
@@ -93,7 +97,6 @@ public class Thing implements IObject, INamed
     {
         return weight;
     }
-
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
@@ -112,3 +115,5 @@ public class Thing implements IObject, INamed
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main( String[] args )  {  test();  }
 }
+
+

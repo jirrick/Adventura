@@ -7,14 +7,16 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zPRÁZDNÝ_PŘÍKAZ;
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zUVÍTÁNÍ;
 
 
-/*******************************************************************************
+
+/**
+ * *****************************************************************************
  * Instance třídy {@code CommandStart} realizuje reakci aplikace
  * na startovací příkaz, který spouští hru.
  * Tento příkaz je možné zadat pouze tehdy, není-li hra již spuštěna.
  * Po ukončení hry jej lze ale zadat znovu a tak hru znovu odstartovat.
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 12.01
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandStart extends ACommand
 {
@@ -25,11 +27,10 @@ public class CommandStart extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     public CommandStart()
@@ -38,12 +39,11 @@ public class CommandStart extends ACommand
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda realizující reakci hry na zadání daného příkazu.
      * Počet parametrů je závislý na konkrétním příkazu,
      * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
@@ -63,14 +63,13 @@ public class CommandStart extends ACommand
         }
         //Inicializuje příkazy, prostory i batoh
         ACommand.initializeCommands();
-        Place    .initializePlaces();
+        Place.initializePlaces();
         Bag.getInstance().initialize();
         ConditionManager.getInstance().initialize();
         Game.getInstance().setAlive(true);
         Person.findArthurBarman();
         return zUVÍTÁNÍ + status();
     }
-
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
@@ -88,3 +87,5 @@ public class CommandStart extends ACommand
 //    /** @param args Parametry příkazového řádku - nepoužívané. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

@@ -11,8 +11,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * *****************************************************************************
  * Instance třídy {@code CommandNastraz} představují ...
  *
- * @author jméno autora
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandPromluv extends ACommand
 {

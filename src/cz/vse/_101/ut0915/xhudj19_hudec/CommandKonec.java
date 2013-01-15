@@ -5,11 +5,12 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Instances of class {@code CommandKonec} represent ...
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandKonec extends ACommand
 {
@@ -20,11 +21,10 @@ public class CommandKonec extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     public CommandKonec()
@@ -33,12 +33,11 @@ public class CommandKonec extends ACommand
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda realizující reakci hry na zadání daného příkazu.
      * Počet parametrů je závislý na konkrétním příkazu,
      * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
@@ -57,7 +56,6 @@ public class CommandKonec extends ACommand
     }
 
 
-
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
@@ -73,3 +71,5 @@ public class CommandKonec extends ACommand
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

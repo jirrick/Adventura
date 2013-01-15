@@ -11,8 +11,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * *****************************************************************************
  * Instances of class {@code CommandArthur} represent ...
  *
- * @author Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandArthur extends ACommand
 {
@@ -63,12 +63,12 @@ public class CommandArthur extends ACommand
                 case "následuj":
                     result = nARTHUR_SLEDUJE;
                     condMan.setValue(Condition.ARTHUR_FOLLOWS,
-                                Boolean.TRUE);
+                                     Boolean.TRUE);
                     break;
                 case "stůj":
                     result = nARTHUR_STŮJ;
                     condMan.setValue(Condition.ARTHUR_FOLLOWS,
-                                Boolean.FALSE);
+                                     Boolean.FALSE);
                     break;
                 default:
                     result = nART_NEZNÁM_PŘÍIKAZ;

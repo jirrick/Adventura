@@ -14,8 +14,8 @@ import java.util.Collection;
  * *****************************************************************************
  * Instances of class {@code Person} represent ...
  *
- * @author Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class Person implements INamed
 {
@@ -42,26 +42,30 @@ public class Person implements INamed
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 
-    public static Person getArthur(){
+    public static Person getArthur()
+    {
         return arthur;
     }
 
-    public static Person getBarman(){
+
+    public static Person getBarman()
+    {
         return barman;
     }
 
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
-    public static void findArthurBarman(){
+    public static void findArthurBarman()
+    {
         for (Place place : Place.values()) {
             Person temp;
             temp = place.getPerson("Arthur");
-            if (temp != null){
+            if (temp != null) {
                 arthur = temp;
             }
 
             temp = place.getPerson("Barman");
-            if (temp != null){
+            if (temp != null) {
                 barman = temp;
             }
         }
@@ -69,6 +73,7 @@ public class Person implements INamed
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
+
     /**
      * *************************************************************************
      * Vytvoří novou osobu se zadaným názvem
@@ -83,12 +88,13 @@ public class Person implements INamed
             // input[0] by mělo být prázdné
             this.name = input[1];
             char[] dialog = input[2].toCharArray();
-            for (char d : dialog){
+            for (char d : dialog) {
                 if ((d >= '0') && (d <= '9')) {
                     dialogues.add(Character.getNumericValue(d));
                 }
             }
-        } else {
+        }
+        else {
             this.name = name.substring(1);
         }
     }

@@ -14,8 +14,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * Instance by mohla být definována jako jedináček,
  * ale v dané aplikaci svěřuje tuto starost do ruhou správce příkazů.
  *
- * @author Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandJdi extends ACommand
 {
@@ -86,16 +86,16 @@ public class CommandJdi extends ACommand
                 Person.getArthur().getObject(oRUČNÍK) == null) {
                 return nCHYBÍ_RUČNÍK + status();
             }
-            if (Bag.getInstance().getObject(oPRŮVODCE) == null)  {
+            if (Bag.getInstance().getObject(oPRŮVODCE) == null) {
                 return nCHYBÍ_PRŮVODCE + status();
             }
             if ((Bag.getInstance().getObject(oPALEC) == null) ||
-                Bag.getInstance().getObject(oPŘÍJMAČ) == null) {
+                Bag.getInstance().getObject(oPŘIJÍMAČ) == null) {
                 return nCHYBÍ_VYBAVENÍ + status();
             }
             Place.setCurrentPlace(neighbor);
-                Game.getInstance().stop();
-                return zPŘESUN + neighbor.getName() + nVÝHRA;
+            Game.getInstance().stop();
+            return zPŘESUN + neighbor.getName() + nVÝHRA;
         }
 
         // Standardní přesun

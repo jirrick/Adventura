@@ -11,8 +11,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * *****************************************************************************
  * Instances of class {@code CommandPrůvodce} represent ...
  *
- * @author Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandPrůvodce extends ACommand
 {
@@ -57,6 +57,12 @@ public class CommandPrůvodce extends ACommand
                         break;
                     case "průvodce":
                         result = nPRŮVODCE_PRŮVODCE;
+                        break;
+                    case "palec":
+                        result = nPRŮVODCE_PALEC;
+                        break;
+                    case "přijímač":
+                        result = nPRŮVODCE_PŘIJÍMAČ;
                         break;
                     case ".":
                         condMan.setValue(Condition.HITCHHIKERS_GUIDE_ACTIVE,

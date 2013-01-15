@@ -11,34 +11,36 @@ import javax.swing.JOptionPane;
 
 
 
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Třída {@code MainRUP} je hlavní třídou projektu
  * zprostředkující komunikaci mezi uživatelem a hrou.
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public final class Main
 {
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Metoda startující aplikaci je podle parametrů příkazového řádku
      * schopna spustit aplikaci v jednom ze tří režimů:
-     *  <ul>
-     *    <li>Nejsou-li zadány parametry nebo je-i zadán parametr {@code -win},
-     *      spustí se hra v okenním režimu komunikujícím prostřednictvím
-     *      jednoduchých dialogových oken.
-     *      <br>&nbsp;</li>
-     *    <li>Parametr {@code -cmd} spouští hru v režimu komunikujícím
-     *      s uživatelem prostřednictvím standardního vstupu a výstupu &ndash;
-     *      typicky prostřednictvím konzoly.
-     *      <br>&nbsp;</li>
-     *    <li>Parametr {@code -file} spouští hru v režimu
-     *      zapisujícím zprávy uživateli na standardní výstup a
-     *      čtoucím vstupní příkazy za zadaného souboru,
-     *      který musí být zadán za tímto parametrem;
-     *      přesněji za následující mezerou.
-     *      Cesta k souboru může být zadána absolutně i relativně.
-     *      <br>&nbsp;</li>
+     * <ul>
+     * <li>Nejsou-li zadány parametry nebo je-i zadán parametr {@code -win},
+     * spustí se hra v okenním režimu komunikujícím prostřednictvím
+     * jednoduchých dialogových oken.
+     * <br>&nbsp;</li>
+     * <li>Parametr {@code -cmd} spouští hru v režimu komunikujícím
+     * s uživatelem prostřednictvím standardního vstupu a výstupu &ndash;
+     * typicky prostřednictvím konzoly.
+     * <br>&nbsp;</li>
+     * <li>Parametr {@code -file} spouští hru v režimu
+     * zapisujícím zprávy uživateli na standardní výstup a
+     * čtoucím vstupní příkazy za zadaného souboru,
+     * který musí být zadán za tímto parametrem;
+     * přesněji za následující mezerou.
+     * Cesta k souboru může být zadána absolutně i relativně.
+     * <br>&nbsp;</li>
      * </ul>
      *
      *
@@ -51,29 +53,32 @@ public final class Main
             winIO();
         }
         else {
-            switch (args[0])
-            {
+            switch (args[0]) {
                 case "-win":    //Komunikace prostřednictvím jednoduchých oken
-                                winIO();    break;
+                    winIO();
+                    break;
 
                 case "-std":    //Komunikace prostřednictvím standardního
-                                //vstupu a výstupu
-                                stdIO();    break;
+                    //vstupu a výstupu
+                    stdIO();
+                    break;
 
                 case "-file":   //Vstup příkazů ze zadaného souboru,
-                                //odpovědi hry posílané na standardní výstup
-                                fileInStdOut(args); break;
+                    //odpovědi hry posílané na standardní výstup
+                    fileInStdOut(args);
+                    break;
 
                 default:        //Špatně zadaný parametr
                     throw new RuntimeException(
-                            "\nNeznámý argument "  +  args[0]);
+                            "\nNeznámý argument " + args[0]);
             }
         }
         System.exit(0);
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Komunikuje s uživatelem prostřednictvím jednoduchých dialogových oken
      * poskytovaných třídou {@link JOptionPane}.
      */
@@ -86,12 +91,12 @@ public final class Main
         frame.setLocation(-1000, 500);  //Pozice, kde se budou okna zobrazovat
         frame.setVisible(true);
 
-        Game game    = Game.getInstance();
-        String  command = "";   //Startovací příkaz
+        Game game = Game.getInstance();
+        String command = "";   //Startovací příkaz
         for (;;) {
             //Zadá hře příkaz a převezme odpověď
             String answer = game.executeCommand(command);
-            if (! game.isAlive()) {
+            if (!game.isAlive()) {
                 //Hra je ukončena => poděkuje za hru a rozloučí se
                 JOptionPane.showMessageDialog(frame, answer);
                 break;
@@ -102,7 +107,8 @@ public final class Main
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Komunikuje s uživatelem prostřednictvím standardního vstupu a výstupu.
      */
     private static void stdIO()
@@ -112,7 +118,8 @@ public final class Main
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Očekává za svým spouštěcím parametrem cestu k souboru
      * se zadanými vstupními příkazy; své odpovědi posílá na standardní výstup.
      *
@@ -125,7 +132,8 @@ public final class Main
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Vytvoří scanner čtoucí příkazy ze souboru zadaného v příkazovém řádku.
      *
      * @param args Parametry příkazového řádku
@@ -137,20 +145,21 @@ public final class Main
             throw new RuntimeException(
                     "\nNebyl zadán název souboru");
         }
-        File    file = new File(args[1]);
+        File file = new File(args[1]);
         Scanner scanner;
         try {
             scanner = new Scanner(file);
         }
         catch (FileNotFoundException ex) {
             throw new RuntimeException(
-                "\nNepodařilo se otevřít zadaný soubor: " + file, ex );
+                    "\nNepodařilo se otevřít zadaný soubor: " + file, ex);
         }
-        return  scanner;
+        return scanner;
     }
 
 
-    /***************************************************************************
+    /**
+     * *************************************************************************
      * Spustí komunikaci s uživatelem, která bude
      * číst příkazy uživatele prostřednictvím zadaného scanneru
      * a posílat odpovědi hry na standardní výstup.
@@ -159,13 +168,13 @@ public final class Main
      */
     private static void useScanner(Scanner scanner)
     {
-        Game game    = Game.getInstance();
-        String  command = "";   //Startovací příkaz
+        Game game = Game.getInstance();
+        String command = "";   //Startovací příkaz
         for (;;) {
             //Zadá hře příkaz a převezme odpověď
             String answer = game.executeCommand(command);
             System.out.println(answer);     //Zobrazí odpověď hry
-            if (! game.isAlive()) {
+            if (!game.isAlive()) {
                 return;
             }
             command = scanner.nextLine();   //Přečte další příkaz uživatele
@@ -173,6 +182,14 @@ public final class Main
     }
 
 
-    /** Soukromý konstruktor bránící vytvoření dalších instancí. */
-    private Main() {}
+    /**
+     * Soukromý konstruktor bránící vytvoření dalších instancí.
+     */
+    private Main()
+    {
+    }
+
+
 }
+
+

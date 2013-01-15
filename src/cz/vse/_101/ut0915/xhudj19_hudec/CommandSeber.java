@@ -14,8 +14,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * Instance by mohla být definována jako jedináček,
  * ale v dané aplikaci svěřuje tuto starost do ruhou správce příkazů.
  *
- * @author Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandSeber extends ACommand
 {
@@ -72,8 +72,9 @@ public class CommandSeber extends ACommand
         if (Bag.getInstance().add(thing)) {
             currentPlace.remove(thing);
             return zZVEDNUTO + thing.getName() + status();
-        } else {
-        return zBATOH_PLNÝ + thing.getName() + status();
+        }
+        else {
+            return zBATOH_PLNÝ + thing.getName() + status();
         }
     }
 

@@ -5,11 +5,14 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zNÁPOVĚDA;
 
-/*******************************************************************************
+
+
+/**
+ * *****************************************************************************
  * Instances of class {@code CommandNápověda} represent ...
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandNápověda extends ACommand
 {
@@ -20,11 +23,10 @@ public class CommandNápověda extends ACommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     public CommandNápověda()
@@ -33,11 +35,10 @@ public class CommandNápověda extends ACommand
     }
 
 
-
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
-      @Override
+    @Override
     public String execute(String... arguments)
     {
         return zNÁPOVĚDA + status();
@@ -57,3 +58,5 @@ public class CommandNápověda extends ACommand
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

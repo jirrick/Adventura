@@ -19,7 +19,7 @@ import java.util.EnumMap;
  * odděleny od hlavní herní logiky.
  *
  * @author Jiří HUDEC
- * @version 0.01.000
+ * @version 2013.01.15
  */
 public final class ConditionManager
 {
@@ -99,7 +99,7 @@ public final class ConditionManager
     public int getTimeLeft()
     {
         return 120 - ((int) Math.abs((new Date().getTime() / 1000) -
-                               (timeOfActivation.getTime() / 1000)));
+                                     (timeOfActivation.getTime() / 1000)));
     }
 
 

@@ -5,30 +5,16 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 
 
-
-
-/*******************************************************************************
+/**
+ * *****************************************************************************
  * Instances of enumerated type {@code Condition} represents ...
  *
- * @author  Rudolf PECINOVSKÝ
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public enum Condition
 {
 //== VALUES OF THE ENUMERATION TYPE ============================================
-//
-//    DIALOG_A_POSSIBLE,
-//    DIALOG_A_DONE,
-//    DIALOG_B_POSSIBLE,
-//    DIALOG_B_DONE,
-//    DIALOG_C_POSSIBLE,
-//    DIALOG_C_DONE,
-//    DIALOG_D_POSSIBLE,
-//    DIALOG_D_DONE,
-//    DIALOG_E_POSSIBLE,
-//    DIALOG_E_DONE,
-//    DIALOG_F_POSSIBLE,
-//    DIALOG_F_DONE,
     ARTHUR_CAN_FOLLOW,
     ARTHUR_FOLLOWS,
     FORD_CAN_BUY_BEERS,
@@ -36,9 +22,7 @@ public enum Condition
     FORD_DRANK_BEER,
     TURN_COUNTDOWN_RUNNING,
     TIMER_RUNNING,
-    HITCHHIKERS_GUIDE_ACTIVE
-    ;
-
+    HITCHHIKERS_GUIDE_ACTIVE;
 
 
 //== CONSTANT CLASS ATTRIBUTES =================================================
@@ -48,17 +32,15 @@ public enum Condition
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
-
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-
-    /***************************************************************************
+    /**
+     * *************************************************************************
      *
      */
     private Condition()
     {
     }
-
 
 
 //== ABSTRACT METHODS ==========================================================
@@ -78,3 +60,5 @@ public enum Condition
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }
 }
+
+

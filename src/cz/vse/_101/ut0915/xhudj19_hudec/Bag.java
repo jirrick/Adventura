@@ -14,7 +14,7 @@ import java.util.Collection;
  * odkládají objekty sebrané v jednotlivých prostorech.
  *
  * @author Jiří HUDEC
- * @version 0.1
+ * @version 2013.01.15
  */
 public final class Bag implements IBag
 {
@@ -134,7 +134,9 @@ public final class Bag implements IBag
         return true;
     }
 
-    /***************************************************************************
+
+    /**
+     * *************************************************************************
      * Odebere zadaný objekt z tašky.
      *
      * @param thing Odebíraný objekt
@@ -143,6 +145,7 @@ public final class Bag implements IBag
     {
         objects.remove(thing);
     }
+
 
     /**
      * *************************************************************************
@@ -153,7 +156,7 @@ public final class Bag implements IBag
         objects.clear();
         objects.add(new Thing(oPALEC));
         objects.add(new Thing(oPRŮVODCE));
-        objects.add(new Thing(oPŘÍJMAČ));
+        objects.add(new Thing(oPŘIJÍMAČ));
         objects.add(new Thing(oSCÉNÁŘ));
         objects.add(new Thing(oRUČNÍK));
         objects.add(new Thing(oPĚTILIBROVKA));

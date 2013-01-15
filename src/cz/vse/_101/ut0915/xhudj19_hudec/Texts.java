@@ -13,7 +13,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
  * budou doopravdy shodné.
  *
  * @author Jiří HUDEC
- * @version 0.01.000
+ * @version 2013.01.15
  */
 public final class Texts
 {
@@ -84,7 +84,7 @@ public final class Texts
             oKÁMEN = "Kámen",
             oPALEC = "Palec",
             oPRŮVODCE = "Průvodce",
-            oPŘÍJMAČ = "Příjmač",
+            oPŘIJÍMAČ = "Přijímač",
             oSCÉNÁŘ = "Scénář",
             oPĚTILIBROVKA = "Pětilibrovka";
 
@@ -172,7 +172,7 @@ public final class Texts
                                           "",
                                           cat(oSTROM, oNÁKLAĎÁK, oBULDOZER,
                                               oKVĚTINA, oKÁMEN),
-                                          cat(oPALEC, oPRŮVODCE, oPŘÍJMAČ,
+                                          cat(oPALEC, oPRŮVODCE, oPŘIJÍMAČ,
                                               oSCÉNÁŘ, oRUČNÍK,
                                               oPĚTILIBROVKA,
                                               oPĚTILIBROVKA)),
@@ -217,6 +217,15 @@ public final class Texts
             "\nvýhody. \n Jednak je o neco levnejší," +
             "\na predevším má na obálce velký vlídný nápis:" +
             "\n\n NEPROPADEJTE PANICE." + nPRŮVODCE_RETURN,
+            nPRŮVODCE_PALEC =
+            "\nElektronický palec slouží k stopování vesmírných lodí." +
+            "\nJedná se o krátký a tlustý černý váleček s hebkým," +
+            "\nmatným povrchem a několika vypínači a ciferníky na jednom konci." +
+            nPRŮVODCE_RETURN,
+            nPRŮVODCE_PŘIJÍMAČ =
+            "\nSenzomatický subéterový přijímač zjišťuje přítomnost" +
+            "\nvesmírných lodí. Bez něj by bylo stopování ve vesmíru o" +
+            "\nmnoho složitější." + nPRŮVODCE_RETURN,
             nPRŮVODCE_RUČNÍK = "\nRučník je skutečně kolosálně užitečná " +
                                "součást výbavy hvězdného stopaře." +
                                "\nPředevším má značnou praktickou cenu -" +
@@ -246,10 +255,10 @@ public final class Texts
             nPALEC =
             "\nPoužil jsi elektronický palec pro stopování vesmírných lodí." +
             "\nNěkterá by vás měla být ochotná přijmout.",
-            nPŘÍJMAČ =
-            "\nSenzomatický subéterový příjmač pípá čím dál tím rychleji.\n" +
+            nPŘIJÍMAČ =
+            "\nSenzomatický subéterový přijímač pípá čím dál tím rychleji.\n" +
             "Vogonské lodě se pomalu, ale jistě blíží.",
-             nSCÉNÁŘ =
+            nSCÉNÁŘ =
             "\nProlistoval jsi scénář ke hře Bohem zakletý, který s sebou" +
             "\nstále nosíš, protože předstířáš, že jsi nezaměstnaný herec." +
             "\nPravděpodobně ho už nebudš potřebovat.",
@@ -282,98 +291,106 @@ public final class Texts
             nCHYBÍ_RUČNÍK = "\nBez ručníku nemůžeš stopovat.",
             nCHYBÍ_PRŮVODCE = "\nNěkde jsi nechal Stopařova průvodce Galaxií.",
             nCHYBÍ_VYBAVENÍ = "\nKe stopování potřebuješ elektronický palec" +
-            "\na subéterický příjmač.";
+                              "\na subéterický příjmač.";
 
     /**
      * Texty rozhovorů.
      */
     public static final String[] rozhovory = {
-        rozhovorFormat(jFORD, "Ahoj Arthure.") +
-        rozhovorFormat(jARTHUR, "Forde, ahoj, jak se vede?")+
-        rozhovorFormat(jFORD, "Fajn. Hele máš teď něco na práci?")+
-        rozhovorFormat(jARTHUR, "No jenom musím ležet před všemi tad těmi " +
-        "\nbuldozery a tak dál, protože když to neudělám, tak mi zbourají dům,"
-        + "\nale jinak vlastně ani ne. Proč?")+
-        rozhovorFormat(jFORD, "Musíme si promluvit, a něčeho se napít. " +
-        "\nJe to strašně důležitý, teď hned. Zajdeme do hospody ve vesnici.")+
-        rozhovorFormat(jARTHUR, "Hele, copak to nechápeš?!" +
-        "\nTenhle chlap, Prosser, mi chce zbourat barák!")+
-        rozhovorFormat(jFORD, "Určitě to nějak vyřešíme."),
-
-        rozhovorFormat(jFORD, "Haló, promiňte, že ruším.") +
-        rozhovorFormat(jPROSSER, "Ano, copak? Už pan Dent přišel k rozumu?") +
-        rozhovorFormat(jFORD, "Mohli bychom pro danou chníli předpokládat," +
-        "\nže nepřišel? A mohli bysme předpokládat, že tady hodlá zůstat celý" +
-        "\nden? Takže vaši lidé tu budou celý den postávat a nedělat nic?") +
-        rozhovorFormat(jPROSSER, "Mno, to by mohlo být...") +
-        rozhovorFormat(jFORD, "No a když jste se s tím už jednou smířil," +
-        "\ntak vlastně pana Denta nepotřebujete, aby tady celou dobu" +
-        "\nležel, ne?") +
-        rozhovorFormat(jPROSSER, "Cože?") +
-        rozhovorFormat(jFORD, "Vy ho tu vlastně nepotřebujete. Takže kdybyste" +
-        "\nbyl ochoten přistoupit na to, že tady v podstatě je, mohl bych si" +
-        "\ns ním odskočit na půlhodinku do hospody. Co vy na to?") +
-        rozhovorFormat(jPROSSER, "Zní to docela rozumně...") +
-        rozhovorFormat(jFORD, "Takže kdybyste laskavě šel sem a tady si lehl" +
-        "\nmísto pana Denta, aby někdo ležel před těmi buldozery.") +
-        rozhovorFormat(jPROSSER, "Cože?") +
-        rozhovorFormat(jFORD, "Je to uplně jednoduché. Můj klient, pan Dent," +
-        "\nříká, že se tu přestane válet v blátě výhradně pod podmínkou," +
-        "\nže ho vystřídáte."),
-
-        rozhovorFormat(jFORD, "Tak dělej, vstávej, ať si tam může lehnout.") +
-        rozhovorFormat(jARTHUR, "Už vstávám.")+
-        rozhovorFormat(jFORD, "A ne abyste tady zatím panu Dentovi poťouchle" +
-        "\nzbourali dům, když bude pryč, jasný?")+
-        rozhovorFormat(jPROSSER, "Pomyšlení na něco takového ještě ani" +
-        "\nnezačalo uvažovat o pouhé možnosti vstoupit mi na mysl.")+
-        rozhovorFormat(jARTHUR, "Dá se mu vůbgec věřit?")+
-        rozhovorFormat(jFORD, "Já osobně bych mu důvěřoval až do konce světa.")+
-        rozhovorFormat(jARTHUR, "To znamená jak asi dlouho?")+
-        rozhovorFormat(jFORD, "Asi tak dvanáct minut. Tak pojď honem," +
-        "\npotřebuju se napít."),
-
-        rozhovorFormat(jFORD,
-                       "Dva kousky hořkého, ale rychle, bude konec světa.") +
-        rozhovorFormat(jBARMAN, "Myslíte, pane? Máme na to dnes hezky." +
-        "\nPůjdete odpoledne na fotbal?") +
-        rozhovorFormat(jFORD, "Ne, nemá to smysl.") +
-        rozhovorFormat(jBARMAN, "Copak, to si myslíte, že Arsenal nemá šanci?") +
-        rozhovorFormat(jFORD, "Nene, prostě jenom bude konec světa.") +
-        rozhovorFormat(jBARMAN, "To by se Arsenalu náramně hodilo."),
-
-        rozhovorFormat(jFORD, "Dělej, pij, máš tu pivo.") +
-        rozhovorFormat(jARTHUR, "Pivo? Jen tak v poledne? A proč?") +
-        rozhovorFormat(jFORD, "Uvolňuje svalový tonus, budeš to potřebovat") +
-        rozhovorFormat(jARTHUR, "Udělal jsem dneska něco špatně," +
-        "\nnebo byl svět vždycky takovýhle, a já to jenom neviděl?") +
-        rozhovorFormat(jFORD, "Tak dobře, pokusím se ti to vysvětlit." +
-        "\nJak bys reagoval, kdybych ti řekl, že nejsem z Guildfordu," +
-        "\nale z jedné malé planetky kdesi v okolí Betelgeuze?") +
-        rozhovorFormat(jARTHUR, "Nevím. Myslíš, že je pravděpodobné, že něco" +
-        "\ntakového řekneš?") +
-        rozhovorFormat(jFORD, "Tohle nemá cenu. Dopij to. Bude konec světa.") +
-        rozhovorFormat(jARTHUR, "Dneska je určitě čtvrtek. " +
-        "\nJá ty čtvrtky prostě nezvládám.") +
-        rozhovorFormat(jFORD, "Máš s sebou ručník?") +
-        rozhovorFormat(jARTHUR, "Cože? Proč? Ne... Měl bych ho snad mít?"),
-
-        rozhovorFormat(jFORD, "Poprosil bych o balíček buráků.") +
-        rozhovorFormat(jBARMAN, "Momentíček...") +
-        rozhovorFormat(jARTHUR, "Co je to za hluk?") +
-        rozhovorFormat(jFORD, "Neboj, ještě nezačli.") +
-        rozhovorFormat(jARTHUR, "Zaplať Pánbu.") +
-        rozhovorFormat(jFORD, "To asi jenom boří tvůj dům..") +
-        rozhovorFormat(jARTHUR, "Proboha! Taky že jo! Boří mi dům!\n" +
-        "Co sakra dělám v hospodě?") +
-        rozhovorFormat(jFORD, "V tomhle stádiu už je to jedno. Jen je nech," +
-        "\nať si užijou trochu legrace.") +
-        rozhovorFormat(jBARMAN, "28 pencí, kdybyste byl tak laskav.") +
-        rozhovorFormat(jARTHUR, "Legrace? Legrace! Nechte toho, vy vandalové!") +
-        rozhovorFormat(jBARMAN, "Myslíte to vážně, pane, že bude konec světa?") +
-        rozhovorFormat(jFORD, "Ano, odhaduju to tak na dvě minuty.") +
-        rozhovorFormat(jBARMAN, "A můžeme s tím něco udělat?") +
-        rozhovorFormat(jFORD, "Ne, to ne.")
+        formátuj(jFORD, "Ahoj Arthure.") +
+        formátuj(jARTHUR, "Forde, ahoj, jak se vede?") +
+        formátuj(jFORD, "Fajn. Hele máš teď něco na práci?") +
+        formátuj(jARTHUR, "No jenom musím ležet před všemi tad těmi " +
+                          "\nbuldozery a tak dál, protože když to neudělám," +
+                          "\ntak mi zbourají dům," +
+                          "\nale jinak vlastně ani ne. Proč?") +
+        formátuj(jFORD,
+                 "Musíme si promluvit, a něčeho se napít. " +
+                 "\nJe to strašně důležitý, teď hned. Zajdeme do hospody" +
+                 "\nve vesnici.") +
+        formátuj(jARTHUR, "Hele, copak to nechápeš?!" +
+                          "\nTenhle chlap, Prosser, mi chce zbourat barák!") +
+        formátuj(jFORD, "Určitě to nějak vyřešíme."),
+        formátuj(jFORD, "Haló, promiňte, že ruším.") +
+        formátuj(jPROSSER, "Ano, copak? Už pan Dent přišel k rozumu?") +
+        formátuj(jFORD, "Mohli bychom pro danou chníli předpokládat," +
+                        "\nže nepřišel? A mohli bysme předpokládat, že tady" +
+                        "\nhodlá zůstat celý" +
+                        "\nden? Takže vaši lidé tu budou celý den postávat a" +
+                        "\nnedělat nic?") +
+        formátuj(jPROSSER, "Mno, to by mohlo být...") +
+        formátuj(jFORD,
+                 "No a když jste se s tím už jednou smířil," +
+                 "\ntak vlastně pana Denta nepotřebujete, aby tady celou" +
+                 "\ndobu" +
+                 "\nležel, ne?") +
+        formátuj(jPROSSER, "Cože?") +
+        formátuj(jFORD,
+                 "Vy ho tu vlastně nepotřebujete. Takže kdybyste" +
+                 "\nbyl ochoten přistoupit na to, že tady v podstatě je," +
+                 "\nmohl bych si" +
+                 "\ns ním odskočit na půlhodinku do hospody. Co vy na to?") +
+        formátuj(jPROSSER, "Zní to docela rozumně...") +
+        formátuj(jFORD, "Takže kdybyste laskavě šel sem a tady si lehl" +
+                        "\nmísto pana Denta, aby někdo ležel před těmi" +
+                        "buldozery.") +
+        formátuj(jPROSSER, "Cože?") +
+        formátuj(jFORD, "Je to uplně jednoduché. Můj klient, pan Dent," +
+                        "\nříká, že se tu přestane válet v blátě výhradně pod" +
+                        "\npodmínkou, že ho vystřídáte."),
+        formátuj(jFORD, "Tak dělej, vstávej, ať si tam může lehnout.") +
+        formátuj(jARTHUR, "Už vstávám.") +
+        formátuj(jFORD, "A ne abyste tady zatím panu Dentovi poťouchle" +
+                        "\nzbourali dům, když bude pryč, jasný?") +
+        formátuj(jPROSSER, "Pomyšlení na něco takového ještě ani" +
+                           "\nnezačalo uvažovat o pouhé možnosti vstoupit" +
+                           "\nmi na mysl.") +
+        formátuj(jARTHUR, "Dá se mu vůbgec věřit?") +
+        formátuj(jFORD, "Já osobně bych mu důvěřoval až do konce světa.") +
+        formátuj(jARTHUR, "To znamená jak asi dlouho?") +
+        formátuj(jFORD, "Asi tak dvanáct minut. Tak pojď honem," +
+                        "\npotřebuju se napít."),
+        formátuj(jFORD,
+                 "Dva kousky hořkého, ale rychle, bude konec světa.") +
+        formátuj(jBARMAN, "Myslíte, pane? Máme na to dnes hezky." +
+                          "\nPůjdete odpoledne na fotbal?") +
+        formátuj(jFORD, "Ne, nemá to smysl.") +
+        formátuj(jBARMAN, "Copak, to si myslíte, že Arsenal nemá šanci?") +
+        formátuj(jFORD, "Nene, prostě jenom bude konec světa.") +
+        formátuj(jBARMAN, "To by se Arsenalu náramně hodilo."),
+        formátuj(jFORD, "Dělej, pij, máš tu pivo.") +
+        formátuj(jARTHUR, "Pivo? Jen tak v poledne? A proč?") +
+        formátuj(jFORD, "Uvolňuje svalový tonus, budeš to potřebovat") +
+        formátuj(jARTHUR, "Udělal jsem dneska něco špatně," +
+                          "\nnebo byl svět vždycky takovýhle, a já to" +
+                          "\njenom neviděl?") +
+        formátuj(jFORD, "Tak dobře, pokusím se ti to vysvětlit." +
+                        "\nJak bys reagoval, kdybych ti řekl, že nejsem z" +
+                        "\nGuildfordu, ale z jedné malé planetky kdesi" +
+                        "\nv okolí Betelgeuze?") +
+        formátuj(jARTHUR, "Nevím. Myslíš, že je pravděpodobné, že něco" +
+                          "\ntakového řekneš?") +
+        formátuj(jFORD, "Tohle nemá cenu. Dopij to. Bude konec světa.") +
+        formátuj(jARTHUR, "Dneska je určitě čtvrtek. " +
+                          "\nJá ty čtvrtky prostě nezvládám.") +
+        formátuj(jFORD, "Máš s sebou ručník?") +
+        formátuj(jARTHUR, "Cože? Proč? Ne... Měl bych ho snad mít?"),
+        formátuj(jFORD, "Poprosil bych o balíček buráků.") +
+        formátuj(jBARMAN, "Momentíček...") +
+        formátuj(jARTHUR, "Co je to za hluk?") +
+        formátuj(jFORD, "Neboj, ještě nezačli.") +
+        formátuj(jARTHUR, "Zaplať Pánbu.") +
+        formátuj(jFORD, "To asi jenom boří tvůj dům..") +
+        formátuj(jARTHUR, "Proboha! Taky že jo! Boří mi dům!\n" +
+                          "Co sakra dělám v hospodě?") +
+        formátuj(jFORD, "V tomhle stádiu už je to jedno. Jen je nech," +
+                        "\nať si užijou trochu legrace.") +
+        formátuj(jBARMAN, "28 pencí, kdybyste byl tak laskav.") +
+        formátuj(jARTHUR, "Legrace? Legrace! Nechte toho, vy vandalové!") +
+        formátuj(jBARMAN, "Myslíte to vážně, pane, že bude konec světa?") +
+        formátuj(jFORD, "Ano, odhaduju to tak na dvě minuty.") +
+        formátuj(jBARMAN, "A můžeme s tím něco udělat?") +
+        formátuj(jFORD, "Ne, to ne.")
     };
 
 
@@ -411,7 +428,7 @@ public final class Texts
      * @param fráze Její promluva
      * @return Výsledný řetězec
      */
-    static String rozhovorFormat(String osoba, String fráze)
+    static String formátuj(String osoba, String fráze)
     {
         return String.format("\n%s: „%s“", osoba, fráze);
     }

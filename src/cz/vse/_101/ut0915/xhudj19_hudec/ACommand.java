@@ -26,8 +26,8 @@ import java.util.Map;
  * kdy uživatel rozhovorB ukončí a objekt rozhovoru přepne hru zpět
  * do režimu klasických příkazů.
  *
- * @author Rudolf PECINOVSKÝ
- * @version 12.01
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public abstract class ACommand implements ICommand
 {

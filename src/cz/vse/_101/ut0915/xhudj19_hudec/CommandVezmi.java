@@ -11,8 +11,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * *****************************************************************************
  * Instance třídy {@code CommandVezmi} představují ...
  *
- * @author jméno autora
- * @version 0.00.0000 — 20yy-mm-dd
+ * @author Jiří HUDEC
+ * @version 2013.01.15
  */
 public class CommandVezmi extends ACommand
 {
@@ -53,13 +53,18 @@ public class CommandVezmi extends ACommand
         Person person = currentPlace.getPerson(personName);
         Thing thing;
 
-        if (person != null){
+        if (person != null) {
             thing = person.getObject(thingName);
-        } else {
+        }
+        else {
             return nOSOBA_NENÍ + status();
         }
 
-        if ((thing != null) && (person != null)) {
+        if (thing == null) {
+            return nOSOBA_NEMÁ_PŘEDMĚT + status();
+
+        }
+        else {
             if (thing.getWeight() > 1) {
                 return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
             }
@@ -71,10 +76,6 @@ public class CommandVezmi extends ACommand
             }
             return zBATOH_PLNÝ + status();
         }
-        if (thing == null) {
-            return nOSOBA_NEMÁ_PŘEDMĚT + status();
-        }
-        return zZANP + status();
     }
 
 
