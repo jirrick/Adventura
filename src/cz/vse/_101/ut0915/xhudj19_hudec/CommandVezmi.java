@@ -51,7 +51,13 @@ public class CommandVezmi extends ACommand
         Place currentPlace = Place.getCurrentPlace();
 
         Person person = currentPlace.getPerson(personName);
-        Thing thing = person.getObject(thingName);
+        Thing thing;
+
+        if (person != null){
+            thing = person.getObject(thingName);
+        } else {
+            return nOSOBA_NENÍ + status();
+        }
 
         if ((thing != null) && (person != null)) {
             if (thing.getWeight() > 1) {
@@ -67,9 +73,6 @@ public class CommandVezmi extends ACommand
         }
         if (thing == null) {
             return nOSOBA_NEMÁ_PŘEDMĚT + status();
-        }
-        if (person == null) {
-            return nOSOBA_NENÍ + status();
         }
         return zZANP + status();
     }
