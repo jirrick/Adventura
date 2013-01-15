@@ -57,10 +57,11 @@ public class CommandPromluv extends ACommand
             return nROZHOVOR_NENÍ + status();
         }
 
-        for (int dialogue : person.getDialogues()){
-            if (condMan.isDialoguePossible(dialogue)){
+        for (int dialogue : person.getDialogues()) {
+            if (condMan.isDialoguePossible(dialogue)) {
                 condMan.setDialogueDone(dialogue);
-                return nROZHOVOR_START + person.getName() + rozhovory[dialogue];
+                return nROZHOVOR_START + person.getName() + rozhovory[dialogue] +
+                       status();
             }
         }
 

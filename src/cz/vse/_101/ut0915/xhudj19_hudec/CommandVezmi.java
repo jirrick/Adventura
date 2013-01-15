@@ -63,7 +63,7 @@ public class CommandVezmi extends ACommand
                         nVZÍT_FORMÁT, person.getName(), thing.getName()) +
                        status();
             }
-            return zBATOH_PLNÝ + thing.getName() + status();
+            return zBATOH_PLNÝ + status();
         }
         if (thing == null) {
             return nOSOBA_NEMÁ_PŘEDMĚT + status();

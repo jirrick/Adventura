@@ -242,7 +242,7 @@ public final class Texts
             "která s ním interaguje",
             nOSOBA_NENÍ = "\nTato osoba v tomto prostoru není",
             nNEMÁTE_PŘEDMĚT = "\nTento předmět v tašce nemáte",
-            nOSOBA_NEMÁ_PŘEDMĚT = "\nTento předmět osoba v tašce nemá",
+            nOSOBA_NEMÁ_PŘEDMĚT = "\nTento předmět osoba v inventáři nemá",
             nPŘEDAT_FORMÁT = "\nPostavě %s jsi předal(a) předmět: %s",
             nVZÍT_FORMÁT = "\nOd postavy %s jsi převzal(a) předmět: %s",
             nVÝHRA = "\nGratuluji! Úspěšně jsi zachránil Arthura Denta!",
