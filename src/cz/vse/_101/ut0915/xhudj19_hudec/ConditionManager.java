@@ -164,8 +164,9 @@ public final class ConditionManager
     {
         canDoNextMove = !evaluateEarthDestruction();
         evaluateAfterDialogues();
-        evaluateCanBuyBeers();
+        evaluateCanBuy(Condition.FORD_CAN_BUY_BEERS, oPIVO);
         evaluateDialogueE();
+        evaluateCanBuy(Condition.FORD_CAN_BUY_NUTS, oBURÁKY);
     }
 
 
@@ -243,20 +244,25 @@ public final class ConditionManager
 
     /**
      * *************************************************************************
-     * Vyhodnotí, zda může Ford kouit piva.
+     * Vyhodnotí, zda může Ford kouit piva / buráky. Pokud ano, tak barman si
+     * schová peníze a přidá požadované přesměty do inventáře
+     *
+     * @param cond Vyhodnocovaná podmínka
+     * @param name Nakupovaný předmět
      */
-    private void evaluateCanBuyBeers()
+    private void evaluateCanBuy(Condition cond, String name)
     {
-        if (get(Condition.FORD_CAN_BUY_BEERS) &&
-            (Person.getBarman().
-             getObject(
-             oPĚTILIBROVKA) != null)) {
+        if (get(cond) &&
+            (Person.getBarman().getObject(oPĚTILIBROVKA) != null)) {
             Person barman = Person.getBarman();
             Thing money = barman.getObject(oPĚTILIBROVKA);
             barman.remove(money);
-            barman.add(new Thing(oPIVO));
-            barman.add(new Thing(oPIVO));
-            condMan.set(Condition.FORD_CAN_BUY_BEERS, Boolean.FALSE);
+            barman.add(new Thing(name));
+            //piva se musejí přidat dvě
+            if (name.equalsIgnoreCase(oPIVO)){
+                barman.add(new Thing(name));
+            }
+            condMan.set(cond, Boolean.FALSE);
         }
     }
 
