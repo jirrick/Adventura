@@ -66,6 +66,7 @@ public class CommandPoužij extends ACommand
                 case "pivo":
                     result = nPOUŽIJ_PIVO;
                     bag.remove(thing);
+                    condMan.set(Condition.FORD_DRANK_BEER, Boolean.TRUE);
                     break;
                 case "palec":
                     result = nPALEC;

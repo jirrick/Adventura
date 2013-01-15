@@ -39,9 +39,9 @@ public final class ConditionManager
     final static int END_OF_EARTH_TIMER = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
-    private boolean[] dialogue_possible = new boolean[6];
+    private boolean[] dialogue_possible = new boolean[7];
 
-    private boolean[] dialogue_done = new boolean[6];
+    private boolean[] dialogue_done = new boolean[7];
 
     private EnumMap<Condition, Boolean> conditions = new EnumMap<>(
             Condition.class);
@@ -163,8 +163,9 @@ public final class ConditionManager
     public void evaluateNextRound()
     {
         canDoNextMove = !evaluateEarthDestruction();
-        evaluateDialogues();
+        evaluateAfterDialogues();
         evaluateCanBuyBeers();
+        evaluateDialogueE();
     }
 
 
@@ -186,7 +187,7 @@ public final class ConditionManager
      * *************************************************************************
      * Vyhodnotí podmínky u rozhovorů.
      */
-    private void evaluateDialogues()
+    private void evaluateAfterDialogues()
     {
         for (int i = 0; i < 6; i++) {
             // rozhovor byl nedávno proveden
@@ -228,11 +229,25 @@ public final class ConditionManager
 
     /**
      * *************************************************************************
+     * Vyhodnotí, zda se může spustit rozhovor E.
+     */
+    private void evaluateDialogueE()
+    {
+        if ((dialogue_done[3]) &&
+            get(Condition.FORD_DRANK_BEER) &&
+            (Person.getArthur().getObject(oPIVO) != null)) {
+            dialogue_possible[4] = true;
+        }
+    }
+
+
+    /**
+     * *************************************************************************
      * Vyhodnotí, zda může Ford kouit piva.
      */
     private void evaluateCanBuyBeers()
     {
-        if (condMan.get(Condition.FORD_CAN_BUY_BEERS) &&
+        if (get(Condition.FORD_CAN_BUY_BEERS) &&
             (Person.getBarman().
              getObject(
              oPĚTILIBROVKA) != null)) {
