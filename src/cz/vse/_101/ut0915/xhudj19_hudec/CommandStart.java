@@ -65,6 +65,7 @@ public class CommandStart extends ACommand
         ACommand.initializeCommands();
         Place    .initializePlaces();
         Bag.getInstance().initialize();
+        ConditionManager.getInstance().initialize();
         Game.getInstance().setAlive(true);
         Person.findArthurBarman();
         return zUVÍTÁNÍ + status();

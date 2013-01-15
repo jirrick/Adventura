@@ -100,6 +100,7 @@ public abstract class ACommand implements ICommand
         String line = input.trim().toLowerCase();
         String[] words = null;
 
+        condMan.evaluateNextRound();
         if (!condMan.getCanDoNextMove()) {
             Game.getInstance().stop();
             return nPROHRA;
@@ -123,7 +124,6 @@ public abstract class ACommand implements ICommand
             if (command == null) {
                 return zNEZNÁMÝ_PŘÍKAZ;
             }
-            condMan.evaluateNextRound();
         }
 
         return command.execute(words);
@@ -140,14 +140,27 @@ public abstract class ACommand implements ICommand
     static String status()
     {
         Place currentPlace = Place.getCurrentPlace();
+        ConditionManager condMan = ConditionManager.getInstance();
 
-        return String.
+        String result = String.
                 format(dFORMÁT_INFORMACE,
                        currentPlace.getName(),
                        toCommaSeparatedString(currentPlace.getNeighbors()),
                        toCommaSeparatedString(currentPlace.getPersons()),
                        toCommaSeparatedString(currentPlace.getObjects()),
                        toCommaSeparatedString(Bag.getInstance().getObjects()));
+
+        if (condMan.get(Condition.TURN_COUNTDOWN_RUNNING)) {
+            result += "\n\nVogonské lodě se blíží! Můžeš provést jen " +
+                      condMan.getRoundsLeft() + " tah(ů)!";
+        }
+
+        if (condMan.get(Condition.TIMER_RUNNING)) {
+            result +=
+            "\nVogonské lodě už jsou na oběžné dráze Země! Zbývá ti už jen " +
+            condMan.getTimeLeft() + " sekund reálného času!";
+        }
+        return result;
     }
 
 
@@ -236,7 +249,8 @@ public abstract class ACommand implements ICommand
      * Většině příkazů stačí a ty, které opravdu potřebují něco inicializovat,
      * tak ji překryjí vlastní verzí.
      */
-    void initialize(){
+    void initialize()
+    {
     }
 
 

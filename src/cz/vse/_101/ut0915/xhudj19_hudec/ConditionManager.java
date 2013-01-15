@@ -49,12 +49,12 @@ public final class ConditionManager
     /**
      * Indikátor, zda hráč ještě může zadávat příkazy
      */
-    private boolean canDoNextMove = true;
+    private boolean canDoNextMove;
 
     /**
      * Počet tahů do konce světa
      */
-    private int roundsLeft = 15;
+    private int roundsLeft;
 
     /**
      * Reálný čas, kdy byl spuštěn odpočet konce světa
@@ -90,6 +90,19 @@ public final class ConditionManager
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+    public int getRoundsLeft()
+    {
+        return roundsLeft;
+    }
+
+
+    public int getTimeLeft()
+    {
+        return 120 - ((int) Math.abs((new Date().getTime() / 1000) -
+                               (timeOfActivation.getTime() / 1000)));
+    }
+
+
     /**
      * *************************************************************************
      * Indikátor, zda se může vykonat další krok hry.
@@ -154,6 +167,20 @@ public final class ConditionManager
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    public void initialize()
+    {
+        for (Condition condition : Condition.values()) {
+            conditions.put(condition, Boolean.FALSE);
+        }
+        Arrays.fill(dialogue_done, Boolean.FALSE);
+        Arrays.fill(dialogue_possible, Boolean.FALSE);
+        dialogue_possible[0] = true;
+        roundsLeft = 16;
+        canDoNextMove = true;
+        timeOfActivation = null;
+    }
+
+
     /**
      * *************************************************************************
      * Vyhodnocení podmínek po zadání dalšího příkazu.
@@ -162,23 +189,13 @@ public final class ConditionManager
      */
     public void evaluateNextRound()
     {
-        canDoNextMove = !evaluateEarthDestruction();
         evaluateAfterDialogues();
         evaluateCanBuy(Condition.FORD_CAN_BUY_BEERS, oPIVO);
         evaluateDialogueE();
         evaluateCanBuy(Condition.FORD_CAN_BUY_NUTS, oBURÁKY);
-    }
-
-
-    /**
-     * *************************************************************************
-     * Spustí odpočet reálného času do konce světa.
-     *
-     */
-    public void startEndOfEarthTime()
-    {
-        set(Condition.TIMER_RUNNING, Boolean.TRUE);
-        timeOfActivation = new Date();
+        evaluateStartCountdown();
+        evaluateStartTimer();
+        canDoNextMove = !evaluateEarthDestruction();
     }
 
 
@@ -259,10 +276,38 @@ public final class ConditionManager
             barman.remove(money);
             barman.add(new Thing(name));
             //piva se musejí přidat dvě
-            if (name.equalsIgnoreCase(oPIVO)){
+            if (name.equalsIgnoreCase(oPIVO)) {
                 barman.add(new Thing(name));
             }
             condMan.set(cond, Boolean.FALSE);
+        }
+    }
+
+
+    /**
+     * *************************************************************************
+     * Vyhodnotí, zda se spustí odpočet kol do konce hry.
+     */
+    private void evaluateStartCountdown()
+    {
+        if ((dialogue_done[5]) &&
+            !get(Condition.TURN_COUNTDOWN_RUNNING) &&
+            (Bag.getInstance().getObject(oBURÁKY) != null)) {
+            set(Condition.TURN_COUNTDOWN_RUNNING, Boolean.TRUE);
+        }
+    }
+
+
+    /**
+     * *************************************************************************
+     * Vyhodnotí, zda se spustí odpočet času do konce hry.
+     */
+    private void evaluateStartTimer()
+    {
+        if (get(Condition.TURN_COUNTDOWN_RUNNING) &&
+            (Place.getCurrentPlace().getName().equalsIgnoreCase(mLOUKA))) {
+            set(Condition.TIMER_RUNNING, Boolean.TRUE);
+            timeOfActivation = new Date();
         }
     }
 
@@ -286,57 +331,31 @@ public final class ConditionManager
             }
         }
         //konec země časovačem
-        if (earthDestroyedByTimer()) {
-            return true;
-        }
-
-        return false;
-    }
-
-
-    private void initialize()
-    {
-        for (Condition condition : Condition.values()) {
-            conditions.put(condition, Boolean.FALSE);
-        }
-        Arrays.fill(dialogue_done, Boolean.FALSE);
-        Arrays.fill(dialogue_possible, Boolean.FALSE);
-        dialogue_possible[0] = true;
-    }
-
-
-    /**
-     * *************************************************************************
-     * Časovač zničení země
-     *
-     * @return Vrací {@code true} pokud země byla zničena časovačem,
-     *         {@code false} pokud časovač ještě nebyl spuštěn anebo
-     *         země ještě nebyla zničena.
-     */
-    private boolean earthDestroyedByTimer()
-    {
-        boolean result = false;
         if (get(Condition.TIMER_RUNNING)) {
             // počet sekund od zapnutí časovače
             int secondsDiff = (int) Math.
                     abs((new Date().getTime() / 1000) -
                         (timeOfActivation.getTime() / 1000));
             if (secondsDiff > END_OF_EARTH_TIMER) {
-                result = true; //země byla zničena
-            }
-            else {
-                result = false; //země ještě nebyla zničena
+                return true; //země byla zničena
             }
         }
-        return result;
+        return false;
     }
 
-//== EMBEDDED TYPES AND INNER CLASSES ==========================================
-//== TESTING CLASSES AND METHODS ===============================================
-//
-//    /***************************************************************************
-//     * Testovací metoda.
-//     */
+
+    /**
+     * <p/>
+     * //== EMBEDDED TYPES AND INNER CLASSES
+     * ==========================================
+     * //== TESTING CLASSES AND METHODS
+     * ===============================================
+     * //
+     * //
+     * /***************************************************************************
+     * // * Testovací metoda.
+     * //
+     */
 //    public static void test()
 //    {
 //        GameRUP inst = new GameRUP();
