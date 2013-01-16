@@ -9,7 +9,9 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instances of class {@code CommandPrůvodce} represent ...
+ * Instances of class {@code CommandPrůvodce} představují speciální příkaz,
+ * který přepne chování hry do režimu prohlížení vesmírné encyklopedie Stopařův
+ * průvodce
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +29,8 @@ public class CommandPrůvodce extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz. Jelikož by neměl být volán přímo, registuje se takto
+     * dlouhým názvem
      */
     public CommandPrůvodce()
     {
@@ -39,41 +42,49 @@ public class CommandPrůvodce extends ACommand
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * *************************************************************************
+     * Metoda realizující režim procházení encyklopedie
+     * V parametru by měla být jen jedna položka - pojem, který chceme v
+     * encyklopedii vyhjledat, popř. tečka (.) pro návrat zpět do hry
+     *
+     * @param arguments Parametry příkazu - vyhledávaný
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
         ConditionManager condMan = ConditionManager.getInstance();
-        String result = "";
 
-        if (arguments == null) {
-            result = nPRŮVODCE_EMPTY;
+        // ošetření prázdných vstupů
+        if ((arguments == null) || (arguments.length < 1)) {
+            return nPRŮVODCE_EMPTY;
         }
-        else {
-            if (arguments.length > 0) {
-                String objectName = arguments[0];
-                switch (objectName) {
-                    case "ručník":
-                        result = nPRŮVODCE_RUČNÍK;
-                        break;
-                    case "průvodce":
-                        result = nPRŮVODCE_PRŮVODCE;
-                        break;
-                    case "palec":
-                        result = nPRŮVODCE_PALEC;
-                        break;
-                    case "přijímač":
-                        result = nPRŮVODCE_PŘIJÍMAČ;
-                        break;
-                    case ".":
-                        condMan.setValue(Condition.HITCHHIKERS_GUIDE_ACTIVE,
-                                         Boolean.FALSE);
-                        result = nPRŮVODCE_STOP + status();
-                        break;
-                    default:
-                        result = nPRŮVODCE_UNKNOWN;
-                        break;
-                }
-            }
+
+        // výpis jednotlivých hesel
+        String objectName = arguments[0];
+        String result;
+        switch (objectName) {
+            case "ručník":
+                result = nPRŮVODCE_RUČNÍK;
+                break;
+            case "průvodce":
+                result = nPRŮVODCE_PRŮVODCE;
+                break;
+            case "palec":
+                result = nPRŮVODCE_PALEC;
+                break;
+            case "přijímač":
+                result = nPRŮVODCE_PŘIJÍMAČ;
+                break;
+            case ".":
+                condMan.setValue(Condition.HITCHHIKERS_GUIDE_ACTIVE,
+                                 Boolean.FALSE);
+                result = nPRŮVODCE_STOP + status();
+                break;
+            default:
+                result = nPRŮVODCE_UNKNOWN;
+                break;
         }
         return result;
     }

@@ -9,7 +9,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instances of class {@code CommandArthur} represent ...
+ * Instances of class {@code CommandArthur} představuje třídu umožňující hráči
+ * (Fordovi Prefectovi) ovládat postavu Arthura
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +28,7 @@ public class CommandArthur extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandArthur()
     {
@@ -38,6 +39,15 @@ public class CommandArthur extends ACommand
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * *************************************************************************
+     * Metoda realizující ovládání postavy Arthura Denta
+     * V parametru by měly být dvě položky: název příkazu (arthur)
+     * a pokyn pro něj (stůj, následuj, inventář).
+     *
+     * @param arguments Parametry příkazu - název příkazu a povelu
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
@@ -47,13 +57,15 @@ public class CommandArthur extends ACommand
 
         ConditionManager condMan = ConditionManager.getInstance();
         String command = arguments[1];
-        String result;
-        Person arthur = Place.getCurrentPlace().getPerson(jARTHUR);
 
+        //Najití arthura v prostoru
+        Person arthur = Place.getCurrentPlace().getPerson(jARTHUR);
         if (arthur == null) {
             return nARTHUR_NELZE + status();
         }
 
+        //Povely, které umí arthur vykonat
+        String result;
         if (condMan.getValue(Condition.ARTHUR_CAN_FOLLOW)) {
             switch (command) {
                 case "inventář":

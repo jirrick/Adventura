@@ -7,7 +7,8 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 /**
  * *****************************************************************************
- * Instances of enumerated type {@code Condition} represents ...
+ * Instances of enumerated type {@code Condition} představuje názvy interních
+ * podmínek řídícich (omezujících) průběh hry
  *
  * @author Jiří HUDEC
  * @version 2013.01.15

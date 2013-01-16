@@ -16,9 +16,6 @@ import java.util.List;
  * Instance třídy {@code Place} představují prostory ve hře.
  * Dosažení prostoru si můžeme představovat jako částečný cíl,
  * kterého se hráč ve hře snaží dosáhnout.
- * Prostory mohou být místnosti, planety, životní etapy atd.
- * Prostory mohou obsahovat různé objekty,
- * které mohou hráči pomoci v dosažení cíle hry.
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -144,12 +141,24 @@ public enum Place implements IPlace
     }
 
 
+    /**
+     * *************************************************************************
+     * Vrátí prostor, ve kterém se hráč právě nachází
+     * <p/>
+     * @return aktuální prostor
+     */
     static Place getCurrentPlace()
     {
         return currentPlace;
     }
 
 
+    /**
+     * *************************************************************************
+     * Nastaví prostor, ve kterém se hráč právě nachází
+     * <p/>
+     * @param place nastavovaný prostor
+     */
     static void setCurrentPlace(Place place)
     {
         currentPlace = place;
@@ -300,11 +309,11 @@ public enum Place implements IPlace
 
     /**
      * *************************************************************************
-     * Vrací požadovanou osobu z prostoru. Pokud osoba v prostoru není vrací
+     * Vrací požadovaný sousední prostor. Pokud takový soused neexistuje vrací
      * {@code null}
      *
-     * @param requestedObject Název požadovaného předmětu
-     * @return Instance požadovaného předmětu nebo {@code null}
+     * @param requestedObject Název požadovaného souseda
+     * @return Instance sousední místnosti nebo {@code null}
      */
     public Place getNeighbor(String requestedObject)
     {
@@ -346,7 +355,7 @@ public enum Place implements IPlace
 
     /**
      * *************************************************************************
-     * Odebere zadaný objekt z daného prostoru.
+     * Odebere zadanou osobu z daného prostoru.
      *
      * @param person Odebíraná osoba
      */

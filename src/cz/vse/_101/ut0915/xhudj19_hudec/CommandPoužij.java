@@ -9,7 +9,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instances of class {@code CommandPouzij} represent ...
+ * Instances of class {@code CommandPouzij} představuje třídu umožňující hráči
+ * použít vybrané předměty z jeho tašky, nepočítá s použití předmětů v prostoru.
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +28,7 @@ public class CommandPoužij extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandPoužij()
     {
@@ -39,6 +40,15 @@ public class CommandPoužij extends ACommand
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * *************************************************************************
+     * Metoda realizující používání objektů z tašky
+     * V parametru by měly být dvě položky: název příkazu (použij)
+     * a předmět k použití.
+     *
+     * @param arguments Parametry příkazu - název příkazu a název předmětu
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
@@ -53,6 +63,7 @@ public class CommandPoužij extends ACommand
         Thing thing = bag.getObject(objectName);
         String result;
 
+        // jednotlivé předměty umožňující použití
         if (thing == null) {
             result = zNENÍ_V_BATOHU;
         }

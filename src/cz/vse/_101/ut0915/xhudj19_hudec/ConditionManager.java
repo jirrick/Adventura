@@ -39,10 +39,19 @@ public final class ConditionManager
     final static int END_OF_EARTH_TIMER = 120;
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
+    /**
+     * Pole indikátorů, zda je možná vykonat rozhovor
+     */
     private boolean[] dialogue_possible = new boolean[7];
 
+    /**
+     * Pole indikátorů, zda už byl rozhovor vykonán
+     */
     private boolean[] dialogue_done = new boolean[7];
 
+    /**
+     * Mapa udržující hodnotu podmínek (intance třídy Condition)
+     */
     private EnumMap<Condition, Boolean> conditions = new EnumMap<>(
             Condition.class);
 
@@ -90,12 +99,22 @@ public final class ConditionManager
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+    /**
+     * Vrátí počet možných kol, před ukončením hry.
+     *
+     * @return počet kol do konce hry
+     */
     public int getRoundsLeft()
     {
         return roundsLeft;
     }
 
 
+    /**
+     * Vrátí počet sekund, před ukončením hry.
+     *
+     * @return sekund do konce hry
+     */
     public int getTimeLeft()
     {
         return 120 - ((int) Math.abs((new Date().getTime() / 1000) -
@@ -167,6 +186,9 @@ public final class ConditionManager
 
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * Inicializuje manažer podmínek do výchozího stavu
+     */
     public void initialize()
     {
         for (Condition condition : Condition.values()) {
@@ -203,39 +225,34 @@ public final class ConditionManager
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
     /**
      * *************************************************************************
-     * Vyhodnotí podmínky u rozhovorů.
+     * Vyhodnotí podmínky u rozhovorů po jejich provedení.
      */
     private void evaluateAfterDialogues()
     {
         for (int i = 0; i < 6; i++) {
-            // rozhovor byl nedávno proveden
+            // rozhovor byl nedávno proveden - jsou nastaveny oba indikátory
             if (dialogue_done[i] && dialogue_possible[i]) {
+                // univerzální akce - odemknutá dalšího rozhovoru
                 dialogue_possible[i] = false;
                 dialogue_possible[i + 1] = true;
                 switch (i) {
-                    // akce po rozhovoru A
-                    case 0:
-                        break;
-                    // akce po rozhovoru B
-                    case 1:
-                        break;
-                    // akce po rozhovoru C
+                    // speciální akce po rozhovoru C
                     case 2:
                         setValue(Condition.ARTHUR_CAN_FOLLOW, Boolean.TRUE);
                         setValue(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
                         break;
-                    // akce po rozhovoru D
+                    // speciální akce po rozhovoru D
                     case 3:
                         setValue(Condition.FORD_CAN_BUY_BEERS, Boolean.TRUE);
                         dialogue_possible[4] = false;
                         break;
-                    // akce po rozhovoru E
+                    // speciální akce po rozhovoru E
                     case 4:
                         Person arthur = Person.getArthur();
                         Thing beer = arthur.getObject(oPIVO);
                         arthur.remove(beer);
                         break;
-                    // akce po rozhovoru F
+                    // speciální akce po rozhovoru F
                     case 5:
                         setValue(Condition.FORD_CAN_BUY_NUTS, Boolean.TRUE);
                         break;
@@ -344,24 +361,6 @@ public final class ConditionManager
     }
 
 
-    /**
-     * <p/>
-     * //== EMBEDDED TYPES AND INNER CLASSES
-     * ==========================================
-     * //== TESTING CLASSES AND METHODS
-     * ===============================================
-     * //
-     * //
-     * /***************************************************************************
-     * // * Testovací metoda.
-     * //
-     */
-//    public static void test()
-//    {
-//        GameRUP inst = new GameRUP();
-//    }
-//    /** @param args Parametry příkazového řádku - nepoužívané. */
-//    public static void main(String[] args)  {  test();  }
 }
 
 

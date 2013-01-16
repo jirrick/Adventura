@@ -9,7 +9,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instance třídy {@code CommandPolož} představují ...
+ * Instance třídy {@code CommandPolož} představují příkaz pro předávání předmětů
+ * z tašky do inventáře ostatních osob
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +28,7 @@ public class CommandPředej extends ACommand
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandPředej()
     {
@@ -38,6 +39,16 @@ public class CommandPředej extends ACommand
     //== ABSTRAKTNÍ METODY =====================================================
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
+    /**
+     * *************************************************************************
+     * Metoda vykonávající předávání předmětů z tašky hráče do inventáře osob
+     * V parametru by měly být tři položky: název příkazu (předej), předávaný
+     * předmět a jméno osoby, které předmět dáváme.
+     *
+     * @param arguments Parametry příkazu - název příkazu, předmětu a název
+     *                  osoby
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
@@ -49,9 +60,10 @@ public class CommandPředej extends ACommand
         String personName = arguments[2];
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
-
         Thing thing = bag.getObject(thingName);
         Person person = currentPlace.getPerson(personName);
+
+        // předání objektu, pokud předmět opravdu máme a osoba je v prostoru
         if ((thing != null) && (person != null)) {
             person.add(thing);
             bag.remove(thing);
@@ -69,10 +81,6 @@ public class CommandPředej extends ACommand
     }
 
 
-}
-
-
-
 //== SOUKROMÉ A POMOCNÉ METODY TŘÍDY =======================================
 //== SOUKROMÉ A POMOCNÉ METODY INSTANCÍ ====================================
 //== INTERNÍ DATOVÉ TYPY ===================================================
@@ -87,6 +95,6 @@ public class CommandPředej extends ACommand
 //     }
 //     /** @param args Parametry příkazového řádku - nepoužívané. */
 //     public static void main(String[] args)  {  test();  }
-
+}
 
 

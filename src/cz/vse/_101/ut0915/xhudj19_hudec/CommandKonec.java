@@ -7,7 +7,7 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 /**
  * *****************************************************************************
- * Instances of class {@code CommandKonec} represent ...
+ * Instances of class {@code CommandKonec} představují třídu ukončující hru
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -25,7 +25,7 @@ public class CommandKonec extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandKonec()
     {
@@ -38,14 +38,9 @@ public class CommandKonec extends ACommand
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
      * *************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+     * Metoda realizující konec hry. Parametry nepoužívá.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
+     * @param arguments nepoužívané parametry
      * @return Text zprávy vypsané po provedeni příkazu
      */
     @Override

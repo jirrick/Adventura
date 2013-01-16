@@ -9,7 +9,10 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instance třídy {@code CommandNastraz} představují ...
+ * Instance třídy {@code CommandPromluv} představují třídu vykonávající
+ * rozhovory s postavami ve hře. Předem připravený rozhovor se provede, pouze
+ * pokud jsou splněny podmínky pro jeho vykonání. Osoby se tedy odmítají bavit,
+ * dokud se neprovede činnost spínající rozhovor
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -40,7 +43,13 @@ public class CommandPromluv extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * Vykonává rozhovory
+     * *************************************************************************
+     * Metoda vykonávající rozhovory ve hře
+     * V parametru by měly být dvě položky: název příkazu (promluv)
+     * a jméno osoby, se kterou se má mluvit.
+     *
+     * @param arguments Parametry příkazu - název příkazu a název osoby
+     * @return Text zprávy vypsané po provedeni příkazu
      */
     @Override
     public String execute(String... arguments)
@@ -53,10 +62,12 @@ public class CommandPromluv extends ACommand
         Place currentPlace = Place.getCurrentPlace();
         Person person = currentPlace.getPerson(arguments[1]);
 
+        // požadovaná osoba není v prostoru
         if (person == null) {
             return nROZHOVOR_NENÍ + status();
         }
 
+        // projde všechny možné rozhovory osoby a provede ten vykonatelný
         for (int dialogue : person.getDialogues()) {
             if (condMan.isDialoguePossible(dialogue)) {
                 condMan.setDialogueDone(dialogue);
@@ -79,7 +90,7 @@ public class CommandPromluv extends ACommand
 //          */
 //         public static void test()
 //         {
-//             CommandNastraz instance = new CommandNastraz();
+//             CommandPromluv instance = new CommandPromluv();
 //         }
 //         /** @param args Parametry příkazového řádku - nepoužívané. */
 //         public static void main(String[] args)  {  test();  }

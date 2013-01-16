@@ -10,18 +10,6 @@ import cz.vse.adv_framework.game_txt.IObject;
 /**
  * *****************************************************************************
  * Instance třídy {@code Something} přestavují objekty v místnostech.
- * Objekty mohou být jak věci, tak i osoby či jiné skutečnosti (vůně,
- * světlo, fluidum, ...).
- * <p>
- * Některé z objektů mohou charakterizovat stav prostoru (např. je rozsvíceno),
- * jiné mohou být určeny k tomu, aby je hráč "zvednul" a získal tím nějakou
- * schopnost či možnost projít nějakým kritickým místem hry
- * (např. klíč k odemknutí dveří).
- * <p>
- * Rozhodnete-li se použít ve hře objekty, které budou obsahovat jiné objekty,
- * (truhla, stůl, ...), můžete je definovat paralelně jako zvláštní druh
- * prostoru, do kterého se "vstupuje" např. příkazem "prozkoumej truhlu"
- * a který se opouští např. příkazem "zavři truhlu".
  *
  * @author Jiří HUDEC
  * @version 2013.01.15

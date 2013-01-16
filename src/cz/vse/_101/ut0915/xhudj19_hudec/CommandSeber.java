@@ -10,9 +10,7 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 /**
  * *****************************************************************************
  * Instance třídy {@code CommandSeber} představují příkazy
- * realizující standardní přesun objektu z prostoru do batohu.
- * Instance by mohla být definována jako jedináček,
- * ale v dané aplikaci svěřuje tuto starost do ruhou správce příkazů.
+ * realizující standardní přesun objektu z prostoru do tašky.
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -30,7 +28,7 @@ public class CommandSeber extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandSeber()
     {
@@ -59,16 +57,19 @@ public class CommandSeber extends ACommand
         }
         String thingName = arguments[1];
         Place currentPlace = Place.getCurrentPlace();
-
         Thing thing = currentPlace.getObject(thingName);
+
+        // předmět v prostoru není
         if (thing == null) {
             return zNENÍ_PŘEDMĚT + thingName + status();
         }
 
+        // předmět je moc těžký
         if (thing.getWeight() > 1) {
             return zTĚŽKÝ_PŘEDMĚT + thing.getName() + status();
         }
 
+        // je v tašce místo?
         if (Bag.getInstance().add(thing)) {
             currentPlace.remove(thing);
             return zZVEDNUTO + thing.getName() + status();

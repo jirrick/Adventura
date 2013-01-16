@@ -31,7 +31,7 @@ public class CommandStart extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandStart()
     {
@@ -44,14 +44,9 @@ public class CommandStart extends ACommand
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
      * *************************************************************************
-     * Metoda realizující reakci hry na zadání daného příkazu.
-     * Počet parametrů je závislý na konkrétním příkazu,
-     * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
-     * příkazy <i>jdi</i> a <i>seber</i> mají jeden parametr
-     * příkaz <i>použij</i> muže mít dva parametry atd.
+     * Metoda realizující reakci hry na zadání startovacího příkaz.
      *
-     * @param arguments Parametry příkazu;
-     *                  jejich počet muže byt pro každý příkaz jiný
+     * @param arguments Parametry příkazu, na nich nezáleží
      * @return Text zprávy vypsané po provedeni příkazu
      */
     @Override
@@ -61,7 +56,8 @@ public class CommandStart extends ACommand
         if (game.isAlive()) {
             return zPRÁZDNÝ_PŘÍKAZ + status();
         }
-        //Inicializuje příkazy, prostory i batoh
+
+        //Inicializuje příkazy, prostory i tašku
         ACommand.initializeCommands();
         Place.initializePlaces();
         Bag.getInstance().initialize();

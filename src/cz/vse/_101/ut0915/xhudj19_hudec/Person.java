@@ -7,12 +7,14 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.PERSON;
 import cz.vse.adv_framework.game_txt.INamed;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 
 
 /**
  * *****************************************************************************
- * Instances of class {@code Person} represent ...
+ * Instances of class {@code Person} představují osoby ve hře. Od objektů se
+ * liší tím, že mohou mít svůj inventář a pochopitelně nejdou vložit do tašky
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -21,13 +23,24 @@ public class Person implements INamed
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES ================================================
+    /**
+     * Statický odkaz na postavu Arthura (aby nebylo nutné prohledávat dokola
+     * všechny prostory, pokud je potřeba provést zásah do jeho inventáře)
+     */
     private static Person arthur = null;
 
+    /**
+     * Statický odkaz na postavu barmana (aby nebylo nutné prohledávat dokola
+     * všechny prostory, pokud je potřeba provést zásah do jeho inventáře)
+     */
     private static Person barman = null;
 
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
-    private ArrayList<Integer> dialogues = new ArrayList<>();
+    /**
+     * Seznam čísel rozhovorů, který daná osoba umí vyslovit
+     */
+    private List<Integer> dialogues = new ArrayList<>();
 
     /**
      * Název osoby.
@@ -42,12 +55,24 @@ public class Person implements INamed
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 
+    /**
+     * Vrátí odkaz na postavu Arthura pro potřeby zásahů do hry mimo hráčův
+     * vstup
+     * <p/>
+     * @return odkaz na Arhura
+     */
     public static Person getArthur()
     {
         return arthur;
     }
 
 
+    /**
+     * Vrátí odkaz na postavu barmana pro potřeby zásahů do hry mimo hráčův
+     * vstup
+     * <p/>
+     * @return odkaz na Arhura
+     */
     public static Person getBarman()
     {
         return barman;
@@ -55,10 +80,15 @@ public class Person implements INamed
 
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
+    /**
+     * Po nainicialozování všech prostor najde instance postav Arthur a barman,
+     * aby už je nebylo nutné znovu hledat
+     */
     public static void findArthurBarman()
     {
         for (Place place : Place.values()) {
             Person temp;
+
             temp = place.getPerson("Arthur");
             if (temp != null) {
                 arthur = temp;
@@ -77,7 +107,9 @@ public class Person implements INamed
     /**
      * *************************************************************************
      * Vytvoří novou osobu se zadaným názvem
-     * a vahou odvozenou od prvního znaku názvu.
+     * Jméno musí být ve tvaru:
+     * "delimiter""seznam možných rozhovorů""delimiter""název osoby"
+     * (např. @123@Test)
      *
      * @param name Název vytvářené osoby
      */

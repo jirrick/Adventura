@@ -9,7 +9,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 /**
  * *****************************************************************************
- * Instance třídy {@code CommandPolož} představují ...
+ * Instance třídy {@code CommandPolož} představují příkaz umožňující položit
+ * předmět z tašky do aktuálního prostoru
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +28,7 @@ public class CommandPolož extends ACommand
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandPolož()
     {
@@ -38,6 +39,15 @@ public class CommandPolož extends ACommand
     //== ABSTRAKTNÍ METODY =====================================================
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
+    /**
+     * *************************************************************************
+     * Metoda realizující pokládání předmětu z tašky do prostoru.
+     * V parametru by měly být dvě položky: název příkazu (polož)
+     * a předmět k položení.
+     *
+     * @param arguments Parametry příkazu - název příkazu a naázev předmětu
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
@@ -45,7 +55,6 @@ public class CommandPolož extends ACommand
             return zPŘEDMĚT_NEZADAN + status();
         }
         String thingName = arguments[1];
-
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
 
@@ -61,11 +70,6 @@ public class CommandPolož extends ACommand
 
     }
 
-
-}
-
-
-
 //== SOUKROMÉ A POMOCNÉ METODY TŘÍDY =======================================
 //== SOUKROMÉ A POMOCNÉ METODY INSTANCÍ ====================================
 //== INTERNÍ DATOVÉ TYPY ===================================================
@@ -80,6 +84,6 @@ public class CommandPolož extends ACommand
 //     }
 //     /** @param args Parametry příkazového řádku - nepoužívané. */
 //     public static void main(String[] args)  {  test();  }
-
+}
 
 

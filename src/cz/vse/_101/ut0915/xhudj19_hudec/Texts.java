@@ -289,9 +289,7 @@ public final class Texts
                       "\nNepodařilo se ti zachránit Arthura Denta",
             nCHYBÍ_ARTHUR = "\nNeopouštěj Zemi bez Arthura!",
             nCHYBÍ_RUČNÍK = "\nBez ručníku nemůžeš stopovat.",
-            nCHYBÍ_PRŮVODCE = "\nNěkde jsi nechal Stopařova průvodce Galaxií.",
-            nCHYBÍ_VYBAVENÍ = "\nKe stopování potřebuješ elektronický palec" +
-                              "\na subéterický příjmač.";
+            nCHYBÍ_PRŮVODCE = "\nNěkde jsi nechal Stopařova průvodce Galaxií.";
 
     /**
      * Texty rozhovorů.

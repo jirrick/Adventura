@@ -90,7 +90,7 @@ public abstract class ACommand implements ICommand
      * *************************************************************************
      * Zpracuje zadaný příkaz a vrátí text zprávy pro uživatele.
      *
-     * @param line Zadávaný příkaz
+     * @param input Zadávaný příkaz
      * @return Textová odpověď hry na zadaný příkaz
      */
     static String executeCommand(String input)
@@ -100,6 +100,7 @@ public abstract class ACommand implements ICommand
         String line = input.trim().toLowerCase();
         String[] words = null;
 
+        // vyhodnocení průběhu hry, její případné ukončení
         condMan.evaluateNextRound();
         if (!condMan.getCanDoNextMove()) {
             Game.getInstance().stop();
@@ -107,13 +108,15 @@ public abstract class ACommand implements ICommand
         }
 
         ACommand command;
-        // režim průvodce
+
+        // režim Stopařova průvodce Galaxií
         if (condMan.getValue(Condition.HITCHHIKERS_GUIDE_ACTIVE)) {
             command = guideCommand;
             if (!line.isEmpty()) {
                 words = line.split("\\s+");
             }
         }
+
         //režim normální hry
         else {
             if (line.isEmpty()) {
@@ -133,7 +136,7 @@ public abstract class ACommand implements ICommand
     /**
      * *****************************************************************************
      * Vrací výpis o stavu hry (aktuální prostor, sousedi, věci v prostoru,
-     * osoby v prostoru, předměty v tašce)
+     * osoby v prostoru, předměty v tašce, případně blížící se konec hry)
      *
      * @return String popisující stav hry
      */
@@ -150,15 +153,18 @@ public abstract class ACommand implements ICommand
                        toCommaSeparatedString(currentPlace.getObjects()),
                        toCommaSeparatedString(Bag.getInstance().getObjects()));
 
+        // konec země odpočítáváním kol
         if (condMan.getValue(Condition.TURN_COUNTDOWN_RUNNING)) {
             result += "\n\nVogonské lodě se blíží! Můžeš provést jen " +
                       condMan.getRoundsLeft() + " tah(ů)!";
         }
 
+        // konec země časovačem
         if (condMan.getValue(Condition.TIMER_RUNNING)) {
             result +=
-            "\nVogonské lodě už jsou na oběžné dráze Země! Zbývá ti už jen " +
-            condMan.getTimeLeft() + " sekund reálného času!";
+            "\nVogonské lodě už jsou na oběžné dráze Země!" +
+            "\nZbývá ti už jen " + condMan.getTimeLeft() +
+            " sekund reálného času!";
         }
         return result;
     }

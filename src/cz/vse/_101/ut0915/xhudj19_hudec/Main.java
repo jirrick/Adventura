@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  * *****************************************************************************
- * Třída {@code MainRUP} je hlavní třídou projektu
+ * Třída {@code Main} je hlavní třídou projektu
  * zprostředkující komunikaci mezi uživatelem a hrou.
  *
  * @author Jiří HUDEC

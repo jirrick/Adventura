@@ -63,12 +63,13 @@ public class CommandJdi extends ACommand
         String destName = arguments[1];
         Place currentPlace = Place.getCurrentPlace();
 
+        // Určení cílového prostoru
         Place neighbor = currentPlace.getNeighbor(destName);
         if (neighbor == null) {
             return zNENÍ_CIL + destName + status();
         }
 
-        // Arthur v režimu sledování
+        // přesun Arthura v režimu sledování
         if (condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
             Person arthur = currentPlace.getPerson(jARTHUR);
             if (arthur != null) {
@@ -77,7 +78,7 @@ public class CommandJdi extends ACommand
             }
         }
 
-        // Přechod do konečného prostoru
+        // Přechod do konečného prostoru, konec hry
         if (destName.equalsIgnoreCase(mVOGONI)) {
             if (!condMan.getValue(Condition.ARTHUR_FOLLOWS)) {
                 return nCHYBÍ_ARTHUR + status();
@@ -88,10 +89,6 @@ public class CommandJdi extends ACommand
             }
             if (Bag.getInstance().getObject(oPRŮVODCE) == null) {
                 return nCHYBÍ_PRŮVODCE + status();
-            }
-            if ((Bag.getInstance().getObject(oPALEC) == null) ||
-                Bag.getInstance().getObject(oPŘIJÍMAČ) == null) {
-                return nCHYBÍ_VYBAVENÍ + status();
             }
             Place.setCurrentPlace(neighbor);
             Game.getInstance().stop();

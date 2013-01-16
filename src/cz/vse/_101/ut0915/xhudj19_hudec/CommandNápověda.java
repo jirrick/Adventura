@@ -9,7 +9,8 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zNÁPOVĚDA;
 
 /**
  * *****************************************************************************
- * Instances of class {@code CommandNápověda} represent ...
+ * Instances of class {@code CommandNápověda} představuje třídu obsluhující
+ * zobrazení nápovědy
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
@@ -27,7 +28,7 @@ public class CommandNápověda extends ACommand
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
      * *************************************************************************
-     *
+     * Vytvoří příkaz
      */
     public CommandNápověda()
     {
@@ -38,6 +39,13 @@ public class CommandNápověda extends ACommand
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
+    /**
+     * *************************************************************************
+     * Metoda realizující nápovědu. Parametry nepoužívá.
+     *
+     * @param arguments nepoužívané parametry
+     * @return Text zprávy vypsané po provedeni příkazu
+     */
     @Override
     public String execute(String... arguments)
     {
