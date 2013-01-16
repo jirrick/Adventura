@@ -40,6 +40,7 @@ public final class Main
      * Cesta k souboru může být zadána absolutně i relativně.
      * <br>&nbsp;</li>
      * </ul>
+     * <p/>
      * @param args Parametry příkazového řádku
      */
     public static void main(String[] args)
@@ -161,7 +162,7 @@ public final class Main
     {
         Game game = Game.getInstance();
         String command = "";   //Startovací příkaz
-        for (;;) {
+        for (; scanner.hasNextLine();) {
             //Zadá hře příkaz a převezme odpověď
             String answer = game.executeCommand(command);
             System.out.println(answer);     //Zobrazí odpověď hry
