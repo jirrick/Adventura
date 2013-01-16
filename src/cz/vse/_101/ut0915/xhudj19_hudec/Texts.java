@@ -185,13 +185,13 @@ public final class Texts
             nPOUŽIJ_PIVO_NEJDE = "\nJedno pivo nech Arthurovi.",
             nPRŮVODCE_RETURN = "\n\nPro návrat do hry napiš tečku.",
             nPRŮVODCE_START = "\nOtevřel jsi vesmírnou encykolopedii " +
-                              "\"Stopařův průvodce\ngalaxií\"," +
+                              "\"Stopařův průvodce\ngalaxií\", " +
                               "ptej se na to, co tě zajímá." +
                               nPRŮVODCE_RETURN,
             nPRŮVODCE_STOP =
             "\nNashledanou příště.\nA hlavně: NEPROPADEJTE PANICE!.",
             nPRŮVODCE_UNKNOWN = "\nAčkoliv je to vysoce nepravděpodobné, " +
-                                "tak \"Stopařův průvodce galaxií\"" +
+                                "tak \"Stopařův průvodce galaxií\" " +
                                 "toto heslo nezná." +
                                 nPRŮVODCE_RETURN,
             nPRŮVODCE_EMPTY = "\nNezadali jste heslo k vyhledání." +
@@ -213,14 +213,14 @@ public final class Texts
             "\nspousta informací je pochybných nebo " +
             "\nprinejmenším hodne nepresných — má proti " +
             "\nstarší a prozaictejší prírucce dve nesporné" +
-            "\nvýhody. \n Jednak je o neco levnejší," +
-            "\na predevším má na obálce velký vlídný nápis:" +
-            "\n\n NEPROPADEJTE PANICE." + nPRŮVODCE_RETURN,
+            "\nvýhody. " +
+            "\nJednak je o neco levnejší, a predevším má na obálce" +
+            "velký vlídný nápis:\n\n NEPROPADEJTE PANICE." + nPRŮVODCE_RETURN,
             nPRŮVODCE_PALEC =
             "\nElektronický palec slouží k stopování vesmírných lodí." +
             "\nJedná se o krátký a tlustý černý váleček s hebkým," +
-            "\nmatným povrchem a několika vypínači a ciferníky na jednom konci." +
-            nPRŮVODCE_RETURN,
+            "\nmatným povrchem a několika vypínači a ciferníky na jednom konci."
+            + nPRŮVODCE_RETURN,
             nPRŮVODCE_PŘIJÍMAČ =
             "\nSenzomatický subéterový přijímač zjišťuje přítomnost" +
             "\nvesmírných lodí. Bez něj by bylo stopování ve vesmíru o" +
@@ -246,7 +246,7 @@ public final class Texts
                                "\n(je to nepředstavitelně tupé zvíře, myslí " +
                                "si, že když ji nevidíte, nevidí ani" +
                                "\nona vás - blbá jak tágo, ale značně žravá)." +
-                               " Když jste v úzkých, můžete jím" +
+                               "\nKdyž jste v úzkých, můžete jím" +
                                "\nsignalizovat o pomoc. No, a samozřejmě se " +
                                "jím také můžete utřít, pokud vám" +
                                "\npo tom všem ještě připadá dost čistý." +
