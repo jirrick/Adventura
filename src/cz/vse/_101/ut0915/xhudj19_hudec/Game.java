@@ -12,8 +12,7 @@ import java.util.Collection;
 
 
 /**
- * *****************************************************************************
- * Instance třídy {@code GameRUP} mají na starosti logiku hry.
+ * Instance třídy {@code Game} mají na starosti logiku hry.
  * Jsou schopny akceptovat jednotlivé příkazy a poskytovat informace
  * o průběžném stavu hry a jejích součástí.
  * <p>
@@ -50,7 +49,6 @@ public final class Game implements IGame
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vrátí odkaz na jedináčka - jedinou existující instanci třídy.
      *
      * @return Odkaz na jedináčka
@@ -62,7 +60,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vytvoří instanci jedináčka.
      */
     private Game()
@@ -73,7 +70,6 @@ public final class Game implements IGame
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
     /**
-     * *************************************************************************
      * Vrátí informaci o tom, je-li hra aktuálně spuštěná.
      * Spuštěnou hru není možno pustit znovu.
      * Chceme-li hru spustit znovu, musíme ji nejprve ukončit.
@@ -89,7 +85,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Nastaví příznak aktivity, resp. ukončenosti hry
      *
      * @param state Je-li hra ukončena, zadává se {@code false},
@@ -102,7 +97,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí jméno autora/autorky programu
      * ve formátu zadaném v rozhraní {@link IAuthor}
      *
@@ -116,7 +110,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí xname autora/autorky programu
      * ve formátu zadaném v rozhraní {@link IAuthor}
      *
@@ -130,7 +123,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí odkaz na batoh, do nějž bude hráč ukládat sebrané objekty.
      *
      * @return Batoh, do nějž hráč ukládá sebrané objekty
@@ -143,7 +135,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí odkaz na správce podmínek.
      *
      * @return Správce podmínek
@@ -155,7 +146,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci všech příkazů použitelných ve hře.
      *
      * @return Kolekce všech příkazů použitelných ve hře
@@ -168,7 +158,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí odkaz na přepravku s názvy povinných příkazů, tj. příkazů pro
      * <ul>
      * <li>přesun hráče do jiného prostoru,</li>
@@ -187,7 +176,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci odkazů na všechny prostory vystupující ve hře.
      *
      * @return Kolekce odkazů na všechny prostory vystupující ve hře
@@ -200,7 +188,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí odkaz na aktuální prostor,
      * tj. na prostor, v němž se hráč pravé nachází.
      *
@@ -214,7 +201,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Vrátí správce scénářů specifikujících požadované chování hry
      * v různých situacích.
      * Scénáře slouží k automatizovanému ověření funkčnosti hry

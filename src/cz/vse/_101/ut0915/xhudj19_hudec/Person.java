@@ -70,7 +70,7 @@ public class Person implements INamed
      * Vrátí odkaz na postavu barmana pro potřeby zásahů do hry mimo hráčův
      * vstup
      * <p/>
-     * @return odkaz na Arhura
+     * @return odkaz na barmana
      */
     public static Person getBarman()
     {
