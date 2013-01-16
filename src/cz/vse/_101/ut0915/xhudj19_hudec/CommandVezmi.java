@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandVezmi} představují příkaz pro převzetí předmětu
  * z inventáře jiné osoby a přenesení do hráčovy tašky
  *
@@ -27,7 +26,6 @@ public class CommandVezmi extends ACommand
     //##########################################################################
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandVezmi()
@@ -40,7 +38,6 @@ public class CommandVezmi extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * *************************************************************************
      * Metoda vykonávající předávání předmětů z inventáře osoby do hráčovy tašky
      * V parametru by měly být tři položky: název příkazu (předej), předávaný
      * předmět a jméno osoby, od které předmět bereme.

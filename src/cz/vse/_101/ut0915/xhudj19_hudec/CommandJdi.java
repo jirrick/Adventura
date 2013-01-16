@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandJdi} představují příkazy
  * realizující standardní přesun.
  * Instance by mohla být definována jako jedináček,
@@ -29,7 +28,6 @@ public class CommandJdi extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz přesouvající hráče z aktuálního prostoru
      * do prostoru zadaného, přičemž zadaný prostor musí být
      * v danou chvíli sousedem prostoru aktuálního.
@@ -45,7 +43,6 @@ public class CommandJdi extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující standardní přesun do sousedního prostoru.
      * V parametru by měly být dvě položky: název příkazu
      * a název cílového prostoru.

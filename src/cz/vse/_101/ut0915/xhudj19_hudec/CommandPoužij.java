@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code CommandPouzij} představuje třídu umožňující hráči
  * použít vybrané předměty z jeho tašky, nepočítá s použití předmětů v prostoru.
  *
@@ -27,7 +26,6 @@ public class CommandPoužij extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandPoužij()
@@ -41,7 +39,6 @@ public class CommandPoužij extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující používání objektů z tašky
      * V parametru by měly být dvě položky: název příkazu (použij)
      * a předmět k použití.

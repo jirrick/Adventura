@@ -12,7 +12,6 @@ import java.util.List;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code Place} představují prostory ve hře.
  * Dosažení prostoru si můžeme představovat jako částečný cíl,
  * kterého se hráč ve hře snaží dosáhnout.
@@ -128,7 +127,6 @@ public enum Place implements IPlace
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
     /**
-     * *************************************************************************
      * Inicializuje stav všech prostorů,
      * tj. uvede všechny prostoru do stavu požadovaného na počátku hry.
      */
@@ -142,7 +140,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrátí prostor, ve kterém se hráč právě nachází
      * <p/>
      * @return aktuální prostor
@@ -154,7 +151,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Nastaví prostor, ve kterém se hráč právě nachází
      * <p/>
      * @param place nastavovaný prostor
@@ -166,7 +162,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci odkazů na všechny prostory vystupující ve hře.
      *
      * @return Kolekce odkazů na všechny prostory vystupující ve hře
@@ -180,7 +175,6 @@ public enum Place implements IPlace
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří prostor se zadaným názvem, popisem a počátečními
      * sousedy a objekty.
      *
@@ -200,7 +194,6 @@ public enum Place implements IPlace
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
     /**
-     * *************************************************************************
      * Vrátí popis prostoru, který daný prostor stručné charakterizuje.
      *
      * @return Popis daného prostoru
@@ -213,7 +206,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrátí název prostoru.
      *
      * @return Název prostoru
@@ -226,7 +218,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci sousedů daného prostoru, tj. kolekci prostorů,
      * do nichž je možno se z tohoto prostoru přesunout příkazem typu
      * {@link Commands.Type#MOVE Commands.Type.MOVE}.
@@ -241,7 +232,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci objektů nacházejících se v daném prostoru.
      *
      * @return Kolekce objektů nacházejících se v daném prostoru
@@ -254,7 +244,7 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
+
      * Vrátí kolekci osob nacházejících se v daném prostoru.
      *
      * @return Kolekce osob nacházejících se v daném prostoru
@@ -266,7 +256,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrací požadovanou věc z prostoru. Pokud věc v prostoru není vrací
      * {@code null}
      *
@@ -287,7 +276,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrací požadovanou osobu z prostoru. Pokud osoba v prostoru není vrací
      * {@code null}
      *
@@ -308,7 +296,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Vrací požadovaný sousední prostor. Pokud takový soused neexistuje vrací
      * {@code null}
      *
@@ -330,7 +317,6 @@ public enum Place implements IPlace
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /**
-     * *************************************************************************
      * Odebere zadaný objekt z daného prostoru.
      *
      * @param thing Odebíraný objekt
@@ -342,7 +328,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Přidá zadaný objekt do daného prostoru.
      *
      * @param thing Přidávaný objekt
@@ -354,7 +339,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Odebere zadanou osobu z daného prostoru.
      *
      * @param person Odebíraná osoba
@@ -366,7 +350,6 @@ public enum Place implements IPlace
 
 
     /**
-     * *************************************************************************
      * Přidá zadanou osobu do daného prostoru.
      *
      * @param person Přidávaná osoba
@@ -380,7 +363,6 @@ public enum Place implements IPlace
     //Maps
 
     /**
-     * *************************************************************************
      * Inicializuje mapy,
      * v nichž jsou uloženy počáteční sousedé jednotlivých místností
      * a objekty, které se v místnostech nacházejí na počátku hry.
@@ -414,7 +396,6 @@ public enum Place implements IPlace
 
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
     /**
-     * *************************************************************************
      * Inicializuje místnost do počátečního stavu,
      * tj. přiřadí jí počáteční sousedy a vloží do ní počáteční objekty.
      */

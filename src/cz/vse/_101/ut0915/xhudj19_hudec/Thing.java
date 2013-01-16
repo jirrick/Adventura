@@ -8,7 +8,6 @@ import cz.vse.adv_framework.game_txt.IObject;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code Something} přestavují objekty v místnostech.
  *
  * @author Jiří HUDEC
@@ -37,8 +36,7 @@ public class Thing implements IObject, INamed
 
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
-    /**
-     * *************************************************************************
+    /*
      * Vytvoří nový objekt se zadaným názvem
      * a vahou odvozenou od prvního znaku názvu.
      *
@@ -60,7 +58,6 @@ public class Thing implements IObject, INamed
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
     /**
-     * *************************************************************************
      * Vrátí název dané instance.
      *
      * @return Název instance
@@ -73,7 +70,6 @@ public class Thing implements IObject, INamed
 
 
     /**
-     * *************************************************************************
      * Vrátí váhu objektu, resp. charakteristiku jí odpovídající.
      * Objekty, které není možno zvednout, vrací -1.
      *

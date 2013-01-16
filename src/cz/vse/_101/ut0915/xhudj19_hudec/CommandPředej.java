@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandPolož} představují příkaz pro předávání předmětů
  * z tašky do inventáře ostatních osob
  *
@@ -27,7 +26,6 @@ public class CommandPředej extends ACommand
     //##########################################################################
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandPředej()
@@ -40,7 +38,6 @@ public class CommandPředej extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * *************************************************************************
      * Metoda vykonávající předávání předmětů z tašky hráče do inventáře osob
      * V parametru by měly být tři položky: název příkazu (předej), předávaný
      * předmět a jméno osoby, které předmět dáváme.

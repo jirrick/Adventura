@@ -12,7 +12,6 @@ import java.util.List;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code Person} představují osoby ve hře. Od objektů se
  * liší tím, že mohou mít svůj inventář a pochopitelně nejdou vložit do tašky
  *
@@ -105,7 +104,6 @@ public class Person implements INamed
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
 
     /**
-     * *************************************************************************
      * Vytvoří novou osobu se zadaným názvem
      * Jméno musí být ve tvaru:
      * "delimiter""seznam možných rozhovorů""delimiter""název osoby"
@@ -135,7 +133,6 @@ public class Person implements INamed
 //== INSTANCE GETTERS AND SETTERS ==============================================
 
     /**
-     * *************************************************************************
      * Vrátí název dané instance.
      *
      * @return Název instance
@@ -148,7 +145,6 @@ public class Person implements INamed
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci možných rozhovorů.
      *
      * @return Kolekce možných rozhovorů
@@ -160,7 +156,6 @@ public class Person implements INamed
 
 
     /**
-     * *************************************************************************
      * Vrátí kolekci objektů nacházejících se v inventáři postavy.
      *
      * @return Kolekce objektů nacházejících se v inventáři postavy
@@ -172,7 +167,6 @@ public class Person implements INamed
 
 
     /**
-     * *************************************************************************
      * Vloží osobě předmět do inventáře
      *
      * @param thing vkládaný předmět
@@ -184,7 +178,6 @@ public class Person implements INamed
 
 
     /**
-     * *************************************************************************
      * Odebere osobě předmět z inventáře
      *
      * @param thing odebíraný předmět
@@ -196,7 +189,6 @@ public class Person implements INamed
 
 
     /**
-     * *************************************************************************
      * Vybere oředmět z inventáře dané osoby
      *
      * @param requestedObject vybraný předmět

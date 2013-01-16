@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandSeber} představují příkazy
  * realizující standardní přesun objektu z prostoru do tašky.
  *
@@ -27,7 +26,6 @@ public class CommandSeber extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandSeber()
@@ -40,7 +38,6 @@ public class CommandSeber extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující reakci hry na zadání příkazu
      * pro standardní přesun objektu z prostoru do batohu.
      * V parametru by měly být dvě položky: název příkazu

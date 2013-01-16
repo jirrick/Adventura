@@ -6,7 +6,6 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 
 /**
- * *****************************************************************************
  * Instances of enumerated type {@code Condition} představuje názvy interních
  * podmínek řídícich (omezujících) průběh hry
  *
@@ -36,7 +35,6 @@ public enum Condition
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      *
      */
     private Condition()

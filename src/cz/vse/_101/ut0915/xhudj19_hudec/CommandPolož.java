@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandPolož} představují příkaz umožňující položit
  * předmět z tašky do aktuálního prostoru
  *
@@ -27,7 +26,6 @@ public class CommandPolož extends ACommand
     //##########################################################################
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandPolož()
@@ -40,7 +38,6 @@ public class CommandPolož extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * *************************************************************************
      * Metoda realizující pokládání předmětu z tašky do prostoru.
      * V parametru by měly být dvě položky: název příkazu (polož)
      * a předmět k položení.

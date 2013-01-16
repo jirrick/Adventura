@@ -14,8 +14,7 @@ import cz.vse.adv_framework.test_util._Test_101;
 
 
 /**
- * *****************************************************************************
- * Instance třídy {@code EmptyScenarioManager} slouží jako správce scénářů,
+ * Instance třídy {@code ScenarioManager} slouží jako správce scénářů,
  * které mají prověřit a/nebo demonstrovat správnou funkci plánované hry.
  * Jednotlivé scénáře jsou iterovatelné posloupností kroků specifikovaných
  * instancemi třídy
@@ -58,7 +57,6 @@ public final class ScenarioManager extends AScenarioManager
      *   TypeOfStep typeOfStep; //Typ daného kroku scénáře
      =========================================================================*/
     /**
-     * *************************************************************************
      * Počáteční krok hry, který je pro všechny scénáře shodný.
      */
     private static final ScenarioStep START_STEP =
@@ -82,7 +80,6 @@ public final class ScenarioManager extends AScenarioManager
                                      TypeOfStep.tsSTART);
 
     /**
-     * *************************************************************************
      * Kroky základního úspěšného scénáře
      * popisující očekávatelný úspěšný průběh hry.
      * Z těchto kroků sestavený scénář nemusí být nutně nejkratším možným
@@ -536,7 +533,6 @@ public final class ScenarioManager extends AScenarioManager
 
 
     /**
-     * *************************************************************************
      * Základní chybový scénář definující reakce
      * na povinnou sadu chybových stavů.
      */
@@ -668,7 +664,6 @@ public final class ScenarioManager extends AScenarioManager
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vrátí správce scénářů - jedinou instanci této třídy.
      *
      * @return Správce scénářů
@@ -680,7 +675,6 @@ public final class ScenarioManager extends AScenarioManager
 
 
     /**
-     * *************************************************************************
      * Vytvoří instanci představující správce scénářů hry.
      */
     private ScenarioManager()
@@ -703,7 +697,6 @@ public final class ScenarioManager extends AScenarioManager
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
 //== TESTOVACÍ METODY A TŘÍDY ==================================================
     /**
-     * *************************************************************************
      * Základní test ověřující,
      * jestli správce scénářů vyhovuje zadaným okrajovým podmínkám, tj. jestli:
      * <ul>
@@ -740,7 +733,6 @@ public final class ScenarioManager extends AScenarioManager
 
 
     /**
-     * *************************************************************************
      * Simuluje hraní hry podle základního úspěšného
      * a základního chybového scénáře.
      */
@@ -753,7 +745,6 @@ public final class ScenarioManager extends AScenarioManager
 
 
     /**
-     * *************************************************************************
      * Testování funkce hry prováděné postupně
      * prostřednictvím všech scénářů daného správce
      */

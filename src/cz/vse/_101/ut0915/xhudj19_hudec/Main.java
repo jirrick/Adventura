@@ -12,7 +12,6 @@ import javax.swing.JOptionPane;
 
 
 /**
- * *****************************************************************************
  * Třída {@code Main} je hlavní třídou projektu
  * zprostředkující komunikaci mezi uživatelem a hrou.
  *
@@ -22,7 +21,6 @@ import javax.swing.JOptionPane;
 public final class Main
 {
     /**
-     * *************************************************************************
      * Metoda startující aplikaci je podle parametrů příkazového řádku
      * schopna spustit aplikaci v jednom ze tří režimů:
      * <ul>
@@ -42,8 +40,6 @@ public final class Main
      * Cesta k souboru může být zadána absolutně i relativně.
      * <br>&nbsp;</li>
      * </ul>
-     *
-     *
      * @param args Parametry příkazového řádku
      */
     public static void main(String[] args)
@@ -78,7 +74,6 @@ public final class Main
 
 
     /**
-     * *************************************************************************
      * Komunikuje s uživatelem prostřednictvím jednoduchých dialogových oken
      * poskytovaných třídou {@link JOptionPane}.
      */
@@ -108,7 +103,6 @@ public final class Main
 
 
     /**
-     * *************************************************************************
      * Komunikuje s uživatelem prostřednictvím standardního vstupu a výstupu.
      */
     private static void stdIO()
@@ -119,7 +113,6 @@ public final class Main
 
 
     /**
-     * *************************************************************************
      * Očekává za svým spouštěcím parametrem cestu k souboru
      * se zadanými vstupními příkazy; své odpovědi posílá na standardní výstup.
      *
@@ -133,7 +126,6 @@ public final class Main
 
 
     /**
-     * *************************************************************************
      * Vytvoří scanner čtoucí příkazy ze souboru zadaného v příkazovém řádku.
      *
      * @param args Parametry příkazového řádku
@@ -159,7 +151,6 @@ public final class Main
 
 
     /**
-     * *************************************************************************
      * Spustí komunikaci s uživatelem, která bude
      * číst příkazy uživatele prostřednictvím zadaného scanneru
      * a posílat odpovědi hry na standardní výstup.

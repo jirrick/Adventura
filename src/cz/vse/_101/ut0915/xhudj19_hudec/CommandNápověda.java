@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zNÁPOVĚDA;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code CommandNápověda} představuje třídu obsluhující
  * zobrazení nápovědy
  *
@@ -27,7 +26,6 @@ public class CommandNápověda extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandNápověda()
@@ -40,7 +38,6 @@ public class CommandNápověda extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující nápovědu. Parametry nepoužívá.
      *
      * @param arguments nepoužívané parametry

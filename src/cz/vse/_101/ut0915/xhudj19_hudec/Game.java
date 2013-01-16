@@ -231,7 +231,6 @@ public final class Game implements IGame
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Zpracuje zadaný příkaz a vrátí text zprávy pro uživatele.
      *
      * @param command Zadávaný příkaz
@@ -245,7 +244,6 @@ public final class Game implements IGame
 
 
     /**
-     * *************************************************************************
      * Ukončí celou hru a vrátí alokované prostředky.
      */
     @Override

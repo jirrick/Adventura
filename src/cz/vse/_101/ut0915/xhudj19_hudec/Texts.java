@@ -5,7 +5,6 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 
 /**
- * *****************************************************************************
  * Knihovní třída {@code Texts} slouží jako schránka na textové konstanty,
  * které se používají na různých místech programu.
  * Centralizací definic těchto textových řetězců lze nejsnadněji dosáhnout toho,
@@ -399,7 +398,6 @@ public final class Texts
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
     /**
-     * *************************************************************************
      * Vrátí řetězec obsahující zadané názvy oddělené čárkami.
      *
      * @param názvy Názvy, které je třeba sloučit
@@ -419,7 +417,6 @@ public final class Texts
 
 
     /**
-     * *************************************************************************
      * Vytvoří jednu položku rozhovoru
      *
      * @param osoba Jméno osoby

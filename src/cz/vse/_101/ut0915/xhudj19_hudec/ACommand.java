@@ -13,7 +13,6 @@ import java.util.Map;
 
 
 /**
- * *****************************************************************************
  * Třída {@code ACommand} je společným rodičem všech tříd, jejichž instance
  * mají na starosti interpretaci příkazů zadávaných uživatelem hrajícím hru.
  * Název spouštěného příkazu bývá většinou první slovo řádku zadávaného
@@ -74,7 +73,6 @@ public abstract class ACommand implements ICommand
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
     /**
-     * *************************************************************************
      * Vrátí kolekci všech příkazů použitelných ve hře.
      *
      * @return Kolekce všech příkazů použitelných ve hře
@@ -87,7 +85,6 @@ public abstract class ACommand implements ICommand
 
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
     /**
-     * *************************************************************************
      * Zpracuje zadaný příkaz a vrátí text zprávy pro uživatele.
      *
      * @param input Zadávaný příkaz
@@ -134,7 +131,6 @@ public abstract class ACommand implements ICommand
 
 
     /**
-     * *****************************************************************************
      * Vrací výpis o stavu hry (aktuální prostor, sousedi, věci v prostoru,
      * osoby v prostoru, předměty v tašce, případně blížící se konec hry)
      *
@@ -171,7 +167,6 @@ public abstract class ACommand implements ICommand
 
 
     /**
-     * *************************************************************************
      * Inicializuje všechny příkazy,
      * tj. požádá všechny příkazy, aby se inicializovaly a nastavily si tak
      * případné potřebné příznaky do správného výchozího stavu.
@@ -187,7 +182,6 @@ public abstract class ACommand implements ICommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří rodičovský podobjekt vytvářeného příkazu hry.
      *
      * @param name        Název vytvářeného příkazu
@@ -203,7 +197,6 @@ public abstract class ACommand implements ICommand
 
 //== ABSTRACT METHODS ==========================================================
     /**
-     * *************************************************************************
      * Metoda realizující reakci hry na zadání daného příkazu.
      * Počet parametrů je závislý na konkrétním příkazu,
      * např. příkazy <i>konec</i> a <i>nápověda</i> nemají parametry,
@@ -220,7 +213,6 @@ public abstract class ACommand implements ICommand
 
 //== INSTANCE GETTERS AND SETTERS ==============================================
     /**
-     * *************************************************************************
      * Vrátí název příkazu, tj. text, který musí hráč zadat
      * pro vyvolaní daného příkazu.
      *
@@ -234,7 +226,6 @@ public abstract class ACommand implements ICommand
 
 
     /**
-     * *************************************************************************
      * Vrátí popis příkazu s vysvětlením jeho funkce
      * a významu jednotlivých parametru.
      *
@@ -249,7 +240,6 @@ public abstract class ACommand implements ICommand
 
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Inicializuje daný příkaz.
      * Implicitní, zděděná verze této metody je prázdná.
      * Většině příkazů stačí a ty, které opravdu potřebují něco inicializovat,
@@ -262,7 +252,6 @@ public abstract class ACommand implements ICommand
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
     /**
-     * *************************************************************************
      * Vrátí kolekci jako seznam oddělený čárkami.
      *
      * @param collection Kolekce objektů, schopných vypsat svůj název

@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandPromluv} představují třídu vykonávající
  * rozhovory s postavami ve hře. Předem připravený rozhovor se provede, pouze
  * pokud jsou splněny podmínky pro jeho vykonání. Osoby se tedy odmítají bavit,
@@ -29,7 +28,6 @@ public class CommandPromluv extends ACommand
     //##########################################################################
     //== KONSTRUKTORY A TOVÁRNÍ METODY =========================================
     /**
-     * ***********************************************************************
      * Vytvoří příkaz pro vykonávání rozhovorů.
      */
     public CommandPromluv()
@@ -43,7 +41,6 @@ public class CommandPromluv extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * *************************************************************************
      * Metoda vykonávající rozhovory ve hře
      * V parametru by měly být dvě položky: název příkazu (promluv)
      * a jméno osoby, se kterou se má mluvit.

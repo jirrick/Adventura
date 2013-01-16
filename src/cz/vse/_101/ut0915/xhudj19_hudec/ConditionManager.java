@@ -11,7 +11,6 @@ import java.util.EnumMap;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code ConditionManager} udržuje a vyhodnocuje podmínky
  * pro vykonávání akcí ve hře.
  * Hra, jakožto knižní adaptace, vyžaduje dodržení striktního postupu, což
@@ -76,7 +75,6 @@ public final class ConditionManager
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vrátí odkaz na jedináčka - jedinou existující instanci třídy.
      *
      * @return Odkaz na jedináčka
@@ -88,7 +86,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vytvoří instanci jedináčka.
      */
     private ConditionManager()
@@ -123,7 +120,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Indikátor, zda se může vykonat další krok hry.
      *
      * @return Pokud se může vykonat další krok vrátí {@code true},
@@ -136,7 +132,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vrátí hodnotu požadováné podmínky
      *
      * @return pravdivost požadované podmínky
@@ -148,7 +143,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Nastaví hodnotu požadováné podmínky
      *
      * @param condition název nastavované podmínky
@@ -161,7 +155,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Může se provést rozhovor?
      *
      * @param dialogue číslo rozhovoru
@@ -174,7 +167,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Rozhovor se provedl
      *
      * @param dialogue číslo rozhovoru
@@ -204,7 +196,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnocení podmínek po zadání dalšího příkazu.
      * Výsledek lze získat getterem {@code canDoNextMove()}.
      *
@@ -224,7 +215,6 @@ public final class ConditionManager
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
     /**
-     * *************************************************************************
      * Vyhodnotí podmínky u rozhovorů po jejich provedení.
      */
     private void evaluateAfterDialogues()
@@ -263,7 +253,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnotí, zda se může spustit rozhovor E.
      */
     private void evaluateDialogueE()
@@ -277,7 +266,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnotí, zda může Ford kouit piva / buráky. Pokud ano, tak barman si
      * schová peníze a přidá požadované přesměty do inventáře
      *
@@ -302,7 +290,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnotí, zda se spustí odpočet kol do konce hry.
      */
     private void evaluateStartCountdown()
@@ -316,7 +303,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnotí, zda se spustí odpočet času do konce hry.
      */
     private void evaluateStartTimer()
@@ -330,7 +316,6 @@ public final class ConditionManager
 
 
     /**
-     * *************************************************************************
      * Vyhodnotí, zda země byla zničena.
      *
      * @return Vrací {@code true} pokud země byla zničena,

@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code CommandArthur} představuje třídu umožňující hráči
  * (Fordovi Prefectovi) ovládat postavu Arthura
  *
@@ -27,7 +26,6 @@ public class CommandArthur extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandArthur()
@@ -40,7 +38,6 @@ public class CommandArthur extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující ovládání postavy Arthura Denta
      * V parametru by měly být dvě položky: název příkazu (arthur)
      * a pokyn pro něj (stůj, následuj, inventář).

@@ -8,7 +8,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code CommandPrůvodce} představují speciální příkaz,
  * který přepne chování hry do režimu prohlížení vesmírné encyklopedie Stopařův
  * průvodce
@@ -28,7 +27,6 @@ public class CommandPrůvodce extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz. Jelikož by neměl být volán přímo, registuje se takto
      * dlouhým názvem
      */
@@ -43,7 +41,6 @@ public class CommandPrůvodce extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující režim procházení encyklopedie
      * V parametru by měla být jen jedna položka - pojem, který chceme v
      * encyklopedii vyhjledat, popř. tečka (.) pro návrat zpět do hry

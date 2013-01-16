@@ -9,7 +9,6 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.zUVÍTÁNÍ;
 
 
 /**
- * *****************************************************************************
  * Instance třídy {@code CommandStart} realizuje reakci aplikace
  * na startovací příkaz, který spouští hru.
  * Tento příkaz je možné zadat pouze tehdy, není-li hra již spuštěna.
@@ -30,7 +29,6 @@ public class CommandStart extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandStart()
@@ -43,7 +41,6 @@ public class CommandStart extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující reakci hry na zadání startovacího příkaz.
      *
      * @param arguments Parametry příkazu, na nich nezáleží

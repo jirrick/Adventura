@@ -6,7 +6,6 @@ package cz.vse._101.ut0915.xhudj19_hudec;
 
 
 /**
- * *****************************************************************************
  * Instances of class {@code CommandKonec} představují třídu ukončující hru
  *
  * @author Jiří HUDEC
@@ -24,7 +23,6 @@ public class CommandKonec extends ACommand
 //##############################################################################
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
     /**
-     * *************************************************************************
      * Vytvoří příkaz
      */
     public CommandKonec()
@@ -37,7 +35,6 @@ public class CommandKonec extends ACommand
 //== INSTANCE GETTERS AND SETTERS ==============================================
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
     /**
-     * *************************************************************************
      * Metoda realizující konec hry. Parametry nepoužívá.
      *
      * @param arguments nepoužívané parametry
