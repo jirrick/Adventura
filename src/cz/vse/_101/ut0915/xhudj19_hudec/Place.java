@@ -44,7 +44,9 @@ public enum Place implements IPlace
     Dům("Arthurův dům, už tři čtvrtě roku naplánován k demolici.",
         new String[] {mZAHRADA},
         oRUČNÍK, oPANTOFLE, oKARTÁČEK, oKONVICE, oPĚTILIBROVKA, oHRNEK, oTALÍŘ,
-        oSKLENICE, HEAVY + oLEDNICE);
+        oSKLENICE, HEAVY + oLEDNICE),
+    Zkratka("Zkratka, ze které je možno okamžitě vyhrát hru.",
+        new String[] {mVOGONI});
 
 //== CONSTANT CLASS ATTRIBUTES =================================================
     /**

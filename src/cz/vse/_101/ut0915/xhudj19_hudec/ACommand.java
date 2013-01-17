@@ -55,6 +55,7 @@ public abstract class ACommand implements ICommand
         new CommandPředej();
         new CommandVezmi();
         new CommandArthur();
+        new CommandZkratka();
     }
 
 
