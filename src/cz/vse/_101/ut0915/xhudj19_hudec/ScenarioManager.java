@@ -658,7 +658,13 @@ public final class ScenarioManager extends AScenarioManager
 
         START_STEP,
         new ScenarioStep(pZKRATKA,
-                         zZKRATKA,
+                         zZKRATKA + String.format(dFORMÁT_INFORMACE,
+                                       mZKRATKA,
+                                       mVOGONI,
+                                       jARTHUR, 
+                                       "",
+                                       cat(oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oSCÉNÁŘ,
+                                           oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA)),
                          mZKRATKA,
                          new String[] {mVOGONI},
                          new String[] {},
@@ -670,8 +676,8 @@ public final class ScenarioManager extends AScenarioManager
                          mVOGONI,
                          new String[] {},
                          new String[] {},
-                         new String[] {oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oRUČNÍK,
-                                       oBURÁKY},
+                         new String[] {oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oSCÉNÁŘ,
+                                       oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
                          tsMOVE), //        UKONČENÍ
     };
 
