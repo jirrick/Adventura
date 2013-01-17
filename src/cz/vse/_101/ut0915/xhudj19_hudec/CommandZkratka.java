@@ -12,7 +12,7 @@ import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
  * přeskočení celé hry
  *
  * @author Jiří HUDEC
- * @version 2013.01.15
+ * @version 2013.01.17
  */
 public class CommandZkratka extends ACommand
 {
@@ -30,7 +30,7 @@ public class CommandZkratka extends ACommand
      */
     public CommandZkratka()
     {
-        super("Zkratka", "Příkaz pro přeskočení celé hry");
+        super("Zkratka", "Cheat");
     }
 
 
@@ -48,12 +48,36 @@ public class CommandZkratka extends ACommand
     public String execute(String... arguments)
     {
         ConditionManager condMan = ConditionManager.getInstance();
+        Bag bag = Bag.getInstance();
 
+        /* přesune Arthura z jakéhokolik prostoru do zkratkové místnosti,
+         * nastaví mu inventář do požadováného stavu a nastaví příznaky
+         * sledování pohybu hráče
+         */
+        for (Place place : Place.values()) {
+            Person arthur;
+            arthur = place.getPerson(jARTHUR);
+            if (arthur != null) {
+                if (arthur.getObject(oRUČNÍK) == null) {
+                    arthur.add(new Thing(oRUČNÍK));
+                }
+                Place.Zkratka.add(arthur);
+                place.remove(arthur);
+                break;
+            }
+        }
+        condMan.setValue(Condition.ARTHUR_CAN_FOLLOW, Boolean.TRUE);
         condMan.setValue(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
-        Person.getArthur().add(new Thing(oRUČNÍK));
+
+
+        /* uvede obsah tašky do požadovaného stavu
+         */
+        bag.initialize();
+
+        // nastaví prostor na Zkratku
         Place.setCurrentPlace(Place.Zkratka);
 
-        return "Použil(a) jste zkratku. Nyní můžete jít do cílového prostoru.";
+        return zZKRATKA + status();
     }
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
@@ -66,7 +90,7 @@ public class CommandZkratka extends ACommand
 //     */
 //    public static void test()
 //    {
-//        CommandArthur inst = new CommandArthur();
+//        CommandZkratka inst = new CommandZkratka();
 //    }
 //    /** @param args Command line arguments - not used. */
 //    public static void main(String[] args)  {  test();  }

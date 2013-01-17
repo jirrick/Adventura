@@ -43,6 +43,7 @@ public abstract class ACommand implements ICommand
      * vytvoří po jedné instanci od každé ze svých dceřiných tříd.
      */
     static {
+        new CommandZkratka();
         guideCommand = new CommandPrůvodce();
         new CommandStart();
         new CommandJdi();
@@ -55,7 +56,6 @@ public abstract class ACommand implements ICommand
         new CommandPředej();
         new CommandVezmi();
         new CommandArthur();
-        new CommandZkratka();
     }
 
 
@@ -114,7 +114,6 @@ public abstract class ACommand implements ICommand
                 words = line.split("\\s+");
             }
         }
-
         //režim normální hry
         else {
             if (line.isEmpty()) {

@@ -121,7 +121,10 @@ public final class Texts
      * Texty zpráv vypisovaných v reakci na povinné příkazy.
      * Prefix "z" - zpráva
      */
-    public static final String zZANP = "\nZadaná akce nebyla provedena",
+    public static final String zZKRATKA =
+                               "Použil(a) jste zkratku. Nyní můžete jít do" +
+                               " cílového prostoru.",
+            zZANP = "\nZadaná akce nebyla provedena",
             zPORADÍM = "\nChcete-li poradit, zadejte příkaz ?",
             zPRÁZDNÝ_PŘÍKAZ = "\nZadal(a) jste prázdný příkaz" + zPORADÍM,
             zNEZNÁMÝ_PŘÍKAZ = "\nTento příkaz neznám" + zPORADÍM,
@@ -148,6 +151,7 @@ public final class Texts
                         "\nPředej [co] [kdo] - Předá předmět osobě" +
                         "\nSeber [co] - Zvedne předmět z prostoru" +
                         "\nVezmi [co] [kdo] - Vezme předmět od osoby" +
+                        "\nZkratka - Přesune do zkratkové místnosti" +
                         "\nKonec - Ukončí hru",
             zUVÍTÁNÍ =
             "\nJmenuješ se Ford Prefect." +
@@ -219,8 +223,8 @@ public final class Texts
             nPRŮVODCE_PALEC =
             "\nElektronický palec slouží k stopování vesmírných lodí." +
             "\nJedná se o krátký a tlustý černý váleček s hebkým," +
-            "\nmatným povrchem a několika vypínači a ciferníky na jednom konci."
-            + nPRŮVODCE_RETURN,
+            "\nmatným povrchem a několika vypínači a ciferníky na jednom konci." +
+            nPRŮVODCE_RETURN,
             nPRŮVODCE_PŘIJÍMAČ =
             "\nSenzomatický subéterový přijímač zjišťuje přítomnost" +
             "\nvesmírných lodí. Bez něj by bylo stopování ve vesmíru o" +
