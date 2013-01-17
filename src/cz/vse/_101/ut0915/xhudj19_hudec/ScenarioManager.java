@@ -527,9 +527,9 @@ public final class ScenarioManager extends AScenarioManager
     };
 
 
-    static {
-        ScenarioStep.setIndex(2);
-    }
+//    static {
+//        ScenarioStep.setIndex(2);
+//    }
 
 
     /**
@@ -661,7 +661,7 @@ public final class ScenarioManager extends AScenarioManager
                          zZKRATKA + String.format(dFORMÁT_INFORMACE,
                                        mZKRATKA,
                                        mVOGONI,
-                                       jARTHUR, 
+                                       jARTHUR,
                                        "",
                                        cat(oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oSCÉNÁŘ,
                                            oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA)),
