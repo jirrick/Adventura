@@ -240,6 +240,7 @@ public class _Test_101 extends Triumvirate
     {
         testGameByScenario(0);
         testGameByScenario(1);
+        testGameByScenario(2);
     }
 
 
