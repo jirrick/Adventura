@@ -30,7 +30,7 @@ public class CommandZkratka extends ACommand
      */
     public CommandZkratka()
     {
-        super("Zkratka", "Cheat");
+        super(pZKRATKA, "Cheat");
     }
 
 

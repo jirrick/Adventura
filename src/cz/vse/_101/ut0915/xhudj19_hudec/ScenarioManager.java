@@ -648,6 +648,33 @@ public final class ScenarioManager extends AScenarioManager
                          tsEND), //        UKONČENÍ
     };
 
+
+
+    /**
+     * Základní chybový scénář definující reakce
+     * na povinnou sadu chybových stavů.
+     */
+    private static final ScenarioStep[] ZKRATKA_SCENARIO_STEPS = {
+
+        START_STEP,
+        new ScenarioStep(pZKRATKA,
+                         zZKRATKA,
+                         mZKRATKA,
+                         new String[] {mVOGONI},
+                         new String[] {},
+                         new String[] {oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oSCÉNÁŘ,
+                                       oRUČNÍK, oPĚTILIBROVKA, oPĚTILIBROVKA},
+                         tsNON_STANDARD),
+        new ScenarioStep(pJDI + " " + mVOGONI,
+                         zPŘESUN + mVOGONI + nVÝHRA,
+                         mVOGONI,
+                         new String[] {},
+                         new String[] {},
+                         new String[] {oPALEC, oPRŮVODCE, oPŘIJÍMAČ, oRUČNÍK,
+                                       oBURÁKY},
+                         tsMOVE), //        UKONČENÍ
+    };
+
     /**
      * Jediná instance této třídy. Spravuje všechny scénáře sdružené hry.
      */
@@ -685,6 +712,8 @@ public final class ScenarioManager extends AScenarioManager
                     TypeOfScenario.scHAPPY, HAPPY_SCENARIO_STEPS);
         addScenario("Chybový",
                     TypeOfScenario.scMISTAKES, MISTAKE_SCENARIO_STEPS);
+        addScenario("Zkratkový",
+                    TypeOfScenario.scGENERAL, ZKRATKA_SCENARIO_STEPS);
         seal();
     }
 

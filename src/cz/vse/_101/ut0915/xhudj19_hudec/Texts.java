@@ -46,7 +46,8 @@ public final class Texts
             mULICE = "Ulice",
             mHOSPODA = "Hospoda",
             mLOUKA = "Louka",
-            mVOGONI = "Vogonská_loď";
+            mVOGONI = "Vogonská_loď",
+            mZKRATKA = "Zkratka";
 
     /**
      * Jména používaných osob.
@@ -101,7 +102,8 @@ public final class Texts
             pPROMLUV = "Promluv",
             pPŘEDEJ = "Předej",
             pPOUŽIJ = "Použij",
-            pKONEC = "Konec";
+            pKONEC = "Konec",
+            pZKRATKA = "Zkratka";
 
     /**
      * Formát dodatku zprávy informujícího o aktuálním stavu hráče.
