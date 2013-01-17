@@ -47,8 +47,15 @@ public class CommandZkratka extends ACommand
     @Override
     public String execute(String... arguments)
     {
-        return "";
+        ConditionManager condMan = ConditionManager.getInstance();
+
+        condMan.setValue(Condition.ARTHUR_FOLLOWS, Boolean.TRUE);
+        Person.getArthur().add(new Thing(oRUČNÍK));
+        Place.setCurrentPlace(Place.Zkratka);
+
+        return "Použil(a) jste zkratku. Nyní můžete jít do cílového prostoru.";
     }
+
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
