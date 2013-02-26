@@ -24,6 +24,10 @@ import java.util.Set;
 import static cz.vse.adv_framework.utilities.CompareIgnoreCase.CIC;
 import static cz.vse.adv_framework.utilities.Util.*;
 import static cz.vse.adv_framework.utilities.FormatStrings.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 
 
@@ -90,7 +94,7 @@ class GameStepTest
             verifyCurrentPlace(sb, step, actSpace);
             verifyEquality(sb, step, actSpace    .getNeighbors(),step.neighbors,
                                                                      "východů");
-            verifyEquality(sb, step, actSpace    .getObjects(),  step.objects,
+            verifyEquality(sb, step, actSpace     .getObjects(), step.objects,
                                                                      "objektů");
             verifyEquality(sb, step, game.getBag().getObjects(), step.bag,
                                                             "objektů v batohu");
@@ -98,6 +102,9 @@ class GameStepTest
 //            if (krok.typeOfStep != TypeOfStep.tsDIALOG) {
 //                ověřViděné(sb, message, aktProstor.getObjects());
 //            }
+            if (_Test_101.version == 4) {
+                verifyNonVisited(game, message);
+            }
         } catch(Exception ise) {
             describeError(ise, sb, game, step, actSpace, message);
 //            System.exit(-1);
@@ -118,6 +125,58 @@ class GameStepTest
         }
 
         return ret.toString();
+    }
+
+
+    private static final String DNM = "Dosud nenavštívené místnosti: [";
+    private static final int    LEN = DNM.length();
+    /***************************************************************************
+     *
+     * @param game
+     * @param message
+     */
+    @SuppressWarnings("unchecked")
+    private static void verifyNonVisited(IGame game, String message)
+    {
+        Set<String> notVisited = GameTRunTest.notVisited;
+        if (! message.contains(DNM)) {
+            throw new IllegalStateException(
+                    "Zpráva neobsahuje hledaný text:" +
+                    "\ntext: "    +  DNM +
+                    "\nzpráva:\n" +  message);
+        }
+        message = message.trim();
+        int start = message.indexOf(DNM) + LEN;
+        int stop  = message.lastIndexOf(']');
+        String announced = message.substring(start, stop);
+
+        Set<String> namesSet;
+        if (announced.isEmpty()) {
+            namesSet = Collections.EMPTY_SET;
+        }
+        else {
+            String[] namesArr = announced.split(", ");
+            namesSet = new HashSet<>(namesArr.length);
+            for (String name : namesArr) {
+                namesSet.add(name.toLowerCase());
+            }
+        }
+        String current = game.getCurrentPlace().getName().toLowerCase();
+        notVisited.remove(current);
+        GameTRunTest.notVisited = notVisited;
+        if ( namesSet.equals(notVisited)  ||
+            (namesSet.isEmpty() &&  notVisited.isEmpty()))
+        {
+            return;
+        }
+        List<String> expected = new ArrayList<String>(notVisited);
+        List<String> obtained = new ArrayList<String>(namesSet);
+        Collections.sort(expected);
+        Collections.sort(obtained);
+        throw new IllegalStateException(
+                "Seznam nenavštívených místností nesouhlasí" +
+                "\nOčekáváno: " +  expected +
+                "\nObdrženo:  " +  obtained);
     }
 
 

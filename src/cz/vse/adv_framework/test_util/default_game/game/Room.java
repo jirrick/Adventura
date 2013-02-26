@@ -18,13 +18,15 @@ import java.util.Map;
 import static cz.vse.adv_framework.test_util.default_game.game.Something.HEAVY;
 
 import static cz.vse.adv_framework.test_util.default_game.game.Texts.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 
 
 /*******************************************************************************
- * Instance třídy {@code Room} představují jednotlive mistnosti
- * v prochazenem byte. Trida {@code Room} je soucasne schopna vybudovat
- * na zákadě zadných parametrů cely byt z jednotlivych mistnosti.
+ * Instance třídy {@code Room} představují jednotlivé místnosti
+ * v procházeném byte. Třída {@code Room} je současně schopna vybudovat
+ * na základě zadaných parametrů cely byt z jednotlivých místností.
  *
  * @author    Rudolf PECINOVSKY
  * @version   5.0
@@ -33,7 +35,7 @@ public enum Room implements IPlace
 {
 //== HODNOTY VÝČTOVÉHO TYPU ====================================================
 
-    /** Vstupní mistnost bytu odkud  se dá přesunout do většiny místností. */
+    /** Vstupní místnost bytu odkud  se dá přesunout do většiny místností. */
     Předsíň (new Point(550, 300),
         "Vstupní místnost bytu odkud  se dá přesunout do většiny místností.",
         new String[] { LOŽNICE, OBÝVÁK, KOUPELNA },
@@ -51,7 +53,7 @@ public enum Room implements IPlace
 //        "Brýle", HEAVY+"Umyvadlo", "Časopis"
    ),
 
-    /** Druhá nejmilejší mistnost v bytě, v níž osazenstvo tráví
+    /** Druhá nejmilejší místnost v bytě, v níž osazenstvo tráví
      *  mnohé příjemné chvilky. */
     Ložnice (new Point(460, 100),
         "Druhá nejmilejší místnost v bytě, v níž osazenstvo tráví " +
@@ -62,7 +64,7 @@ public enum Room implements IPlace
 //        HEAVY+"Postel", HEAVY+"Zrcadlo", "Župan"
    ),
 
-    /** Room, ve které se moc nezdržuju. */
+    /** Místnost, ve které se moc nezdržuju. */
     Obývák (new Point(200, 300),
         "Místnost, ve které se moc nezdržuju.",
         new String[] { KUCHYŇ, PŘEDSÍŇ },
@@ -95,6 +97,10 @@ public enum Room implements IPlace
 
     /** Mapa sloužící k převodu názvu místnosti na odpovídající místnost. */
     private static final Map<String,Room> název2místnost = new HashMap<>();
+
+//%A+ o2012p4
+    private static final Set<String> nenavštívené = new TreeSet<>();
+//%A-
 
 
 
@@ -158,8 +164,21 @@ public enum Room implements IPlace
 
 //== PŘÍSTUPOVÉ METODY ATRIBUTŮ TŘÍDY ==========================================
 
+//%A+ o2012p4
     /***************************************************************************
-     * Vrátí odkaz na aktuálni místnost,
+     * Vrátí kolekci doposud nenavštívených místností.
+     *
+     * @return Kolekce doposud nenavštívených místností
+     */
+    public static Collection<String> getNenavštívené()
+    {
+        return nenavštívené;
+    }
+//%A-
+
+
+    /***************************************************************************
+     * Vrátí odkaz na aktuální místnost,
      * tj. na místnost, v níž se právě nachází hráč.
      *
      * @return Požadovaný odkaz
@@ -177,6 +196,9 @@ public enum Room implements IPlace
      */
     static void setAktuálníMístnost(Room místnost) {
         aktuálníMístnost = místnost;
+//%A+ o2012p4
+        nenavštívené.remove(místnost.getName().toLowerCase());
+//%A-
     }
 
 
@@ -214,13 +236,20 @@ public enum Room implements IPlace
      */
     static void inicializuj()
     {
-        for (Room m : values()) {
-            m.sousedé.clear();
-            m.sousedé.addAll(Arrays.asList(m.výchozíSousedé));
-            m.předměty.clear();
-            m.předměty.addAll(Arrays.asList(m.výchozíPředměty));
+        for (Room room : values()) {
+            room.sousedé.clear();
+            room.sousedé.addAll(Arrays.asList(room.výchozíSousedé));
+            room.předměty.clear();
+            room.předměty.addAll(Arrays.asList(room.výchozíPředměty));
         }
         aktuálníMístnost = Předsíň;
+//%A+ o2012p4
+        nenavštívené.clear();
+        for (Room room : values()) {
+            nenavštívené.add(room.getName().toLowerCase());
+        }
+        nenavštívené.remove(aktuálníMístnost.getName().toLowerCase());
+//%A-
     }
 
 

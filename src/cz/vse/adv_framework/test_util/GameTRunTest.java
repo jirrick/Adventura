@@ -4,6 +4,7 @@
 package cz.vse.adv_framework.test_util;
 
 import cz.vse.adv_framework.game_txt.IGame;
+import cz.vse.adv_framework.game_txt.IPlace;
 
 import cz.vse.adv_framework.scenario.AScenarioManager;
 import cz.vse.adv_framework.scenario.ScenarioStep;
@@ -26,6 +27,8 @@ import java.util.List;
 import static cz.vse.adv_framework.scenario.TypeOfStep.*;
 
 import static cz.vse.adv_framework.utilities.FormatStrings.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 /*******************************************************************************
@@ -49,6 +52,11 @@ class GameTRunTest extends ATest
 
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
+
+    public static Set<String> notVisited;
+
+
+
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
 
@@ -61,15 +69,15 @@ class GameTRunTest extends ATest
     /** Správce scénářů testované hry. */
     private final AScenarioManager manager;
 
+
+
+//== VARIABLE INSTANCE ATTRIBUTES ==============================================
+
     /** Autor testované hry. */
     private String author;
 
     /** Xname autora testované hry. */
     private String xname;
-
-
-
-//== VARIABLE INSTANCE ATTRIBUTES ==============================================
 
     /** Proměnná udržující informaci o tom, je-li hra ve stavu před startem,
      *  tj. ještě nezačala, anebo již skončila a může znovu začít. */
@@ -102,11 +110,20 @@ class GameTRunTest extends ATest
             throw new RuntimeException(
                     "\nAutor hry není totožný s autorem správce scénářů");
         }
+
+        if (game != manager.getGame()) {
+            throw new RuntimeException(
+                    "\nHra není totožá s hrou ohlašovnou správcem scénářů");
+        }
     }
 
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+
+
+
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
@@ -130,6 +147,7 @@ class GameTRunTest extends ATest
     {
         String message    = game.executeCommand(step.getCommand());
         String inspection = GameStepTest.verify(step, game, message);
+        verboseMessage.append(inspection);
         DBG.info(inspection);
         if (! game.isAlive()) {
             notRunning = true;
@@ -210,6 +228,12 @@ class GameTRunTest extends ATest
      */
     public boolean executeScenario(Scenario scenario)
     {
+        if (scenario.getManager() != manager) {
+            throw new RuntimeException(
+                    "\nNeodpovídá správce scénářů");
+        }
+        initializeNonVisited(scenario);
+
         boolean errorOccured;
         Exception exception = null;
         foundErrors.clear();
@@ -251,14 +275,28 @@ class GameTRunTest extends ATest
             }
             String chyby = finalSummary();
             errorOccured |= ! "".equals(chyby);
-            String txt = "\nPodle výsledků testu " +
-                    (errorOccured
-                    ?  "PROGRAM OBSAHUJE JISTÉ CHYBY\n" + chyby
-                    :  "program pravděpodobně neobsahuje žádné závažné chyby") +
-                    N_HASHES_N + HASHES_N;
+            StringBuilder message = new StringBuilder("\nPodle výsledků testu ");
+            if (errorOccured) {
+                message.append("PROGRAM OBSAHUJE JISTÉ CHYBY\n")
+                       .append(chyby);
+            }
+            else {
+                message.append(
+                        "program pravděpodobně neobsahuje žádné závažné chyby");
+                score += 1;
+            }
+            message.append(N_HASHES_N).append(HASHES_N);
+//            String txt = "\nPodle výsledků testu " +
+//                    (errorOccured
+//                    ?  "PROGRAM OBSAHUJE JISTÉ CHYBY\n" + chyby
+//                    :  "program pravděpodobně neobsahuje žádné závažné chyby") +
+//                    N_HASHES_N + HASHES_N;
 //                "\n===========================================" +
 //                  "===========================================\n";
+            String txt = message.toString();
             DBG.info(txt);
+            verboseMessage.append(txt);
+            shortMessage  .append(txt);
         }
         if (errorOccured) {
             game.stop();
@@ -338,6 +376,24 @@ class GameTRunTest extends ATest
                "\n##### Scénář: " + scenario.getName() +
                N_HASHES_N;
         return text;
+    }
+
+
+    /***************************************************************************
+     * Nastaví hodnotu atributu {@link #notVisited} podle informací získaných
+     * z testu scénáře a dotazem na hru.
+     *
+     * @param scenario Scénář, kterým testujeme hru
+     */
+    private void initializeNonVisited(Scenario scenario)
+    {
+        ScenarioTest.Summary summary = ScenarioManagerTest.summary;
+        notVisited = new HashSet<>(summary.mentionedPlaces);
+        Collection<? extends IPlace> allPlaces = game.getAllPlaces();
+        for (IPlace place : allPlaces) {
+            String name = place.getName().toLowerCase();
+            notVisited.add(name);
+        }
     }
 
 

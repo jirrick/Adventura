@@ -1,7 +1,7 @@
-package cz.vse._101.ut0915.xhudj19_hudec;
+package cz.vse._115.ut1245.xhudj19_hudec;
 /* Kodovani UTF-8: Příliš žluťoučký kůň úpěl ďábelské ódy. */
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._115.ut1245.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.IPlace;
 import java.util.ArrayList;
 import java.util.Arrays;

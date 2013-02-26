@@ -28,6 +28,9 @@ import java.util.TreeSet;
 import static cz.vse.adv_framework.scenario.TypeOfStep.*;
 
 import static cz.vse.adv_framework.utilities.FormatStrings.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
 
@@ -59,7 +62,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     /** Minimální počet prostorů ve hře. */
     private static final int REQUESTED_SEEN_NUM  = 6;
 
-    /** Comparátor porovnávající dva řetězce a ignorující velikost znaků. */
+    /** Komparátor porovnávající dva řetězce a ignorující velikost znaků. */
     private static final CompareIgnoreCase CIC = CompareIgnoreCase.CIC;
 
 
@@ -98,6 +101,14 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
          *  (např. jako sousedé). */
         private Set<String> allMentionedPlaces = new TreeSet<>();
 
+        /** Množina názvů objektů zmíněných v navštívených či
+         * zmíněných prostorech v dosud prověřených scénářích. */
+        private Set<String> allDiscoveredObjects = new TreeSet<>();
+
+        /** Množina názvů objektů zmíněných v navštívených či
+         * zmíněných prostorech v dosud prověřených scénářích. */
+        private Set<String> allSeenObjects = new TreeSet<>();
+
 
     //-- Proměnné zapamatované pro testovaný scénář ----------------------------
 
@@ -117,7 +128,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         private Set<String> mentionedPlaces = new TreeSet<>();
 
         /** Množina použitých objektů. */
-        private Set<String> objectsAtPlaces = new TreeSet<>();;
+        private Set<String> seenObjects = new TreeSet<>();
 
         /** Doposud nezrealizované typy akcí.*/
         private Set<TypeOfStep> notUsedCommands;
@@ -145,7 +156,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         private ScenarioStep previousStep;
 
         /** Aktuálně vyhodnocovaný krok scénáře. */
-        private ScenarioStep actualStep;
+        private ScenarioStep currentStep;
 
         /** Jednotlivá slova příkazu v testovaném kroku scénáře. */
         private String[] wordsInCommand;
@@ -220,6 +231,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         return new Summary(ok,
                            tester.allMentionedPlaces,
                            tester.allEnteredCommands,
+                           tester.allSeenObjects,
                            start, stop,
                            tester.type2command);
     }
@@ -308,16 +320,16 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         initialization();
         verifyAuthor();
         for (ScenarioStep step : scenario) {
-            actualStep = step;
+            currentStep = step;
             if (finished  &&
-                ! TypeOfStep.tsSTART.equals(actualStep.typeOfStep))
+                ! TypeOfStep.tsSTART.equals(currentStep.typeOfStep))
             {
                     ERROR("Zadaný krok scénáře je za koncem hry: %s",
-                          actualStep);
+                          currentStep);
                     break;
             }
             processStep();
-            previousStep = actualStep;
+            previousStep = currentStep;
         }
         if (!finished   &&
             TypeOfScenario.scMISTAKES.equals(scenario.getType()))
@@ -371,7 +383,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         enteredCommands.clear();
         visitedPlaces  .clear();
         mentionedPlaces.clear();
-        objectsAtPlaces.clear();
+        seenObjects    .clear();
         notUsedCommands = EnumSet.allOf(TypeOfStep.class);
         numOfSteps   = 0;
         scenarioOK   = true;
@@ -389,6 +401,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     {
         allEnteredCommands.addAll(enteredCommands);
         allMentionedPlaces.addAll(mentionedPlaces);
+        allSeenObjects    .addAll(seenObjects);
 
         //Zjistí zmíněné, ale nenavštívené prostory
         Set<String> notVisited = discoverNotVisitedPlaces();
@@ -467,7 +480,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     private void verifyType_DEMO()
     {
         ERROR("Demonstrační typ kroku nepatří do testovacího scénáře\n%s",
-              actualStep);
+              currentStep);
     }
 
 
@@ -505,8 +518,8 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     {
         verifyCommandName(tsPUT_DOWN);
         verifyEqualityOfAllFields();
-        if (verifyArrayContent(actualStep.bag, getCommandArgument(), true)) {
-            ERROR("Zadaný objekt v batohu je\n%s", actualStep);
+        if (verifyArrayContent(currentStep.bag, getCommandArgument(), true)) {
+            ERROR("Zadaný objekt v batohu je\n%s", currentStep);
         }
     }
 
@@ -521,8 +534,8 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     {
         verifyCommandName(tsPICK_UP);
         verifyEqualityOfAllFields();
-        if (verifyArrayContent(actualStep.objects, getCommandArgument(),true)){
-            ERROR("Zadaný předmět v aktuálním prostoru je\n%s", actualStep);
+        if (verifyArrayContent(currentStep.objects, getCommandArgument(),true)){
+            ERROR("Zadaný předmět v aktuálním prostoru je\n%s", currentStep);
         }
     }
 
@@ -537,8 +550,8 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     {
         verifyCommandName(tsMOVE);
         verifyEqualityOfAllFields();
-        if (verifyArrayContent(actualStep.neighbors, getCommandArgument(),true)){
-            ERROR("Zadaného souseda místnost má\n%s", actualStep);
+        if (verifyArrayContent(currentStep.neighbors, getCommandArgument(),true)){
+            ERROR("Zadaného souseda místnost má\n%s", currentStep);
         }
     }
 
@@ -655,7 +668,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
             ERROR("Předchozí hra ještě nebyla ukončena.\n" +
                   "Nová hra může odstartovat až po ukončení té předchozí.");
         }
-        else if (! "".equals(actualStep.command))  {
+        else if (! "".equals(currentStep.command))  {
             ERROR("Úvodní akce každého scénáře musí mít prázdný název \n" +
                   "a musí definovat zprávu a stav hry po odstartování,"
                     + ".");
@@ -714,7 +727,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
     {
         String place = getCommandArgument();
         if ((place.length() > 0)   && //Byl zadán parametr
-            (! place.equalsIgnoreCase(actualStep.place)))
+            (! place.equalsIgnoreCase(currentStep.place)))
         {
             ERROR("Hráč se nepřesunul do prostoru zadaného v příkazu");
         }
@@ -853,7 +866,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
      */
     private void verifySameSpace()
     {
-        if (! previousStep.place.equalsIgnoreCase(actualStep.place)) {
+        if (! previousStep.place.equalsIgnoreCase(currentStep.place)) {
             ERROR("Při vykonvání tohoto příkazu se nesmí změnit " +
                   "aktuální prostor.");
         }
@@ -916,7 +929,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         ERROR("Rozdíly v seznamech objektů typu %s mezi minulým a tímto " +
               "krokem neodpovídají akci typu %s\nMá chybět: %s\n" +
               "Minule: %s\nNyní:%s",
-              pair.name(), this.actualStep.typeOfStep,
+              pair.name(), this.currentStep.typeOfStep,
               absent, Arrays.asList(last), Arrays.asList(actual));
     }
 
@@ -1049,7 +1062,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
                                            absent +
            "\nNavštívené prostory:     " + visitedPlaces +
            "\nNenavštívené prostory:   " + notVisited +
-           "\nZmíněné předměty:        " + objectsAtPlaces +
+           "\nZmíněné předměty:        " + seenObjects +
            "\n===== Test ukončen\n"      + descriptonOfScenarioInTest +
            "\n===== Scénář " + (scenarioOK ? "vyhověl" : "NEVYHOVĚL") +
            N_HASHES_N;
@@ -1058,29 +1071,46 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
 
 
     /***************************************************************************
+     * Vytvoří seznam obsahující všechny názvy ze zadaného pole (vektoru)
+     * převedené na malá písmena.
+     *
+     * @param names
+     * @return Seznam se zadanými názvy v malých písmenech
+     */
+    private Collection<? extends String> arr2lstInLC(String[] names)
+    {
+        List<String> list = new ArrayList<>(names.length);
+        for (String name : names) {
+            list.add(name.toLowerCase());
+        }
+        return list;
+    }
+
+
+    /***************************************************************************
      * Zpracuje aktuální krok scénáře.
-     * Odkaz na něj je uložen v atributu {@link #actualStep}.
+     * Odkaz na něj je uložen v atributu {@link #currentStep}.
      */
     private void processStep()
     {
         try {
             numOfSteps++;
-            wordsInCommand = actualStep.command.split("\\s+");
-            if ((actualStep.typeOfStep != tsDIALOG)     &&
-                (actualStep.typeOfStep != tsUNKNOWN)  &&
+            wordsInCommand = currentStep.command.split("\\s+");
+            if ((currentStep.typeOfStep != tsDIALOG)     &&
+                (currentStep.typeOfStep != tsUNKNOWN)  &&
                 (wordsInCommand.length > 0))
             {
                 enteredCommands.add(wordsInCommand[0].toLowerCase());
             }
-            visitedPlaces .add(actualStep.place.toLowerCase());
-            mentionedPlaces    .add(actualStep.place);
-            mentionedPlaces    .addAll(Arrays.asList(actualStep.neighbors));
-            objectsAtPlaces .addAll(Arrays.asList(actualStep.objects));
-            notUsedCommands  .remove(actualStep.typeOfStep);
+            visitedPlaces   .add(currentStep.place.toLowerCase());
+            mentionedPlaces .add(currentStep.place.toLowerCase());
+            mentionedPlaces .addAll(arr2lstInLC(currentStep.neighbors));
+            seenObjects     .addAll(arr2lstInLC(currentStep.objects));
+            notUsedCommands .remove(currentStep.typeOfStep);
             String message = String.format("%2d. %14s - %s", numOfSteps,
-                             actualStep.typeOfStep, actualStep.command);
+                             currentStep.typeOfStep, currentStep.command);
             DBG.info(message);
-            switch (actualStep.typeOfStep)
+            switch (currentStep.typeOfStep)
             {
                 case tsSTART:           verifyType_START        (); break;
 
@@ -1109,12 +1139,12 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
                 case tsEND:             verifyType_END          (); break;
 
                 default:
-                    String txt = "\nTyp testu " + actualStep.typeOfStep +
+                    String txt = "\nTyp testu " + currentStep.typeOfStep +
                                  " nesmí být používán v testovaných scénářích.";
                     ERROR(txt);
                     throw new UnsupportedOperationException();
             }
-            previousStep = actualStep;
+            previousStep = currentStep;
         }catch(Throwable thr) {
             DBG.severe(thr);
 
@@ -1167,7 +1197,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
             @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
             Names pair(ScenarioTest test) {
                 return new Names(test.previousStep.neighbors,
-                                 test.actualStep.neighbors);
+                                 test.currentStep.neighbors);
             }
         },
 
@@ -1176,7 +1206,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
             @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
             Names pair(ScenarioTest test) {
                 return new Names(test.previousStep.objects,
-                                 test.actualStep.objects);
+                                 test.currentStep.objects);
             }
         },
 
@@ -1185,7 +1215,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
             @SuppressWarnings("AccessingNonPublicFieldOfAnotherObject")
             Names pair(ScenarioTest test) {
                 return new Names(test.previousStep.bag,
-                                 test.actualStep.bag);
+                                 test.currentStep.bag);
             }
         };
 
@@ -1203,6 +1233,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
         public final boolean      ok;
         public final Set<String>  mentionedPlaces;
         public final Set<String>  enteredCommands;
+        public final Set<String>  seenObjects;
         public final ScenarioStep startStep;
         public final ScenarioStep endStep;
         public final Map<TypeOfStep, String> basicCommands;
@@ -1212,15 +1243,17 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
          * Konstruktor inicializující atributy přepravky.
          *
          * @param ok              Informace, zda je scénář bez chyb
-         * @param mentionedPlaces Množina všech dosud zmíněných prostorů
-         * @param enteredCommands Množina všech doposud zadaných příkazů
+         * @param mentionedPlaces Množina názvů všech dosud zmíněných prostorů
+         * @param enteredCommands Množina názvů všech doposud zadaných příkazů
+         * @param seenObjects     Množina názvů všech dosud zahlédnutých objektů
          * @param startStep       Počáteční krok v základním úspěšném scénáři
          * @param endStep         Poslední krok základního úspěšného scénáře
          * @param basicCommands   Mapa mapující typy příkazů na jejich názvy
          */
         public Summary(boolean     ok,
-                      Set<String> mentionedPlaces,
-                      Set<String> enteredCommands,
+                      Set<String>  mentionedPlaces,
+                      Set<String>  enteredCommands,
+                      Set<String>  seenObjects,
                       ScenarioStep startStep,
                       ScenarioStep endStep,
                       Map<TypeOfStep, String> basicCommands)
@@ -1228,6 +1261,7 @@ public class ScenarioTest extends ATest implements ITest<Scenario>
             this.ok              = ok;
             this.mentionedPlaces = mentionedPlaces;
             this.enteredCommands = enteredCommands;
+            this.seenObjects     = seenObjects;
             this.startStep       = startStep;
             this.endStep         = endStep;
             this.basicCommands   = basicCommands;

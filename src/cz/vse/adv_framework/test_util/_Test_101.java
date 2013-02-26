@@ -10,7 +10,6 @@ import cz.vse.adv_framework.scenario.Scenario;
 
 
 
-
 /*******************************************************************************
  * Instance třídy {@code _Test_101} jsou schopny otestovat jednotlivé části
  * projektu textové komunikační hry &nbsp; adventury.
@@ -33,6 +32,21 @@ public class _Test_101 extends Triumvirate
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
+
+    /** Jedná-li se o obhajobu, bude zde číslo > 0. */
+    public static int version = 0;
+
+    /** Celkový bodový zisk. */
+    protected double score = 0;
+
+    /** Stručná zpráva o průběhu testu. */
+    protected StringBuilder shortMessage = new StringBuilder();
+
+    /** Kompletní zpráva o průběhu testu. */
+    protected StringBuilder verboseMessage = new StringBuilder();
+
+
+
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
@@ -96,7 +110,7 @@ public class _Test_101 extends Triumvirate
      * se je možno dostat ke všem ostatním dostupným informacím o hře.
      *
      * @param manager Správce scénářů prověřované aplikace
-     * @return Instance schopná testovat zadého správce scénářů
+     * @return Instance schopná testovat zadaného správce scénářů
      *         včetně případné hry, jejíž scénáře spravuje
      */
     public static _Test_101 getInstance(AScenarioManager manager)
@@ -148,6 +162,41 @@ public class _Test_101 extends Triumvirate
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+
+    /***************************************************************************
+     * Vrátí bodové hodnocení doposud provedených testů
+     *
+     * @return Bodové hodnocení doposud provedených testů
+     */
+    public double getScore()
+    {
+        return score;
+    }
+
+
+    /***************************************************************************
+     * Vrátí zkrácenou verzi zprávy o provedených testech.
+     *
+     * @return Zkrácená verze zprávy o provedených testech
+     */
+    public String getShortMessage()
+    {
+        return shortMessage.toString();
+    }
+
+
+    /***************************************************************************
+     * Vrátí podrobnou zprávu o provedených testech.
+     *
+     * @return Podrobná zpráva o provedených testech
+     */
+    public String getVerboseMessage()
+    {
+        return verboseMessage.toString();
+    }
+
+
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************
@@ -238,8 +287,23 @@ public class _Test_101 extends Triumvirate
      */
     public void testGame()
     {
+        testScenarioManager();
         testGameByScenario(0);
         testGameByScenario(1);
+//        testGameB();
+   }
+
+
+    /***************************************************************************
+     * Prověří, že hra pracuje podle obou povinných scénářů,
+     * tj. podle základního úspěšného a základního chybového scénáře.
+     */
+    public void testGameB()
+    {
+        testScenarioManager();
+        testGameByScenario(0);
+        testGameByScenario(1);
+        testGameByScenario(2);
         testGameByScenario(2);
     }
 
@@ -287,8 +351,12 @@ public class _Test_101 extends Triumvirate
      */
     public void testGameByScenario(Scenario scenario)
     {
+        System.out.println("##### Test verze " + _Test_101.version);
         GameTRunTest test = new GameTRunTest(gameT);
         test.executeScenario(scenario);
+        score += test.getScore();
+        shortMessage  .append(test.getShortMessage());
+        verboseMessage.append(test.getVerboseMessage());
     }
 
 
@@ -299,6 +367,21 @@ public class _Test_101 extends Triumvirate
     {
         ScenarioManagerTest smt = ScenarioManagerTest.getInstance();
         smt.test(manager);
+        score += smt.getScore();
+        shortMessage  .append(smt.getShortMessage());
+        verboseMessage.append(smt.getVerboseMessage());
+    }
+
+
+    /***************************************************************************
+     * Prověří, zda správce scénářů vyhovuje zadaným požadavkům.
+     *
+     * @return Vyhovuje-li, vrátí {@code true}, jinak vrátí {@code false}
+     */
+    public boolean answerTestScenarioManager()
+    {
+        ScenarioManagerTest smt = ScenarioManagerTest.getInstance();
+        return smt.answerTest(manager);
     }
 
 

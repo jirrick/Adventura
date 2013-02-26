@@ -4,6 +4,7 @@
 package cz.vse.adv_framework.scenario;
 
 import cz.vse.IAuthor;
+import cz.vse.adv_framework.empty_classes.EmptyGame;
 import cz.vse.adv_framework.game_txt.Commands;
 import cz.vse.adv_framework.game_txt.IBag;
 import cz.vse.adv_framework.game_txt.ICommand;
@@ -144,8 +145,8 @@ public abstract class AScenarioManager implements IAuthor, Iterable<Scenario>
         this.author    = author;
         this.xname     = xname;
         this.gameClass = (gameClass == null)
-                      ?  EmptyGame.class
-                      :  gameClass;
+                         ?  EmptyGame.class
+                         :  gameClass;
     }
 
 
@@ -198,7 +199,7 @@ public abstract class AScenarioManager implements IAuthor, Iterable<Scenario>
             if (gameClass == null) {
                 throw new IllegalStateException(
                     "\nTřída hry je ve správci scénářů nastavena na null," +
-                    "\na není proto možné zíískat instanci hry");
+                    "\na není proto možné získat instanci hry");
             }
             game = _Test_101.getInstanceOfGame(gameClass);
         }

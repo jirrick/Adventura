@@ -75,7 +75,8 @@ public class EmptyPlace implements IPlace
     /***************************************************************************
      * Vrátí kolekci sousedů daného prostoru, tj. kolekci prostorů,
      * do nichž je možno se z tohoto prostoru přesunout příkazem typu
-     * {@link Commands.Type#MOVE Commands.Type.MOVE}.
+     * {@link cz.vse.adv_framework.game_txt.Commands.Type#MOVE
+     * Commands.Type.MOVE}.
      *
      * @return Kolekce sousedů
      */

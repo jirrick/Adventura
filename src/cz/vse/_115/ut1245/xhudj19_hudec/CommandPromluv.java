@@ -1,9 +1,9 @@
-package cz.vse._101.ut0915.xhudj19_hudec;
+package cz.vse._115.ut1245.xhudj19_hudec;
 
 /* Soubor je ulozen v kodovani UTF-8.
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy.
  */
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._115.ut1245.xhudj19_hudec.Texts.*;
 
 
 

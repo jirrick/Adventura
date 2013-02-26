@@ -1,20 +1,20 @@
 /* Soubor je ulozen v kodovani UTF-8.
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy.
  */
-package cz.vse._101.ut0915.xhudj19_hudec;
+package cz.vse._115.ut1245.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._115.ut1245.xhudj19_hudec.Texts.*;
 
 
 
 /**
- * Instance třídy {@code CommandPolož} představují příkaz pro předávání předmětů
- * z tašky do inventáře ostatních osob
+ * Instance třídy {@code CommandVezmi} představují příkaz pro převzetí předmětu
+ * z inventáře jiné osoby a přenesení do hráčovy tašky
  *
  * @author Jiří HUDEC
  * @version 2013.01.15
  */
-public class CommandPředej extends ACommand
+public class CommandVezmi extends ACommand
 {
     //== KONSTANTNÍ ATRIBUTY TŘÍDY =============================================
     //== PROMĚNNÉ ATRIBUTY TŘÍDY ===============================================
@@ -28,9 +28,9 @@ public class CommandPředej extends ACommand
     /**
      * Vytvoří příkaz
      */
-    public CommandPředej()
+    public CommandVezmi()
     {
-        super("Předej", "Příkaz, který předá věc z tašky určené postavě.");
+        super("Vezmi", "Příkaz, který vezme věc od postavy a uloží do tašky.");
     }
 
 
@@ -38,9 +38,9 @@ public class CommandPředej extends ACommand
     //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
     //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
     /**
-     * Metoda vykonávající předávání předmětů z tašky hráče do inventáře osob
+     * Metoda vykonávající předávání předmětů z inventáře osoby do hráčovy tašky
      * V parametru by měly být tři položky: název příkazu (předej), předávaný
-     * předmět a jméno osoby, které předmět dáváme.
+     * předmět a jméno osoby, od které předmět bereme.
      *
      * @param arguments Parametry příkazu - název příkazu, předmětu a název
      *                  osoby
@@ -57,26 +57,30 @@ public class CommandPředej extends ACommand
         String personName = arguments[2];
         Bag bag = Bag.getInstance();
         Place currentPlace = Place.getCurrentPlace();
-        Thing thing = bag.getObject(thingName);
-        Person person = currentPlace.getPerson(personName);
 
-        // předání objektu, pokud předmět opravdu máme a osoba je v prostoru
-        if ((thing != null) && (person != null)) {
-            person.add(thing);
-            bag.remove(thing);
-            return String.format(
-                    nPŘEDAT_FORMÁT, person.getName(), thing.getName()) +
-                   status();
-        }
-        if (thing == null) {
-            return nNEMÁTE_PŘEDMĚT + status();
-        }
+        // osoba v prostoru není
+        Person person = currentPlace.getPerson(personName);
         if (person == null) {
             return nOSOBA_NENÍ + status();
         }
-        return zZANP + status();
-    }
 
+        // osoba požadovanou věc nemá
+        Thing thing = person.getObject(thingName);
+        if (thing == null) {
+            return nOSOBA_NEMÁ_PŘEDMĚT + status();
+        }
+
+        // je v tašce místo?
+        if (bag.add(thing)) {
+            person.remove(thing);
+            return String.format(
+                    nVZÍT_FORMÁT, person.getName(), thing.getName()) +
+                   status();
+        }
+        else {
+            return zBATOH_PLNÝ + status();
+        }
+    }
 
 //== SOUKROMÉ A POMOCNÉ METODY TŘÍDY =======================================
 //== SOUKROMÉ A POMOCNÉ METODY INSTANCÍ ====================================
@@ -88,10 +92,11 @@ public class CommandPředej extends ACommand
 //      */
 //     public static void test()
 //     {
-//         CommandPolož instance = new CommandPolož();
+//         CommandVezmi instance = new CommandVezmi();
 //     }
 //     /** @param args Parametry příkazového řádku - nepoužívané. */
 //     public static void main(String[] args)  {  test();  }
+
 }
 
 

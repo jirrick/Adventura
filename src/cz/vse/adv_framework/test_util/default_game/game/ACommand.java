@@ -97,18 +97,26 @@ abstract class ACommand implements ICommand
     {
         příkaz = příkaz.toLowerCase().trim();
         if (nehrajeme) {
-            return start(příkaz);
+//%A+ o2012p4
+            return appendMessage(start(příkaz));    //==========>
+//%A-
         }
         if (příkaz.isEmpty()) {
-            return PRÁZDNÝ;
+//%A+ o2012p4
+            return appendMessage(PRÁZDNÝ);          //==========>
+//%A-
         }
         if (State.ROZHOVOR) {
-            return Conversation.reaguj(příkaz);                 //==========>
+//%A+ o2012p4
+            return appendMessage(Conversation.reaguj(příkaz));    //==========>
+//%A-
         }
         String[] slova = příkaz.split("\\s+");
         ICommand  povel = název2příkaz.get(slova[0]);
         if (povel == null) {
-            return NEZNÁM;                                  //==========>
+//%A+ o2012p4
+            return appendMessage(NEZNÁM);           //==========>
+//%A-
         }
 //        if (DBG.DEBUG < 0) {
 //            povel.getParametry();
@@ -119,9 +127,23 @@ abstract class ACommand implements ICommand
 
         String  odpověď = povel.execute(parametry);
         odpověď = doplň(odpověď);
-        return  odpověď;
+//%A+ o2012p4
+            return appendMessage(odpověď);          //==========>
+//%A-
     }
 
+//%A+ o2012p4
+    /***************************************************************************
+     * @todo appendMessage - Je třeba ještě doplnit komentář
+     */
+    private static String appendMessage(String message)
+    {
+        Collection<String> set = Room.getNenavštívené();
+        String appendix = "\nDosud nenavštívené místnosti: " + set + '\n';
+        return message + appendix;
+    }
+
+//%A-
 
     /***************************************************************************
      * Oznámení o ukončení hry.
@@ -289,7 +311,7 @@ abstract class ACommand implements ICommand
     {
         if (příkaz.isEmpty()) {
             Room.inicializuj();
-            Bag   .inicializuj();
+            Bag .inicializuj();
             nehrajeme = false;
             return UVÍTÁNÍ;                             //==========>
         } else {

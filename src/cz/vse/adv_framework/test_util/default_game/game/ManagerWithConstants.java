@@ -38,7 +38,7 @@ public class ManagerWithConstants extends AScenarioManager
 //== CONSTANT CLASS ATTRIBUTES =================================================
 
     /** Třída, jejíž instance jsou zde spravovány. */
-    private final static Class<? extends IGame> CLASS = null;
+    private final static Class<? extends IGame> CLASS = DefaultGame.class;
 
     /** Jméno autora dané třídy. */
     private static final String AUTHOR = "PECINOVSKÝ Rudolf";
@@ -184,7 +184,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsNON_STANDARD),
 
         new ScenarioStep(pVEZMI + " " + PAPÍR,
-            zBATOH_PLNÝ +
+            zANP + zBATOH_PLNÝ +
             String.format(FORMÁT_INFORMACE,
                 KUCHYŇ, cm(OBÝVÁK,   LOŽNICE),
                 cm(LEDNIČKA, PAPÍR), cm(BRÝLE, ČASOPIS)),
@@ -434,7 +434,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsMOVE),
 
         new ScenarioStep(pJDI + " záchod",
-            zNENÍ_CIL +
+            zANP + zNENÍ_CIL +
             String.format(FORMÁT_INFORMACE,
                 KOUPELNA, cm(PŘEDSÍŇ),
                 cm(BRÝLE, UMYVADLO, ČASOPIS), cm(DEŠTNÍK)),
@@ -446,7 +446,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsBAD_NEIGHBOR),
 
         new ScenarioStep(pVEZMI + " " + KOUPELNA,
-            zNENÍ_PŘEDMĚT + KOUPELNA +
+            zANP + zNENÍ_PŘEDMĚT + KOUPELNA +
             String.format(FORMÁT_INFORMACE,
                 KOUPELNA, cm(PŘEDSÍŇ),
                 cm(BRÝLE, UMYVADLO, ČASOPIS), cm(DEŠTNÍK)),
@@ -458,7 +458,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsBAD_OBJECT),
 
         new ScenarioStep(pVEZMI + " " + UMYVADLO,
-            zTĚŽKÝ_PŘEDMĚT + UMYVADLO +
+            zANP + zTĚŽKÝ_PŘEDMĚT + UMYVADLO +
             String.format(FORMÁT_INFORMACE,
                 KOUPELNA, cm(PŘEDSÍŇ),
                 cm(BRÝLE, UMYVADLO, ČASOPIS), cm(DEŠTNÍK)),
@@ -470,7 +470,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsUNMOVABLE),
 
         new ScenarioStep(pPOLOŽ + " " + PAPÍR,
-            zNENÍ_V_BATOHU + PAPÍR +
+            zANP + zNENÍ_V_BATOHU + PAPÍR +
             String.format(FORMÁT_INFORMACE,
                 KOUPELNA, cm(PŘEDSÍŇ),
                 cm(BRÝLE, UMYVADLO, ČASOPIS), cm(DEŠTNÍK)),
@@ -494,7 +494,7 @@ public class ManagerWithConstants extends AScenarioManager
             TypeOfStep.tsPICK_UP),
 
         new ScenarioStep(pVEZMI + " " + ČASOPIS,
-            zBATOH_PLNÝ +
+            zANP + zBATOH_PLNÝ +
             String.format(FORMÁT_INFORMACE,
                 KOUPELNA, cm(PŘEDSÍŇ),
                 cm(UMYVADLO, ČASOPIS), cm(BRÝLE, DEŠTNÍK)),
@@ -559,7 +559,7 @@ public class ManagerWithConstants extends AScenarioManager
     /***************************************************************************
      * Vytvoří instanci představující správce scénářů hry.
      */
-    public ManagerWithConstants()
+    private ManagerWithConstants()
     {
         super(AUTHOR, XNAME, CLASS);
 
@@ -636,6 +636,7 @@ public class ManagerWithConstants extends AScenarioManager
     {
         IGame     hra  = MANAGER.getGame();
         _Test_101 test = _Test_101.getInstance(hra);
+        _Test_101.version = 4;
         test.testGame();
     }
 
@@ -643,7 +644,8 @@ public class ManagerWithConstants extends AScenarioManager
     /** @param args Parametry příkazového řádku - nepoužívané. */
     public static void main(String[] args)
     {
-        testMyScenarioManager();
-        simulateBasicScenarios();
+//        testMyScenarioManager();
+//        simulateBasicScenarios();
+        testMyGame();
     }
 }

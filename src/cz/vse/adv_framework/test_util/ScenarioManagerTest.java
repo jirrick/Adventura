@@ -28,12 +28,12 @@ import java.util.Iterator;
  * @author    Rudolf PECINOVSKÝ
  * @version   0.00.000
  */
-class ScenarioManagerTest implements ITest<AScenarioManager>
+class ScenarioManagerTest extends ATest implements ITest<AScenarioManager>
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
-
-    /** Logger, prostřednictvím nějž zaznamenáváme veškeré informace. */
-    private final static DBG_Logger DBG = DBG_Logger.getInstance();
+//
+//    /** Logger, prostřednictvím nějž zaznamenáváme veškeré informace. */
+//    private final static DBG_Logger DBG = DBG_Logger.getInstance();
 
     private static final ScenarioManagerTest singleton =
                                              new ScenarioManagerTest();
@@ -41,6 +41,12 @@ class ScenarioManagerTest implements ITest<AScenarioManager>
 
 
 //== VARIABLE CLASS ATTRIBUTES =================================================
+
+    public static ScenarioTest.Summary summary;
+
+
+
+
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
@@ -98,32 +104,76 @@ class ScenarioManagerTest implements ITest<AScenarioManager>
     @Override
     public void test(AScenarioManager manager)
     {
+        answerTest(manager);
+    }
+
+
+    /***************************************************************************
+     * Otestuje, že zadaný správce scénářů vyhovuje na něj kladeným požadavkům
+     * a otestuje všechny jeho scénáře.
+     *
+     * @param manager Testovaná instance
+     * @return Pokud test projde, vrátí {@code true}, jinak vrátí {@code false}
+     */
+    public boolean answerTest(AScenarioManager manager)
+    {
+        initResultInformation();
         Date startTime =  new Date();
-        DBG.info("Testuji správce scénářů autora: {0} – {1}" +
-               "\n########## START: {2, date} – {2, time}\n",
-               manager.getAuthorID(), manager.getAuthorName(), startTime);
+        String message = String.format(
+             "Testuji správce scénářů autora: %s – %s\n" +
+             "########## START: %TY-%<Tm-%<Td – %<TH:%<TM:%<TS,%<TL\n",
+           manager.getAuthorID(), manager.getAuthorName(), startTime);
+        verboseMessage.append(message);
+        DBG.info(message);
+
+        Class<?> cls = manager.getClass();
+        TestUtilitiy.verifyPrivateConstructor(cls);
+        TestUtilitiy.verifyFactoryMethod(cls);
 
         writeInvitation(manager);
 
         verifyHappyScenario  (manager);    //Ověří, že nultým scénářem je ZÚspě
         verifyMistakeScenario(manager);    //Ověří, že prvním scénářem je ZChyb
 
-        ScenarioTest.Summary summary = ScenarioTest.testAllScenarios(manager);
+        summary = ScenarioTest.testAllScenarios(manager);
         boolean ok = summary.ok;
+        if (ok) { score++; }
 
-        Date   stopTime =  new Date();
-        double duration = (stopTime.getTime() - startTime.getTime()) / 1000.0;
-        DBG.info("########## STOP: {0, date} – {0, time}  -  " +
-                 "Trvání testu {1, number,#.#} s – Test byl {2}ÚSPĚŠNÝ\n" +
-                 "Konec testu scénářů autora: {3} – {4}\n\n" ,
-                 stopTime, duration, (ok ? "" : "NE"),
-                 manager.getAuthorID(), manager.getAuthorName());
+        Date stopTime =  new Date();
+        long duration = (stopTime.getTime() - startTime.getTime());
+        message = String.format("Test byl %sÚSPĚŠNÝ", (ok ? "" : "NE"));
+        shortMessage  .append(message);
+        message = String.format(
+            "########## STOP: : %TY-%<Tm-%<Td – %<TH:%<TM:%<TS,%<TL  -  " +
+            "Trvání testu %d ms – %s\n" +
+            "Konec testu scénářů autora: %s – %s\n\n" ,
+            stopTime, duration, message,
+            manager.getAuthorID(), manager.getAuthorName());
+        verboseMessage.append(message);
+        DBG.info(message);
+//        DBG.info("########## STOP: {0, date} – {0, time}  -  " +
+//                 "Trvání testu {1, number,#.#} s – Test byl {2}ÚSPĚŠNÝ\n" +
+//                 "Konec testu scénářů autora: {3} – {4}\n\n" ,
+//                 stopTime, duration, (ok ? "" : "NE"),
+//                 manager.getAuthorID(), manager.getAuthorName());
+        return ok;
     }
 
 
 
 //== PRIVATE AND AUXILIARY CLASS METHODS =======================================
 //== PRIVATE AND AUXILIARY INSTANCE METHODS ====================================
+
+    /***************************************************************************
+     *
+     */
+    private void initResultInformation()
+    {
+        score = 0;
+        shortMessage  .delete(0, shortMessage  .length());
+        verboseMessage.delete(0, verboseMessage.length());
+    }
+
 
     /***************************************************************************
      * Prověří, že základní úspěšný scénář dodaný testovaným správcem

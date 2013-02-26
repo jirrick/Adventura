@@ -1,8 +1,8 @@
 /* Soubor je ulozen v kodovani UTF-8.
  * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
-package cz.vse._101.ut0915.xhudj19_hudec;
+package cz.vse._115.ut1245.xhudj19_hudec;
 
-import static cz.vse._101.ut0915.xhudj19_hudec.Texts.*;
+import static cz.vse._115.ut1245.xhudj19_hudec.Texts.*;
 import cz.vse.adv_framework.game_txt.IGame;
 import cz.vse.adv_framework.scenario.AScenarioManager;
 import cz.vse.adv_framework.scenario.ScenarioStep;

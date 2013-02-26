@@ -1,5 +1,6 @@
-/* Soubor je ulozen v kodovani UTF-8.
- * Kontrola kódování: Příliš žluťoučký kůň úpěl ďábelské ódy. */
+/* The file is saved in UTF-8 codepage.
+ * Check: «Stereotype», Section mark-§, Copyright-©, Alpha-α, Beta-β, Smile-☺
+ */
 package cz.vse.adv_framework.test_util.default_game.game;
 
 import cz.vse.adv_framework.game_txt.IGame;
@@ -12,6 +13,7 @@ import cz.vse.adv_framework.test_util._Test_101;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 
 import static  cz.vse.adv_framework.scenario.TypeOfStep.*;
 
@@ -39,7 +41,7 @@ public class ManagerWithLiterals extends AScenarioManager
 //== CONSTANT CLASS ATTRIBUTES =================================================
 
     /** Třída, jejíž instance jsou zde spravovány. */
-    private final static Class<? extends IGame> CLASS = null;
+    private final static Class<? extends IGame> CLASS = DefaultGame.class;
 
     /** Jméno autora dané třídy. */
     private static final String AUTHOR = "PECINOVSKÝ Rudolf";
@@ -64,7 +66,7 @@ public class ManagerWithLiterals extends AScenarioManager
      * vyžaduje následující parametry:
      *   String   command;   //Příkaz realizující tento krok scénáře
      *   String   message;   //Zpráva vypsaná po zadání příkazu
-     *   String   place;     //Prostor, v něž skončí hráč po zadání příkazu
+     *   String   place;     //Prostor, v němž skončí hráč po zadání příkazu
      *   String[] neighbors; //Sousedé aktuálního prostoru (= východy)
      *   String[] objects;   //Objekty vyskytující se v daném prostoru
      *   String[] bag;       //Aktuální obsah batohu
@@ -197,6 +199,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsNON_STANDARD),
 
         new ScenarioStep("vezmi papír",
+            "Zadaná akce nebyla provedena\n" +
             "Zadaný předmět nemůžete vzít, máte už obě ruce plné." +
         "\n\nNacházíte se v místnosti: Kuchyň" +
           "\nMůžete se přesunout do místností: Obývák, Ložnice" +
@@ -477,6 +480,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsMOVE),
 
         new ScenarioStep("jdi záchod",
+            "Zadaná akce nebyla provedena\n" +
             "Do zadané místnosti se odsud nedá přejít." +
         "\n\nNacházíte se v místnosti: Koupelna" +
           "\nMůžete se přesunout do místností: Předsíň" +
@@ -490,6 +494,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsBAD_NEIGHBOR),
 
         new ScenarioStep("vezmi koupelna",
+            "Zadaná akce nebyla provedena\n" +
             "Zadaný předmět v místnosti není: Koupelna" +
         "\n\nNacházíte se v místnosti: Koupelna" +
           "\nMůžete se přesunout do místností: Předsíň" +
@@ -503,6 +508,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsBAD_OBJECT),
 
         new ScenarioStep("vezmi umyvadlo",
+            "Zadaná akce nebyla provedena\n" +
             "Zadaný předmět nejde zvednout: Umyvadlo" +
         "\n\nNacházíte se v místnosti: Koupelna" +
           "\nMůžete se přesunout do místností: Předsíň" +
@@ -516,6 +522,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsUNMOVABLE),
 
         new ScenarioStep("polož papír",
+            "Zadaná akce nebyla provedena\n" +
             "Předmět není v batohu: Papír" +
         "\n\nNacházíte se v místnosti: Koupelna" +
           "\nMůžete se přesunout do místností: Předsíň" +
@@ -542,6 +549,7 @@ public class ManagerWithLiterals extends AScenarioManager
             tsPICK_UP),
 
         new ScenarioStep("vezmi Časopis",
+            "Zadaná akce nebyla provedena\n" +
             "Zadaný předmět nemůžete vzít, máte už obě ruce plné." +
         "\n\nNacházíte se v místnosti: Koupelna" +
           "\nMůžete se přesunout do místností: Předsíň" +
@@ -607,7 +615,7 @@ public class ManagerWithLiterals extends AScenarioManager
     /***************************************************************************
      * Vytvoří instanci představující správce scénářů hry.
      */
-    public ManagerWithLiterals()
+    private ManagerWithLiterals()
     {
         super(AUTHOR, XNAME, CLASS);
 
@@ -683,7 +691,11 @@ public class ManagerWithLiterals extends AScenarioManager
     public static void testMyGame()
     {
         IGame     hra  = MANAGER.getGame();
+        if (hra.getScenarioManager() != MANAGER) {
+            throw new RuntimeException("\nManažeři nesedí");
+        }
         _Test_101 test = _Test_101.getInstance(hra);
+//        _Test_101.version = 4;
         test.testGame();
     }
 
@@ -691,7 +703,8 @@ public class ManagerWithLiterals extends AScenarioManager
     /** @param args Parametry příkazového řádku - nepoužívané. */
     public static void main(String[] args)
     {
-        testMyScenarioManager();
-        simulateBasicScenarios();
+//        testMyScenarioManager();
+//        simulateBasicScenarios();
+        testMyGame();
     }
 }

@@ -115,9 +115,7 @@ public interface IGame extends IAuthor
 
 
 
-//== GETTERS AND SETTERS =======================================================
 //== OTHER METHODS =============================================================
-//== EMBEDDED DATA TYPES =======================================================
 
     /***************************************************************************
      * Zpracuje zadaný příkaz a vrátí text zprávy pro uživatele.
@@ -139,6 +137,5 @@ public interface IGame extends IAuthor
 
 
 
-//== INHERITED METHODS =========================================================
 //== EMBEDDED TYPES AND INNER CLASSES ==========================================
 }

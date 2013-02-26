@@ -18,22 +18,22 @@ public class DBG_Handler extends StreamHandler
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
-    
+
     //Výstupní proud, kam bude logger zapisovat. */
     private static OutputStream outputStream = System.out;
-    
-    
-    
+
+
+
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
-    
+
     /***************************************************************************
      * Nastavý implicitní výstupní proud, který bude od této chvíle
-     * naswtavován všem instancím.
+     * nastavován všem instancím.
      * Dříve vytvořené instance nové nastavení neovlivní.
-     * 
+     *
      * @param output Nastavovaný výstupní proud
      */
     public static void setDefaultOutputStream(OutputStream output)
@@ -41,7 +41,7 @@ public class DBG_Handler extends StreamHandler
         outputStream = output;
     }
 
-    
+
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
 
 //##############################################################################

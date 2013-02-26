@@ -70,6 +70,18 @@ class ATest
 
 
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
+
+    /** Celkový bodový zisk. */
+    protected double score = 0;
+
+    /** Stručná zpráva o průběhu testu. */
+    protected StringBuilder shortMessage = new StringBuilder();
+
+    /** Kompletní zpráva o průběhu testu. */
+    protected StringBuilder verboseMessage = new StringBuilder();
+
+
+
 //== CLASS GETTERS AND SETTERS =================================================
 
     /***************************************************************************
@@ -100,6 +112,41 @@ class ATest
 
 //== ABSTRACT METHODS ==========================================================
 //== INSTANCE GETTERS AND SETTERS ==============================================
+
+    /***************************************************************************
+     * Returns obtained score of the performed tests.
+     *
+     * @return Requested score
+     */
+    public double getScore()
+    {
+        return score;
+    }
+
+
+    /***************************************************************************
+     * Returns a short message about the performed tests.
+     *
+     * @return Short message about the performed tests
+     */
+    public String getShortMessage()
+    {
+        return shortMessage.toString();
+    }
+
+
+    /***************************************************************************
+     * Returns a verbose message about the performed tests.
+     *
+     * @return Verbose message about the performed tests
+     */
+    public String getVerboseMessage()
+    {
+        return verboseMessage.toString();
+    }
+
+
+
 //== OTHER NON-PRIVATE INSTANCE METHODS ========================================
 
     /***************************************************************************

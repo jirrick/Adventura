@@ -184,8 +184,8 @@ public class DefaultGame implements IGame
     @Override
     public AScenarioManager getScenarioManager()
     {
-        return (SPRÁVCE_S_KONSTANTAMI  ?  new ManagerWithConstants()
-                                       :  new ManagerWithLiterals  ());
+        return (SPRÁVCE_S_KONSTANTAMI  ?  ManagerWithConstants.getInstance()
+                                       :  ManagerWithLiterals .getInstance());
     }
 
 

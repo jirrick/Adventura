@@ -5,9 +5,9 @@ package cz.vse.adv_framework.empty_classes;
 
 import cz.vse.adv_framework.game_txt.Commands;
 import cz.vse.adv_framework.game_txt.IBag;
+import cz.vse.adv_framework.game_txt.ICommand;
 import cz.vse.adv_framework.game_txt.IGame;
 import cz.vse.adv_framework.game_txt.IPlace;
-import cz.vse.adv_framework.game_txt.ICommand;
 
 import cz.vse.adv_framework.scenario.AScenarioManager;
 
@@ -19,12 +19,17 @@ import java.util.Collection;
  * Instance třídy {@code EmptyGame} mají na starosti logiku hry.
  * Jsou schopny akceptovat jednotlivé příkazy a poskytovat informace
  * o průběžném stavu hry a jejích součástí.
- * <p>
+ * <p />
  * Třída hry musí být navíc definována jako jedináček (singleton)
  * a kromě metod deklarovaných v tomto rozhraní musí definovat
  * statickou tovární metodu {@code getInstance()}.
  * Splnění této podmínky nemůže prověřit překladač,
  * ale prověří ji až následné testy hry.
+ * <p />
+ * Instance třídy {@code EmptyGame} představují prototypy instancí hry,
+ * které ještě nejsou schopny plnohodnotného spuštění a slouží pouze
+ * ke kompletaci těch vlastností správce scénářů, které bude v budoucnu
+ * plnit ve spolupráci s plnohodnotnou hrou.
  *
  * @author    Rudolf PECINOVSKÝ
  * @version   0.00.000
@@ -33,8 +38,20 @@ public class EmptyGame implements IGame
 {
 //== CONSTANT CLASS ATTRIBUTES =================================================
 //== VARIABLE CLASS ATTRIBUTES =================================================
+
+    /** Odkaz na instanci jedináčka. */
+    private static EmptyGame SINGLETON;
+
+
+
 //== STATIC INITIALIZER (CLASS CONSTRUCTOR) ====================================
 //== CONSTANT INSTANCE ATTRIBUTES ==============================================
+
+    /** Správce scénářů fiktivní prázdné hry. */
+    private final AScenarioManager scenarioManager;
+
+
+
 //== VARIABLE INSTANCE ATTRIBUTES ==============================================
 //== CLASS GETTERS AND SETTERS =================================================
 //== OTHER NON-PRIVATE CLASS METHODS ===========================================
@@ -43,10 +60,30 @@ public class EmptyGame implements IGame
 //== CONSTUCTORS AND FACTORY METHODS ===========================================
 
     /***************************************************************************
+     * Vrátí odkaz na jedináčka.
      *
+     * @return Odkaz na jedináčka
      */
-    public EmptyGame()
+    public static EmptyGame getInstance()
     {
+        return SINGLETON;
+    }
+
+
+    /***************************************************************************
+     * Konstruktor vytvářející instanci hry je volán správcem scénářů
+     * definujících požadované koníná dané hry.
+     *
+     * @param scenarioManager Správce scénářů vytvářené hry
+     */
+    private EmptyGame(AScenarioManager scenarioManager)
+    {
+        if (SINGLETON != null) {
+            throw new IllegalStateException(
+                      "Druhá žádost o vytvoření instance prázdné hry");
+        }
+        this.scenarioManager = scenarioManager;
+        SINGLETON = this;
     }
 
 
@@ -73,7 +110,7 @@ public class EmptyGame implements IGame
 
     /***************************************************************************
      * Vrátí jméno autora/autorky programu
-     * ve formátu zadaném v rozhraní {@link IAuthor}
+     * ve formátu zadaném v rozhraní {@link cz.vse.IAuthor}
      *
      * @return Jméno autora/autorky programu v požadovaném formátu
      */
@@ -88,7 +125,7 @@ public class EmptyGame implements IGame
 
     /***************************************************************************
      * Vrátí xname autora/autorky programu
-     * ve formátu zadaném v rozhraní {@link IAuthor}
+     * ve formátu zadaném v rozhraní {@link cz.vse.IAuthor}
      *
      * @return Xname autora/autorky programu v požadovaném formátu
      */
@@ -134,7 +171,8 @@ public class EmptyGame implements IGame
      *   <li>přesun hráče do jiného prostoru,</li>
      *   <li>zvednutí objektu (odebrání z prostoru a vložení do batohu),</li>
      *   <li>položení objektu (odebrání z batohu a vložení do prostoru),</li>
-     *   <li>ukončení hry.</li>
+     *   <li>vyvolání nápovědy,</li>
+     *   <li>okamžité ukončení hry.</li>
      * </ul>
      *
      * @return Přepravka se základními příkazy
@@ -172,7 +210,6 @@ public class EmptyGame implements IGame
         throw new UnsupportedOperationException(
                                         "Metoda ještě není implementována");
     }
-
 
 
     /***************************************************************************

@@ -88,8 +88,8 @@ public class Texts
     public  static final String
     zANP            = "\nZadaná akce nebyla provedena",
     zPORADÍM        = "\nChcete-li poradit, zadejte příkaz ?",
-    zPRÁZDNÝ_PŘÍKAZ = "\nZadal(a) jste prázdný příkaz" + zPORADÍM,
-    zNEZNÁMÝ_PŘÍKAZ = "\nTento příkaz neznám" + zPORADÍM,
+    zPRÁZDNÝ_PŘÍKAZ = "\nZadal(a) jste prázdný příkaz." + zPORADÍM,
+    zNEZNÁMÝ_PŘÍKAZ = "\nTento příkaz neznám." + zPORADÍM,
 
     zPŘESUN         = "\nPřesunul(a) jste se do místnosti: ",
     zCIL_NEZADAN    = zANP + "\nNebyla zadána místnost, do níž se má přejít",
