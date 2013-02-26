@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-
 /**
  * Třída {@code Main} je hlavní třídou projektu
  * zprostředkující komunikaci mezi uživatelem a hrou.
